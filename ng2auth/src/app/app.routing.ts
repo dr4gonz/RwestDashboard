@@ -1,26 +1,27 @@
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 
-import { PublicDealsComponent } from './public-deals.component';
-import { PrivateDealsComponent } from './private-deals.component';
+import { AppComponent } from './app.component';
+import { LinksComponent } from './links/links.component';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/deals',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: '/placeholder'
   },
   {
-    path: 'deals',
-    component: PublicDealsComponent
-  },
-  {
-    path: 'special',
-    component: PrivateDealsComponent,
+    path: 'links',
+    component: LinksComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'placeholder',
+    component: PlaceholderComponent
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
 
-export const routedComponents = [PublicDealsComponent, PrivateDealsComponent];
+export const routedComponents = [AppComponent, LinksComponent, PlaceholderComponent];

@@ -4,12 +4,7 @@
         <a class="navbar-brand" routerLink="/dashboard">{{title}}</a>
       </div>
       <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="/deals" routerLinkActive="active">Deals</a>
-        </li>
-        <li>
-          <a routerLink="/special" *ngIf="authService.loggedIn()" routerLinkActive="active">Private Deals</a>
-        </li>
+        <app-links *ngIf="authService.loggedIn()"></app-links>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>

@@ -7,7 +7,6 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AppComponent } from './app.component';
 import { routing, routedComponents } from './app.routing';
 
-import { DealService } from './deal.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 
@@ -23,7 +22,6 @@ import { AuthGuard } from './auth-guard.service';
     routedComponents
   ],
   providers: [
-    DealService,
     AUTH_PROVIDERS,
     AuthService,
     AuthGuard
