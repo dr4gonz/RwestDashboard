@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-placeholder',
-  templateUrl: './placeholder.component.html',
-  styleUrls: ['./placeholder.component.css']
+  selector: 'app-public',
+  templateUrl: './public.component.html',
+  styleUrls: ['./public.component.css']
 })
-export class PlaceholderComponent implements OnInit {
+export class PublicComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 

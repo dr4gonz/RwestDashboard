@@ -3,13 +3,14 @@ import { AuthGuard } from './auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { LinksComponent } from './links/links.component';
-import { PlaceholderComponent } from './placeholder/placeholder.component';
+import { PublicComponent } from './public/public.component';
+import { BehindAuthComponent } from './behind-auth/behind-auth.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/placeholder'
+    redirectTo: '/public'
   },
   {
     path: 'links',
@@ -17,11 +18,16 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'placeholder',
-    component: PlaceholderComponent
+    path: 'public',
+    component: PublicComponent
+  },
+  {
+    path: 'behind-auth',
+    component: BehindAuthComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
 
-export const routedComponents = [AppComponent, LinksComponent, PlaceholderComponent];
+export const routedComponents = [AppComponent, LinksComponent, PublicComponent, BehindAuthComponent];
