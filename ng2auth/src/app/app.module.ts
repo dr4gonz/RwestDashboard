@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { routing, routedComponents } from './app.routing';
 
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './auth-guard.service'
+import { AuthGuardAdmin } from './auth-guard-admin.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { AuthGuard } from './auth-guard.service';
   providers: [
     AUTH_PROVIDERS,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AuthGuardAdmin
   ],
   bootstrap: [AppComponent]
 })

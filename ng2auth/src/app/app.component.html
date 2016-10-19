@@ -4,6 +4,7 @@
         <a class="navbar-brand" routerLink="/">{{title}}</a>
       </div>
       <app-links *ngIf="authService.loggedIn()"></app-links>
+      <app-links-admin *ngIf="adminService.isAdmin()"></app-links-admin>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a (click)=authService.login() *ngIf="!authService.loggedIn()">Log In</a>

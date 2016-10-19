@@ -7,7 +7,7 @@ declare var Auth0Lock: any;
 @Injectable()
 export class AuthService {
 
-  lock = new Auth0Lock('dAyi2hd3PAELWAE9QZ65sLND5xAzHQSC', 'mreyes.auth0.com');
+  lock = new Auth0Lock('UPewrAsrOxeHQ4kxeUcBodCS2a7f0xwe', 'carlegbert.auth0.com');
 
   constructor(private router: Router) {
     this.lock.on('authenticated', (authResult: any) => {
