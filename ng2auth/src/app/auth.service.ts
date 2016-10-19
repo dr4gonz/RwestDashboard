@@ -8,9 +8,13 @@ declare var Auth0Lock: any;
 @Injectable()
 export class AuthService {
 
+  role: string;
+
   lock = new Auth0Lock('UPewrAsrOxeHQ4kxeUcBodCS2a7f0xwe', 'carlegbert.auth0.com');
 
   constructor(private router: Router, private http: Http) {
+    this.role = "none";
+
     this.lock.on('authenticated', (authResult: any) => {
       localStorage.setItem('id_token', authResult.idToken);
 
@@ -20,6 +24,8 @@ export class AuthService {
         }
 
         localStorage.setItem('profile', JSON.stringify(profile));
+        this.role = profile.roles[0];
+        console.log(profile);
       });
 
       this.lock.hide();
@@ -45,11 +51,7 @@ export class AuthService {
   }
 
   isAdmin() {
-    if (this.loggedIn()) {
-      return (JSON.parse(localStorage.getItem('profile')).roles[0] === "admin");
-    } else {
-      return false;
-    }
+    return (this.loggedIn() && this.role === "admin");
   }
 
 }
