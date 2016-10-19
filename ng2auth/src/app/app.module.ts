@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { AuthGuardAdmin } from './auth-guard-admin.service';
     FormsModule,
     routing,
     HttpModule,
+    JsonpModule
   ],
   declarations: [
     AppComponent,
