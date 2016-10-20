@@ -1,5 +1,7 @@
 <ul>
   <li *ngFor="let contentItem of content | async">
-    <content-detail [contentItem]="contentItem"></content-detail>
+    <content-detail [contentItem]="contentItem" *ngIf="!authService.isAdmin()"></content-detail>
+    <content-admin [contentItem]="contentItem" *ngIf="authService.isAdmin()"></content-admin>
   </li>
+  <new-content *ngIf="authService.isAdmin()" (newContentItemEvent)="saveContent($event)"></new-content>
 </ul>

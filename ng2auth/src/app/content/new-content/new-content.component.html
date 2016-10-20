@@ -1,0 +1,6 @@
+<div>
+  <h3> Add New Content</h3>
+  <label *ngIf="(formWarning)">Please fill out all fields.</label>
+  <input type="text" placeholder="Description" #newDescription />
+  <button (click)="addNewContent(newDescription)">Submit</button>
+</div>

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentDetailComponent implements OnInit {
 
+  contentItem;
+
   constructor() { }
 
   ngOnInit() {

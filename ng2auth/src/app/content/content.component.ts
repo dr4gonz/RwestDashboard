@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentItem } from '../content-item';
+import { ContentItem } from './content-item.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'content',
@@ -10,7 +11,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class ContentComponent implements OnInit {
 
   content: FirebaseListObservable<ContentItem[]>;
-  constructor(af: AngularFire) {
+  constructor(af: AngularFire, private authService: AuthService) {
     this.content = af.database.list('/contentItems');
     console.log(this.content);
   }
@@ -18,4 +19,9 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
   }
 
+  saveContent(newContentItem: ContentItem) {
+    newContentItem.dateAdded = Date.now().toString();
+    newContentItem.approved = false;
+    this.content.push(newContentItem);
+  }
 }
