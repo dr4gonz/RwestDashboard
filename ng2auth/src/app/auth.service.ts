@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
+import { Http, HttpModule } from '@angular/http';
 
 declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
 
-  lock = new Auth0Lock('dAyi2hd3PAELWAE9QZ65sLND5xAzHQSC', 'mreyes.auth0.com');
+  role: string;
 
-  constructor(private router: Router) {
+  lock = new Auth0Lock('UPewrAsrOxeHQ4kxeUcBodCS2a7f0xwe', 'carlegbert.auth0.com');
+
+  constructor(private router: Router, private http: Http) {
+    this.role = "none";
+
     this.lock.on('authenticated', (authResult: any) => {
       localStorage.setItem('id_token', authResult.idToken);
 
@@ -19,6 +24,8 @@ export class AuthService {
         }
 
         localStorage.setItem('profile', JSON.stringify(profile));
+        this.role = profile.roles[0];
+        console.log(profile);
       });
 
       this.lock.hide();
@@ -42,4 +49,9 @@ export class AuthService {
   loggedIn() {
     return tokenNotExpired();
   }
+
+  isAdmin() {
+    return (this.loggedIn() && this.role === "admin");
+  }
+
 }
