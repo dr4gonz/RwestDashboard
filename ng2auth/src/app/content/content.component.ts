@@ -21,7 +21,11 @@ export class ContentComponent implements OnInit {
 
   saveContent(newContentItem: ContentItem) {
     newContentItem.dateAdded = Date.now().toString();
-    newContentItem.approved = false;
+    newContentItem.approvalStatus = "Not Approved";
     this.content.push(newContentItem);
+  }
+
+  updateApproval(contentItem: ContentItem) {
+    this.content.update(contentItem.$key, { approvalStatus: contentItem.approvalStatus })
   }
 }

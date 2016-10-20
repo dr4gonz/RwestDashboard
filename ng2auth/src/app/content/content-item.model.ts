@@ -1,7 +1,7 @@
 export class ContentItem {
-  id: number;
+  $key: string;
   description: string;
-  approved: boolean;
+  approvalStatus: string;
   createdBy: string;
   dateAdded: string;
 }
