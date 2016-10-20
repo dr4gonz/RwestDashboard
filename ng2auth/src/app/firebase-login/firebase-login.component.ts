@@ -24,7 +24,6 @@ export class FirebaseLoginComponent implements OnInit {
     if(this.emailBool) {
       this.emailBool = false;
     }
-
   }
 
   logout() {
@@ -43,8 +42,6 @@ export class FirebaseLoginComponent implements OnInit {
       method: AuthMethods.Password
     }).then(response => this.loggedIn = true)
       .catch(error => alert(error.message))
-
-
   }
 
   emailLogin() {
