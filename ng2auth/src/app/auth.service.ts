@@ -10,8 +10,7 @@ declare var Auth0Lock: any;
 export class AuthService {
 
   role: string;
-  keys = new Keys();
-  lock = new Auth0Lock(this.keys.Auth0ClientId, this.keys.Auth0Domain);
+  lock = new Auth0Lock(Keys.Auth0ClientId, Keys.Auth0Domain);
 
   constructor(private router: Router, private http: Http) {
 
