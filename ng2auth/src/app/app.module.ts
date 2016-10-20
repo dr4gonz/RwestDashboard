@@ -5,12 +5,14 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
+import { LinksComponent } from './links/links.component';
+import { LinksAdminComponent } from './links-admin/links-admin.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { routing, routedComponents } from './app.routing';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,6 +23,9 @@ import { AuthGuardAdmin } from './auth-guard-admin.service';
   ],
   declarations: [
     AppComponent,
+    LinksComponent,
+    LinksAdminComponent,
+    NavbarComponent,
     routedComponents
   ],
   providers: [
