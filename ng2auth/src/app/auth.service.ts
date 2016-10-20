@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
+import { Keys } from '../keys';
 
 declare var Auth0Lock: any;
 
@@ -9,8 +10,8 @@ declare var Auth0Lock: any;
 export class AuthService {
 
   role: string;
-
-  lock = new Auth0Lock('UPewrAsrOxeHQ4kxeUcBodCS2a7f0xwe', 'carlegbert.auth0.com');
+  keys = new Keys();
+  lock = new Auth0Lock(this.keys.Auth0ClientId, this.keys.Auth0Domain);
 
   constructor(private router: Router, private http: Http) {
 
