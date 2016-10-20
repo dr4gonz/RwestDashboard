@@ -1,3 +1,10 @@
-<div> {{ (af.auth | async)?.uid }} </div>
-  <button (click)="login()">Login</button>
-  <button (click)="logout()">Logout</button>
+<div>
+  <button class="btn btn-primary btn-xs navbar-right" (click)="login()" *ngIf="!(auth | async)">Login with Google</button>
+  <form class="nav-right" *ngIf="emailBool">
+    <input type="text" name="username" id="username" placeholder="Email">
+    <input type="password" name="password" id="password" placeholder="Password">
+  </form>
+  <button class="btn btn-primary btn-xs navbar-right" (click)="emailLogin()" *ngIf="!emailBool && !loggedIn">Login with Email</button>
+  <button class="btn btn-primary btn-xs navbar-right" (click)="overrideLogin()" *ngIf="emailBool">Login with Email</button>
+  <button class="btn btn-primary btn-xs navbar-right" (click)="logout()" *ngIf="auth | async">Logout</button>
+</div>

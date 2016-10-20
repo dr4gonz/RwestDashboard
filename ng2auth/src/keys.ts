@@ -7,5 +7,5 @@ export class Keys {
     databaseURL: 'https://rwest-auth-login-test.firebaseio.com',
     storageBucket: 'rwest-auth-login-test.appspot.com'
   }
-  
+
 }
