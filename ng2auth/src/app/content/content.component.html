@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let contentItem of content | async">
+    <content-detail [contentItem]="contentItem"></content-detail>
+  </li>
+</ul>
