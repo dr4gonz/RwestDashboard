@@ -15,6 +15,7 @@ import { ContentListItemComponent } from './content/content-list-item/content-li
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 import { routing, routedComponents } from './app.routing';
 
@@ -49,7 +50,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     LinksAdminComponent,
     NavbarComponent,
     NewContentComponent,
-    routedComponents
+    routedComponents,
+    RegisterUserComponent
   ],
   providers: [
     AUTH_PROVIDERS,
