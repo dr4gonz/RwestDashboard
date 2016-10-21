@@ -12,7 +12,7 @@ import { LinksAdminComponent } from './links-admin/links-admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { routing, routedComponents } from './app.routing';
 
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods, FirebaseRef, FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service'
@@ -35,7 +35,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
   ],
   declarations: [
     AppComponent,
-    ContentDetailComponent,
     LinksComponent,
     LinksAdminComponent,
     NavbarComponent,
@@ -45,7 +44,9 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AUTH_PROVIDERS,
     AuthService,
     AuthGuard,
-    AuthGuardAdmin
+    AuthGuardAdmin,
+    FIREBASE_PROVIDERS,
+
   ],
   bootstrap: [AppComponent]
 })

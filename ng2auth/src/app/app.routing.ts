@@ -37,7 +37,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'firebase-login',
-    component: FirebaseLoginComponent,
+    component: FirebaseLoginComponent
+  },
+  {
     path: 'content',
     component: ContentComponent,
     canActivate: [AuthGuard]
@@ -46,4 +48,4 @@ const appRoutes: Routes = [
 
 export const routing = RouterModule.forRoot(appRoutes);
 
-export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, FirebaseComponent, FirebaseLoginComponent, ContentComponent]; 
+export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, FirebaseComponent, FirebaseLoginComponent, ContentComponent];

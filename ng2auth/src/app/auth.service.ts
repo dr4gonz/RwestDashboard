@@ -3,7 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';
-import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, defaultFirebase } from 'angularfire2';
 
 
 @Injectable()
@@ -63,6 +63,14 @@ export class AuthService {
 
   isAdmin() {
     return (this.loggedIn() && this.role === "admin");
+  }
+  createUser(email: string, password: string) {
+
+    this.af.auth.createUser({
+      email: email,
+      password: password
+    }).then(response => console.log(response))
+      .catch(error => console.log(error.message))
   }
 
 }
