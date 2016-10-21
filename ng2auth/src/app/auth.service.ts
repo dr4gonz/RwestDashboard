@@ -11,10 +11,9 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
+  loggedInUser: string;
 
-  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) {
-    this.af.auth.subscribe(auth => console.log(auth));
-  }
+  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) { }
 
   login() {
     this.af.auth.login({
@@ -35,6 +34,7 @@ export class AuthService {
   }
 
   overrideLogin(username: string, password: string) {
+    let _that = this;
     this.af.auth.login({
       email: username,
       password: password
@@ -42,7 +42,9 @@ export class AuthService {
     {
       provider: AuthProviders.Password,
       method: AuthMethods.Password
-    }).then(response => this.usrLoggedIn = true)
+    }).then(function(response) {
+      _that.loggedInUser = response.auth.email;
+    })
       .catch(error => alert(error.message))
   }
 
@@ -52,14 +54,6 @@ export class AuthService {
 
   isAdmin() {
     return true;
-  }
-  createUser(email: string, password: string) {
-
-    this.af.auth.createUser({
-      email: email,
-      password: password
-    }).then(response => console.log(response))
-      .catch(error => console.log(error.message))
   }
 
 }

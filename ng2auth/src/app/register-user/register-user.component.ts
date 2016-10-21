@@ -9,8 +9,13 @@ import { User } from '../models/user.model';
 })
 export class RegisterUserComponent implements OnInit {
   users: FirebaseListObservable<User[]>;
+  submitted = false;
+  roles = ['User', 'Admin'];
   firebaseRef: any;
   firebaseDB: any;
+  email: string;
+  password: string;
+  role: string;
 
   constructor(private af: AngularFire, @Inject(FirebaseApp) firebase: any) {
     this.firebaseRef = firebase.auth();
@@ -22,17 +27,31 @@ export class RegisterUserComponent implements OnInit {
   }
 
   registerUser() {
-    let email: string = (<HTMLInputElement>document.getElementById('email')).value;
-    let password: string = (<HTMLInputElement>document.getElementById('password')).value;
+    this.email = (<HTMLInputElement>document.getElementById('email')).value;
+    this.password = (<HTMLInputElement>document.getElementById('password')).value;
+    this.role = (<HTMLInputElement>document.getElementById('role')).value;
     let userRef = this.users;
-    this.firebaseRef.createUserWithEmailAndPassword(email,password)
+    let _that = this;
+    this.firebaseRef.createUserWithEmailAndPassword(this.email,this.password)
                     .then(function(response) {
                       let newUser: User = new User();
                       newUser.uid = response.uid;
-                      newUser.role = "User";
+                      newUser.role = _that.role;
                       userRef.push(newUser);
+                      _that.formSubmitted();
                     })
                     .catch(error => console.log(error.message));
+  }
+  formSubmitted() {
+    this.submitted = true;
+  }
+  formReset() {
+    this.email = '';
+    (<HTMLInputElement>document.getElementById('email')).value = '';
+    this.password = '';
+    (<HTMLInputElement>document.getElementById('password')).value = '';
+    this.role = this.roles[0];
+    this.submitted = false;
   }
 
 }

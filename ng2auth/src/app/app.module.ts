@@ -16,7 +16,6 @@ import { ContentAdminComponent } from './content/content-admin/content-admin.com
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
-
 import { routing, routedComponents } from './app.routing';
 
 import { AngularFireModule, AuthProviders, AuthMethods, FirebaseRef, FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
