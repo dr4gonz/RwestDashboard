@@ -10,9 +10,7 @@ import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfi
 export class AuthService {
 
   role: string;
-
   usrLoggedIn: boolean = false;
-  emailBool: boolean = false;
 
   constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) {
     this.af.auth.subscribe(auth => console.log(auth));
@@ -24,10 +22,6 @@ export class AuthService {
       method: AuthMethods.Popup
     }).then(response => this.usrLoggedIn = true)
       .catch(error => alert(error.message))
-
-    if(this.emailBool) {
-      this.emailBool = false;
-    }
   }
 
   logout() {
@@ -41,7 +35,6 @@ export class AuthService {
   }
 
   overrideLogin(username: string, password: string) {
-    this.emailBool = false;
     this.af.auth.login({
       email: username,
       password: password
@@ -51,10 +44,6 @@ export class AuthService {
       method: AuthMethods.Password
     }).then(response => this.usrLoggedIn = true)
       .catch(error => alert(error.message))
-  }
-
-  emailLogin() {
-    this.emailBool = true;
   }
 
   loggedIn() {
