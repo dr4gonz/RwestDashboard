@@ -10,6 +10,12 @@ import { AppComponent } from './app.component';
 import { LinksComponent } from './links/links.component';
 import { LinksAdminComponent } from './links-admin/links-admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
+import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
+import { ContentAdminComponent } from './content/content-admin/content-admin.component';
+import { ContentDetailComponent } from './content/content-detail/content-detail.component';
+import { NewContentComponent } from './content/new-content/new-content.component';
+
 import { routing, routedComponents } from './app.routing';
 
 import { AngularFireModule, AuthProviders, AuthMethods, FirebaseRef, FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
@@ -35,9 +41,14 @@ export const firebaseConfig = Keys.FireBaseConfig;
   ],
   declarations: [
     AppComponent,
+    ContentListItemComponent,
+    ContentAdminComponent,
+    ContentDetailComponent,
+    FirebaseLoginComponent,
     LinksComponent,
     LinksAdminComponent,
     NavbarComponent,
+    NewContentComponent,
     routedComponents
   ],
   providers: [

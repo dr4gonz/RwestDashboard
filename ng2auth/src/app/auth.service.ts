@@ -10,10 +10,7 @@ import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, FirebaseApp } fr
 export class AuthService {
 
   role: string;
-
   usrLoggedIn: boolean = false;
-  emailBool: boolean = false;
-  fb: any;
 
   constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) {
     this.af.auth.subscribe(auth => console.log(auth));
@@ -25,10 +22,6 @@ export class AuthService {
       method: AuthMethods.Popup
     }).then(response => this.usrLoggedIn = true)
       .catch(error => alert(error.message))
-
-    if(this.emailBool) {
-      this.emailBool = false;
-    }
   }
 
   logout() {
@@ -42,7 +35,6 @@ export class AuthService {
   }
 
   overrideLogin(username: string, password: string) {
-    this.emailBool = false;
     this.af.auth.login({
       email: username,
       password: password
@@ -54,16 +46,12 @@ export class AuthService {
       .catch(error => alert(error.message))
   }
 
-  emailLogin() {
-    this.emailBool = true;
-  }
-
   loggedIn() {
     return this.usrLoggedIn;
   }
 
   isAdmin() {
-    return (this.loggedIn() && this.role === "admin");
+    return true;
   }
   createUser(email: string, password: string) {
 
