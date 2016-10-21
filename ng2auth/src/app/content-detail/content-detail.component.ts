@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'content-detail',
+  selector: 'app-content-detail',
   templateUrl: './content-detail.component.html',
   inputs: ['contentItem'],
   styleUrls: ['./content-detail.component.css']

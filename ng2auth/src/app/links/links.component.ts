@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 @Component({
-  selector: 'links',
+  selector: 'app-links',
   templateUrl: './links.component.html',
   styleUrls: ['./links.component.css']
 })

@@ -3,7 +3,7 @@ import { AuthService } from '../auth.service';
 import { FirebaseApp } from 'angularfire2';
 
 @Component({
-  selector: 'admin',
+  selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })

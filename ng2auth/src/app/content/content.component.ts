@@ -3,7 +3,7 @@ import { ContentItem } from '../content-item';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
-  selector: 'content',
+  selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
