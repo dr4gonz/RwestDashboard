@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfire2';
+import { AuthService } from '../auth.service';
+import { FirebaseAuth } from 'angularfire2';
 
 @Component({
   selector: 'app-firebase-login',
@@ -8,48 +9,14 @@ import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfi
 })
 
 export class FirebaseLoginComponent implements OnInit {
-  loggedIn: boolean = false;
-  emailBool: boolean = false;
-  constructor(public af: AngularFire, public auth: FirebaseAuth) {
-    this.af.auth.subscribe(auth => console.log(auth));
+  emailLoginBool: boolean = false;
+  constructor(public authService: AuthService, public auth: FirebaseAuth) {
   }
-
-  login() {
-    this.af.auth.login({
-      provider: AuthProviders.Google,
-      method: AuthMethods.Popup
-    }).then(response => this.loggedIn = true)
-      .catch(error => alert(error.message))
-
-    if(this.emailBool) {
-      this.emailBool = false;
-    }
+  ngOnInit() { }
+  passCredentials () {
+    let user: string = (<HTMLInputElement>document.getElementById('username')).value;
+    let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
+    this.authService.overrideLogin(user, pw);
   }
-
-  logout() {
-    this.loggedIn = false;
-    this.af.auth.logout();
-  }
-
-  overrideLogin() {
-    this.emailBool = false;
-    this.af.auth.login({
-      email: (<HTMLInputElement>document.getElementById('username')).value,
-      password: (<HTMLInputElement>document.getElementById('password')).value
-    },
-    {
-      provider: AuthProviders.Password,
-      method: AuthMethods.Password
-    }).then(response => this.loggedIn = true)
-      .catch(error => alert(error.message))
-  }
-
-  emailLogin() {
-    this.emailBool = true;
-  }
-
-  ngOnInit() {
-  }
-
 
 }
