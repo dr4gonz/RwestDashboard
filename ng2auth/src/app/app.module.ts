@@ -15,11 +15,11 @@ import { ContentListItemComponent } from './content/content-list-item/content-li
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 import { routing, routedComponents } from './app.routing';
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
@@ -44,6 +44,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentListItemComponent,
     ContentAdminComponent,
     ContentDetailComponent,
+    FileUploadComponent,
     FirebaseLoginComponent,
     LinksComponent,
     LinksAdminComponent,
