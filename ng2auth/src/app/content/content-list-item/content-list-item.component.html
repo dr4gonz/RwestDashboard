@@ -1,0 +1,17 @@
+<div class="jumbotron content-detail">
+  <button (click)="viewDetails()" class="btn btn-info">View Details</button>
+  <ul>
+    <li>Description: {{contentItem.description}}</li>
+    <li>id: {{contentItem.$key}}</li>
+    <li>
+      <select [(ngModel)]="contentItem.approvalStatus">
+        <option value="Not Approved">Not Approved</option>
+        <option value="Needs Work">Needs Work</option>
+        <option value="Approved">Approved</option>
+      </select>
+      <button (click)="updateApprovalStatus()" class="btn btn-success">Save Changes</button>
+    </li>
+    <li>Date added: {{contentItem.datedAdded}}</li>
+    <li>Created by:</li>
+  </ul>
+</div>

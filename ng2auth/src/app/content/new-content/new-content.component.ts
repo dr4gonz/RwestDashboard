@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { ContentItem } from '../content-item.model';
+import { ContentItem } from '../../models/content-item.model';
 
 @Component({
   selector: 'new-content',

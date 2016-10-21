@@ -1,27 +1,27 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { ContentItem } from '../content-item.model';
+import { ContentItem } from '../../models/content-item.model';
 
 @Component({
   selector: 'content-detail',
-  templateUrl: './content-detail.component.html',
   inputs: ['contentItem'],
-  outputs: ['updateApprovalEvent'],
+  outputs: ['hideDetailEvent'],
+  templateUrl: './content-detail.component.html',
   styleUrls: ['./content-detail.component.css']
 })
 export class ContentDetailComponent implements OnInit {
 
-  contentItem;
-  updateApprovalEvent: EventEmitter<ContentItem>;
+  contentItem: ContentItem;
+  hideDetailEvent: EventEmitter<null>;
 
   constructor() {
-    this.updateApprovalEvent = new EventEmitter();
+    this.hideDetailEvent = new EventEmitter();
   }
 
   ngOnInit() {
   }
 
-  updateApprovalStatus() {
-    this.updateApprovalEvent.emit(this.contentItem);
+  hideDetail() {
+    this.hideDetailEvent.emit();
   }
 
 }

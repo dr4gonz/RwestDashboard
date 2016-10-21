@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import { LinksComponent } from './links/links.component';
 import { LinksAdminComponent } from './links-admin/links-admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ContentDetailComponent } from './content/content-detail/content-detail.component';
+import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
+import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
 import { routing, routedComponents } from './app.routing';
 
@@ -33,8 +34,9 @@ export const firebaseConfig = Keys.FireBaseConfig;
   ],
   declarations: [
     AppComponent,
-    ContentDetailComponent,
+    ContentListItemComponent,
     ContentAdminComponent,
+    ContentDetailComponent,
     LinksComponent,
     LinksAdminComponent,
     NavbarComponent,

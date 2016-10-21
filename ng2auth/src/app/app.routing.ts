@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { BehindAuthComponent } from './behind-auth/behind-auth.component';
 import { AdminComponent } from './admin/admin.component';
-import { ContentComponent } from './content/content.component';
+import { ContentListComponent } from './content/content-list.component';
 
 const appRoutes: Routes = [
   {
@@ -29,12 +29,12 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardAdmin]
   },
   {
-    path: 'content',
-    component: ContentComponent,
+    path: 'content-list',
+    component: ContentListComponent,
     canActivate: [AuthGuard]
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
 
-export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, ContentComponent];
+export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, ContentListComponent];

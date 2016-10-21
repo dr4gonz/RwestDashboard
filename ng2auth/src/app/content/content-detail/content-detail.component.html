@@ -1,14 +1,5 @@
-<ul>
-  <li>Description: {{contentItem.description}}</li>
-  <li>id: {{contentItem.$key}}</li>
-  <li>
-    <select [(ngModel)]="contentItem.approvalStatus">
-      <option value="Not Approved">Not Approved</option>
-      <option value="Needs Work">Needs Work</option>
-      <option value="Approved">Approved</option>
-    </select>
-    <button (click)="updateApprovalStatus()">Save Changes</button>
-  </li>
-  <li>Date added: {{contentItem.datedAdded}}</li>
-  <li>Created by:</li>
-</ul>
+<div class="jumbotron content-detail">
+  <h1>CONTENT DETAIL</h1>
+  <h3>{{contentItem.description}}</h3>
+  <button (click)="hideDetail()">Back to list</button>
+</div>
