@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { FirebaseApp, AngularFire } from 'angularfire2';
-import { FileEntry } from '../models/file-entry.model';
+import { FileEntry } from '../../models/file-entry.model';
 
 @Component({
   selector: 'app-file-upload',

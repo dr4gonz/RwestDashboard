@@ -4,11 +4,11 @@ import { AuthService } from '../auth.service';
 import { FileEntry } from '../models/file-entry.model';
 
 @Component({
-  selector: 'app-storage-test',
-  templateUrl: './storage-test.component.html',
-  styleUrls: ['./storage-test.component.css']
+  selector: 'app-file-storage',
+  templateUrl: './file-storage.component.html',
+  styleUrls: ['./file-storage.component.css']
 })
-export class StorageTestComponent implements OnInit {
+export class FileStorageComponent implements OnInit {
 
   fileEntries: FirebaseListObservable<FileEntry[]>;
 

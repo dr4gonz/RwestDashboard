@@ -15,7 +15,8 @@ import { ContentListItemComponent } from './content/content-list-item/content-li
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
+import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 
 import { routing, routedComponents } from './app.routing';
 
@@ -50,6 +51,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     LinksAdminComponent,
     NavbarComponent,
     NewContentComponent,
+    StorageListItemComponent,
     routedComponents
   ],
   providers: [
