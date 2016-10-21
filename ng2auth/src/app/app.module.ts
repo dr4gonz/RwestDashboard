@@ -60,8 +60,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AUTH_PROVIDERS,
     AuthService,
     AuthGuard,
-    AuthGuardAdmin,
-    FIREBASE_PROVIDERS,
+    AuthGuardAdmin
 
   ],
   bootstrap: [AppComponent]
