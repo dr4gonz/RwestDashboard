@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { FirebaseApp } from 'angularfire2';
+import { AngularFire, FirebaseApp, FirebaseListObservable } from 'angularfire2';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-admin',
@@ -8,14 +9,18 @@ import { FirebaseApp } from 'angularfire2';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  users: FirebaseListObservable<User[]>;
 
   errorMessage: string;
   profile: Object;
   firebaseRef: any;
+  firebaseDB: any;
+  uid: string;
 
-  constructor(private authService: AuthService, @Inject(FirebaseApp) firebase: any) {
+  constructor(private authService: AuthService, @Inject(FirebaseApp) firebase: any, private af: AngularFire) {
     this.firebaseRef = firebase.auth();
-    console.log(this.firebaseRef);
+    this.firebaseDB = firebase.database();
+    this.users = af.database.list('/users');
   }
 
   ngOnInit() {
@@ -24,8 +29,15 @@ export class AdminComponent implements OnInit {
   registerUser() {
     let user: string = (<HTMLInputElement>document.getElementById('email')).value;
     let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
+    let userRef = this.users;
     this.firebaseRef.createUserWithEmailAndPassword(user,pw)
-                    .then(response => console.log(response))
+                    .then(function(response) {
+                      console.log(response.uid);
+                      let newUser: User = new User();
+                      newUser.uid = response.uid;
+                      newUser.role = "User";
+                      userRef.push(newUser);
+                    })
                     .catch(error => console.log(error.message));
 
   }
