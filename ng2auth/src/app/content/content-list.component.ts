@@ -16,7 +16,6 @@ export class ContentListComponent implements OnInit {
 
   constructor(af: AngularFire, private authService: AuthService) {
     this.content = af.database.list('/contentItems');
-    console.log(this.content);
     this.selectedContentItem = null;
   }
 

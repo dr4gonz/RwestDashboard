@@ -1,7 +1,6 @@
 # Angular2 Auth Mockup for R/West
 
-This is an Angular2 webapp with authentication via Auth0. It's currently set up with Matt Reyes' trial account at Auth0; it can be moved to another account by registering for one at Auth0 and then changing the client ID and client secret in src/app/auth.service.ts.
-
+This is an Angular2 webapp with authentication, file storage, and data persistence via Firebase. It's currently connected to a free Firebase account, and could easily be moved to a new one.
 
 ### Instructions for serving via localhost
 
@@ -12,9 +11,11 @@ This is an Angular2 webapp with authentication via Auth0. It's currently set up 
 * $ npm install
 * $ ng s
 * navigate to http://localhost:4200 in your browser
+* You will need a firebase user account with the 'admin' role for most functionality; either set this up in the firebase dev console (or talk to somebody who can), or have somebody who already has such an account add you via the application itself.
 
 ### Instructions for adding components
 
 * New components can be created with '$ ng g component < name-of-component >'
-* Update app.routing.ts to include the component
-* If you want this component to be only viewable by authenticated users, make sure the entry in app.routing.ts has the property 'canActivate: [AuthGuard]'
+* Update app.routing.ts to include the component for a routed, 'main' component, and add it to the links component
+* Update app.module to include the component as a directive for child components
+* If you want a routed component to be only viewable by authenticated users, make sure the entry in app.routing.ts has the property 'canActivate: [AuthGuard]'

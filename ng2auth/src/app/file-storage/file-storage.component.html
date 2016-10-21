@@ -1,0 +1,7 @@
+<ul>
+  <div *ngFor="let fileEntry of fileEntries | async">
+    <app-storage-list-item [fileEntry]="fileEntry"></app-storage-list-item>
+  </div>
+</ul>
+
+<app-file-upload (newFileEntryEvent)="saveFileEntry($event)"></app-file-upload>

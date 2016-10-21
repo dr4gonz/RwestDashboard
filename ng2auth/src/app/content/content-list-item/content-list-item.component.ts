@@ -11,19 +11,13 @@ import { ContentItem } from '../../models/content-item.model';
 export class ContentListItemComponent implements OnInit {
 
   contentItem;
-  updateApprovalEvent: EventEmitter<ContentItem>;
   viewDetailsEvent: EventEmitter<ContentItem>;
 
   constructor() {
-    this.updateApprovalEvent = new EventEmitter();
     this.viewDetailsEvent = new EventEmitter();
   }
 
   ngOnInit() {
-  }
-
-  updateApprovalStatus() {
-    this.updateApprovalEvent.emit(this.contentItem);
   }
 
   viewDetails() {

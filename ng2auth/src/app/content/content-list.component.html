@@ -1,8 +1,7 @@
+<content-detail *ngIf="selectedContentItem !== null" [contentItem]="selectedContentItem" (hideDetailEvent)="deselectContentItem($event)" (updateApprovalEvent)="updateApproval($event)"></content-detail>
 <ul *ngIf="selectedContentItem == null">
   <li *ngFor="let contentItem of content | async">
-    <content-admin [contentItem]="contentItem" *ngIf="authService.isAdmin()"></content-admin>
-    <content-list-item [contentItem]="contentItem" (updateApprovalEvent)="updateApproval($event)" (viewDetailsEvent)="selectContentItem($event)"></content-list-item>
+    <content-list-item [contentItem]="contentItem" (viewDetailsEvent)="selectContentItem($event)"></content-list-item>
   </li>
   <new-content *ngIf="authService.isAdmin()" (newContentItemEvent)="saveContent($event)"></new-content>
 </ul>
-<content-detail *ngIf="selectedContentItem !== null" [contentItem]="selectedContentItem" (hideDetailEvent)="deselectContentItem($event)"></content-detail>

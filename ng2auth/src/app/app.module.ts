@@ -16,10 +16,12 @@ import { ContentAdminComponent } from './content/content-admin/content-admin.com
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
+import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
+
 import { routing, routedComponents } from './app.routing';
 
-import { AngularFireModule, AuthProviders, AuthMethods, FirebaseRef, FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
-
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
@@ -44,13 +46,15 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentListItemComponent,
     ContentAdminComponent,
     ContentDetailComponent,
+    FileUploadComponent,
     FirebaseLoginComponent,
     LinksComponent,
     LinksAdminComponent,
     NavbarComponent,
     NewContentComponent,
-    routedComponents,
-    RegisterUserComponent
+    RegisterUserComponent,
+    StorageListItemComponent,
+    routedComponents
   ],
   providers: [
     AUTH_PROVIDERS,
