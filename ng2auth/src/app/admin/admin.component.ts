@@ -16,4 +16,10 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
+  registerUser() {
+    let user: string = (<HTMLInputElement>document.getElementById('email')).value;
+    let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
+    this.authService.createUser(user, pw);
+  }
+
 }
