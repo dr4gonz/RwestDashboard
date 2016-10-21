@@ -7,6 +7,8 @@ import { PublicComponent } from './public/public.component';
 import { BehindAuthComponent } from './behind-auth/behind-auth.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContentListComponent } from './content/content-list.component';
+import { FirebaseComponent } from './firebase/firebase.component';
+import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
 
 const appRoutes: Routes = [
   {
@@ -32,9 +34,16 @@ const appRoutes: Routes = [
     path: 'content-list',
     component: ContentListComponent,
     canActivate: [AuthGuard]
-  }
-];
+  },
+  {
+    path: 'firebase',
+    component: FirebaseComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'firebase-login',
+    component: FirebaseLoginComponent,
+  }];
 
 export const routing = RouterModule.forRoot(appRoutes);
-
-export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, ContentListComponent];
+export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, FirebaseComponent, FirebaseLoginComponent, ContentListComponent];

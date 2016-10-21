@@ -2,14 +2,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" routerLink="/">R/West Client Dashboard</a>
     </div>
-    <links *ngIf="authService.loggedIn()"></links>
-    <links-admin *ngIf="authService.isAdmin()"></links-admin>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a (click)=authService.login() *ngIf="!authService.loggedIn()">Log In</a>
-      </li>
-      <li>
-        <a (click)=authService.logout() *ngIf="authService.loggedIn()">Log Out</a>
-      </li>
-    </ul>
+    <app-links *ngIf="auth | async"></app-links>
+    <app-links-admin *ngIf="auth | async"></app-links-admin>
+    <app-firebase-login></app-firebase-login>
 </nav>
