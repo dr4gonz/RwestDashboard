@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LinksComponent } from './links/links.component';
 import { LinksAdminComponent } from './links-admin/links-admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
 import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
@@ -44,6 +44,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentListItemComponent,
     ContentAdminComponent,
     ContentDetailComponent,
+    FirebaseLoginComponent,
     LinksComponent,
     LinksAdminComponent,
     NavbarComponent,

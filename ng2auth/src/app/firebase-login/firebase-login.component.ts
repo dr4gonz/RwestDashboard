@@ -3,7 +3,7 @@ import { AuthService } from '../auth.service';
 import { FirebaseAuth } from 'angularfire2';
 
 @Component({
-  selector: 'app-firebase-login',
+  selector: 'firebase-login',
   templateUrl: './firebase-login.component.html',
   styleUrls: ['./firebase-login.component.css']
 })
