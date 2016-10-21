@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { FirebaseApp } from 'angularfire2';
 
 @Component({
   selector: 'admin',
@@ -10,8 +11,12 @@ export class AdminComponent implements OnInit {
 
   errorMessage: string;
   profile: Object;
+  firebaseRef: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, @Inject(FirebaseApp) firebase: any) {
+    this.firebaseRef = firebase.auth();
+    console.log(this.firebaseRef);
+  }
 
   ngOnInit() {
   }
@@ -19,7 +24,10 @@ export class AdminComponent implements OnInit {
   registerUser() {
     let user: string = (<HTMLInputElement>document.getElementById('email')).value;
     let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
-    this.authService.createUser(user, pw);
+    this.firebaseRef.createUserWithEmailAndPassword(user,pw)
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error.message));
+
   }
 
 }
