@@ -4,7 +4,7 @@ import { FirebaseLoginComponent } from '../firebase-login/firebase-login.compone
 import { FirebaseAuth } from 'angularfire2';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   providers: [ FirebaseLoginComponent ]

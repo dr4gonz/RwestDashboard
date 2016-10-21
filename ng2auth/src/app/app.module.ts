@@ -35,6 +35,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
   ],
   declarations: [
     AppComponent,
+    ContentDetailComponent,
     LinksComponent,
     LinksAdminComponent,
     NavbarComponent,
