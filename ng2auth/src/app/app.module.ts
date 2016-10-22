@@ -17,6 +17,8 @@ import { ContentDetailComponent } from './content/content-detail/content-detail.
 import { NewContentComponent } from './content/new-content/new-content.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
+import { NewCommentComponent } from './comments/new-comment/new-comment.component';
+import { CommentListComponent } from './comments/comment-list/comment-list.component';
 
 import { routing, routedComponents } from './app.routing';
 
@@ -52,6 +54,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     NavbarComponent,
     NewContentComponent,
     StorageListItemComponent,
+    NewCommentComponent,
+    CommentListComponent,
     routedComponents
   ],
   providers: [

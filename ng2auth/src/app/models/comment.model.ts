@@ -3,4 +3,5 @@ export class Comment {
   authorId: string;
   parentId: string;
   author: string;
+  body: string;
 }
