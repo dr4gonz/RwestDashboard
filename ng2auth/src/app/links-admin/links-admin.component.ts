@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'links-admin',
+  selector: 'app-links-admin',
   templateUrl: './links-admin.component.html',
   styleUrls: ['./links-admin.component.css']
 })

@@ -19,6 +19,7 @@ export class CommentListComponent implements OnInit {
 
   constructor(af: AngularFire, auth: AuthService) {
     this.af = af;
+    this.auth = auth;
   }
 
   ngOnInit() {

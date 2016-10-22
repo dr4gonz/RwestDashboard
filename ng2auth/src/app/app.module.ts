@@ -15,10 +15,13 @@ import { ContentListItemComponent } from './content/content-list-item/content-li
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { NewCommentComponent } from './comments/new-comment/new-comment.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 
 import { routing, routedComponents } from './app.routing';
 
@@ -53,9 +56,12 @@ export const firebaseConfig = Keys.FireBaseConfig;
     LinksAdminComponent,
     NavbarComponent,
     NewContentComponent,
+    RegisterUserComponent,
     StorageListItemComponent,
     NewCommentComponent,
     CommentListComponent,
+    AdminUserListComponent,
+    AdminUserListItemComponent,
     routedComponents
   ],
   providers: [
@@ -63,6 +69,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthService,
     AuthGuard,
     AuthGuardAdmin
+
   ],
   bootstrap: [AppComponent]
 })

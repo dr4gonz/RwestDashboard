@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';
-import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, FirebaseApp } from 'angularfire2';
+import { User } from './models/user.model';
 
 
 @Injectable()
@@ -11,10 +12,9 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
+  loggedInUser: User;
 
-  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) {
-    this.af.auth.subscribe(auth => console.log(auth));
-  }
+  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) { }
 
   login() {
     this.af.auth.login({
@@ -35,6 +35,8 @@ export class AuthService {
   }
 
   overrideLogin(username: string, password: string) {
+    let _that = this;
+    this.loggedInUser = new User();
     this.af.auth.login({
       email: username,
       password: password
@@ -42,7 +44,11 @@ export class AuthService {
     {
       provider: AuthProviders.Password,
       method: AuthMethods.Password
-    }).then(response => this.usrLoggedIn = true)
+    }).then(function(response) {
+      console.log(response);
+      _that.loggedInUser.email = response.auth.email;
+      _that.loggedInUser.uid = response.uid;
+    })
       .catch(error => alert(error.message))
   }
 

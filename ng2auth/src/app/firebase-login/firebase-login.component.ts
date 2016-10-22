@@ -11,7 +11,7 @@ import { FirebaseAuth } from 'angularfire2';
 export class FirebaseLoginComponent implements OnInit {
 
   showLoginForm: boolean = false;
-
+  
   constructor(public authService: AuthService, public auth: FirebaseAuth) {
   }
 
