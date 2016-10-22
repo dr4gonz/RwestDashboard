@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';
 import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, FirebaseApp } from 'angularfire2';
+import { User } from './models/user.model';
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
-  loggedInUser: string;
+  loggedInUser: User;
 
   constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) { }
 
@@ -35,6 +36,7 @@ export class AuthService {
 
   overrideLogin(username: string, password: string) {
     let _that = this;
+    this.loggedInUser = new User();
     this.af.auth.login({
       email: username,
       password: password
@@ -43,7 +45,9 @@ export class AuthService {
       provider: AuthProviders.Password,
       method: AuthMethods.Password
     }).then(function(response) {
-      _that.loggedInUser = response.auth.email;
+      console.log(response);
+      _that.loggedInUser.email = response.auth.email;
+      _that.loggedInUser.uid = response.uid;
     })
       .catch(error => alert(error.message))
   }
