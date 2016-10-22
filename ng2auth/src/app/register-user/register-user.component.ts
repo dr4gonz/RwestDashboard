@@ -36,6 +36,7 @@ export class RegisterUserComponent implements OnInit {
                     .then(function(response) {
                       let newUser: User = new User();
                       newUser.uid = response.uid;
+                      newUser.email = _that.email;
                       newUser.role = _that.role;
                       userRef.push(newUser);
                       _that.formSubmitted();

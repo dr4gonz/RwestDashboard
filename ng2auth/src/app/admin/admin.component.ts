@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AngularFire, FirebaseApp } from 'angularfire2';
 import { RegisterUserComponent } from '../register-user/register-user.component';
+import { AdminUserListComponent } from '../admin-user-list/admin-user-list.component';
 
 @Component({
   selector: 'app-admin',

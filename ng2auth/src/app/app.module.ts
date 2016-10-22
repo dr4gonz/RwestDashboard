@@ -18,6 +18,7 @@ import { NewContentComponent } from './content/new-content/new-content.component
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 
 import { routing, routedComponents } from './app.routing';
 
@@ -54,7 +55,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     NewContentComponent,
     RegisterUserComponent,
     StorageListItemComponent,
-    routedComponents
+    routedComponents,
+    AdminUserListComponent
   ],
   providers: [
     AUTH_PROVIDERS,
