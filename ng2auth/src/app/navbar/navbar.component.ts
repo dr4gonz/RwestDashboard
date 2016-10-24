@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FirebaseLoginComponent } from '../firebase-login/firebase-login.component';
-import { FirebaseAuth } from 'angularfire2';
+import { FirebaseAuth, FirebaseApp } from 'angularfire2';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +10,11 @@ import { FirebaseAuth } from 'angularfire2';
   providers: [ FirebaseLoginComponent ]
 })
 export class NavbarComponent implements OnInit {
+  role: string;
+  constructor(public firebaseLogin: FirebaseLoginComponent, public auth: FirebaseAuth, public authService: AuthService) { }
+  ngOnInit() { }
 
-  constructor(public firebaseLogin: FirebaseLoginComponent, public auth: FirebaseAuth) { }
-  ngOnInit() {
+  loggedIn() {
+    this.role = this.authService.getUserRole();
   }
-
 }

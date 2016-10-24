@@ -3,6 +3,7 @@
     <a class="navbar-brand" routerLink="/">R/West Client Dashboard</a>
   </div>
   <app-links *ngIf="auth | async"></app-links>
-  <app-links-admin *ngIf="auth | async"></app-links-admin>
+  <app-links-admin *ngIf="authService.admin"></app-links-admin>
   <firebase-login></firebase-login>
+  <button (click)="loggedIn()"></button>
 </nav>

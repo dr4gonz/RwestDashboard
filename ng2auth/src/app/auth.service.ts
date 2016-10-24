@@ -12,10 +12,12 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
+  admin: boolean = false;
 
   constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) { }
 
   login(username: string, password: string) {
+    let _that = this;
     this.af.auth.login({
       email: username,
       password: password
@@ -26,6 +28,23 @@ export class AuthService {
     }).then(function(response) {
       localStorage.setItem('userEmail', response.auth.email);
       localStorage.setItem('uid', response.uid);
+      //save role to localStorage
+      let role: string;
+      let users = firebase.database().ref("users");
+      let userRef = users.ref.orderByChild("uid").equalTo(response.uid).on("child_added", function(snapshot) {
+        let userId = snapshot.key;
+        let user = firebase.database().ref('users/' + userId).on("value", function(foo) {
+          localStorage.setItem('role', role = foo.val().role);
+
+          if(foo.val().role == "Admin") {
+            _that.admin = true;
+          } else {
+            _that.admin = false;
+          }
+
+        });
+      });
+      _that.usrLoggedIn = true;
     })
       .catch(error => alert(error.message));
     this.router.navigateByUrl('');
@@ -35,10 +54,11 @@ export class AuthService {
     // To log out, just remove the token and profile
     // from local storage
     this.usrLoggedIn = false;
+    this.admin = false;
     this.af.auth.logout();
     localStorage.removeItem('userEmail');
     localStorage.removeItem('uid');
-
+    localStorage.removeItem('role');
     // Send the user back to the dashboard after logout
     this.router.navigateByUrl('');
   }
@@ -49,7 +69,7 @@ export class AuthService {
   }
 
   isAdmin() {
-    return true;
+    return this.admin;
   }
 
   getUserEmail() {
@@ -57,6 +77,9 @@ export class AuthService {
   }
   getUserId() {
     return localStorage.getItem('uid');
+  }
+  getUserRole() {
+    return localStorage.getItem('role');
   }
 
 }
