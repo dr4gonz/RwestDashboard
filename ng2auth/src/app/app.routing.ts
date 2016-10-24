@@ -16,8 +16,9 @@ const appRoutes: Routes = [
     redirectTo: '/public'
   },
   {
-    path: 'public',
-    component: PublicComponent
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuardAdmin]
   },
   {
     path: 'behind-auth',
@@ -25,14 +26,13 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuardAdmin]
-  },
-  {
     path: 'content-list',
     component: ContentListComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'public',
+    component: PublicComponent
   },
   {
     path: 'file-storage',
@@ -42,4 +42,4 @@ const appRoutes: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, PublicComponent, BehindAuthComponent, AdminComponent, ContentListComponent, FileStorageComponent];
+export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, ContentListComponent, FileStorageComponent, PublicComponent];
