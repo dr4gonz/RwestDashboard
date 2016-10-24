@@ -33,10 +33,10 @@ export class CommentListComponent implements OnInit {
   }
 
   saveComment(newComment: Comment) {
-    newComment.authorId = this.auth.loggedInUser.uid;
-    newComment.author = this.auth.loggedInUser.email;
+    newComment.authorId = this.auth.getUserId();
+    newComment.author = this.auth.getUserEmail();
     newComment.parentId = this.contentItem.$key;
-
+    newComment.timePosted = "now";
     this.comments.push(newComment);
   }
 
