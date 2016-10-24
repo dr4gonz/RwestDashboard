@@ -25,4 +25,13 @@ export class AdminUserListItemComponent implements OnInit {
     });
   }
 
+  deleteUser() {
+    let users = firebase.database().ref("users");
+    let userRef = users.ref.orderByChild("uid").equalTo(this.userListItem.uid).on("child_added", function(snapshot) {
+      let userId = snapshot.key;
+      let user = firebase.database().ref('users/' + userId);
+      user.remove();
+    });
+  }
+
 }
