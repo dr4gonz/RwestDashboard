@@ -1,3 +1,18 @@
-<div class="user-list-item">
-  {{userListItem.email}} - {{userListItem.role}}
+<div class="row user-list-item">
+  <div class="col-sm-3">
+      {{userListItem.email}}
+  </div>
+  <div class="col-sm-3">
+    {{userListItem.role}}
+  </div>
+  <div class="col-sm-3">
+    <select class="form-control" id="role_{{userListItem.uid}}"  name="role">
+      <option *ngFor="let r of roles" [value]="r">{{r}}</option>
+    </select>
+    <input type="hidden" value={{userListItem.uid}}>
+  </div>
+  <div class="col-sm-3">
+    <button class="btn btn-success btn-sm" (click)="updateRole()">Update</button>
+    <button class="btn btn-danger btn-sm" (click)="deleteUser()">Delete</button>
+  </div>
 </div>

@@ -1,3 +1,7 @@
 .user-list-item {
-  
+  border: 1px solid #efeff5;
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 2px;
 }
