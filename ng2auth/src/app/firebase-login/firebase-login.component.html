@@ -1,5 +1,5 @@
 <div>
-  <p *ngIf="auth | async">Logged in as {{ userEmail }}</p>
+  <p *ngIf="auth | async">Logged in as {{ getUserEmail() }}</p>
   <button class="btn btn-primary btn-xs navbar-right" (click)="authService.logout()" *ngIf="auth | async">Logout</button>
 </div>
 <div *ngIf="showLoginForm">

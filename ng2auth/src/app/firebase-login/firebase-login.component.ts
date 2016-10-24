@@ -12,21 +12,24 @@ export class FirebaseLoginComponent implements OnInit {
 
   userEmail: string;
   showLoginForm: boolean = false;
-  constructor(public authService: AuthService, public auth: FirebaseAuth) {
-    this.userEmail = localStorage.getItem('userEmail');
-  }
+
+  constructor(public authService: AuthService, public auth: FirebaseAuth) { }
 
   ngOnInit() { }
 
   passCredentials () {
     let user: string = (<HTMLInputElement>document.getElementById('username')).value;
     let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
-    this.authService.overrideLogin(user, pw);
+    this.authService.login(user, pw);
     this.toggleLoginForm();
   }
 
   toggleLoginForm() {
     this.showLoginForm = !this.showLoginForm;
+  }
+  getUserEmail() {
+    this.userEmail = this.authService.getLoggedInUser();
+    return this.userEmail;
   }
 
 }
