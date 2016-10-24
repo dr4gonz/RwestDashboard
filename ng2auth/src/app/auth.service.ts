@@ -3,7 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';
-import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, FirebaseApp } from 'angularfire2';
+import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfire2';
 import { User } from './models/user.model';
 
 
@@ -25,9 +25,10 @@ export class AuthService {
       method: AuthMethods.Password
     }).then(function(response) {
       localStorage.setItem('userEmail', response.auth.email);
-      localStorage.setItem('uid', response.uid); //localstorage
+      localStorage.setItem('uid', response.uid);
     })
-      .catch(error => alert(error.message))
+      .catch(error => alert(error.message));
+    this.router.navigateByUrl('');
   }
 
   logout() {

@@ -12,32 +12,32 @@ export class RegisterUserComponent implements OnInit {
   submitted = false;
   roles = ['User', 'Admin'];
   firebaseRef: any;
-  firebaseDB: any;
   email: string;
   password: string;
   role: string;
 
   constructor(private af: AngularFire, @Inject(FirebaseApp) firebase: any) {
-    this.firebaseRef = firebase.auth();
-    this.firebaseDB = firebase.database();
-    this.users = af.database.list('/users');
   }
 
   ngOnInit() {
   }
 
   registerUser() {
+    this.firebaseRef = firebase.auth();
     this.email = (<HTMLInputElement>document.getElementById('email')).value;
     this.password = (<HTMLInputElement>document.getElementById('password')).value;
     this.role = (<HTMLInputElement>document.getElementById('role')).value;
-    let userRef = this.users;
+
+    let userRef = this.af.database.list('/users');
     let _that = this;
     this.firebaseRef.createUserWithEmailAndPassword(this.email,this.password)
                     .then(function(response) {
                       let newUser: User = new User();
+
                       newUser.uid = response.uid;
                       newUser.email = _that.email;
                       newUser.role = _that.role;
+
                       userRef.push(newUser);
                       _that.formSubmitted();
                     })
