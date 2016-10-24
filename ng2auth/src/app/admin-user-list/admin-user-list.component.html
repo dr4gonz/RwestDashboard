@@ -2,7 +2,7 @@
   <h3>Users</h3>
   <ul>
     <li *ngFor="let user of users | async">
-      {{user.email}}
+      <app-admin-user-list-item [userListItem]="user"></app-admin-user-list-item>
     </li>
   </ul>
 </div>

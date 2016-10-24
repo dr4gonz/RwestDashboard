@@ -47,7 +47,7 @@ export class AuthService {
     }).then(function(response) {
       console.log(response);
       _that.loggedInUser.email = response.auth.email;
-      _that.loggedInUser.uid = response.uid;
+      _that.loggedInUser.uid = response.uid; //localstorage
     })
       .catch(error => alert(error.message))
   }
