@@ -3,7 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';
-import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, FirebaseApp } from 'angularfire2';
+import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfire2';
 import { User } from './models/user.model';
 
 
