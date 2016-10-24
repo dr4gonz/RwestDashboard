@@ -16,11 +16,11 @@ export class CommentListComponent implements OnInit {
   contentItem: ContentItem;
   comments: FirebaseListObservable<Comment[]>;
   af: AngularFire;
-  auth: AuthService;
+  authService: AuthService;
 
-  constructor(af: AngularFire, auth: AuthService) {
+  constructor(af: AngularFire, authService: AuthService) {
     this.af = af;
-    this.auth = auth;
+    this.authService = authService;
   }
 
   ngOnInit() {
@@ -34,8 +34,8 @@ export class CommentListComponent implements OnInit {
   }
 
   saveComment(newComment: Comment) {
-    newComment.authorId = this.auth.getUserId();
-    newComment.author = this.auth.getUserEmail();
+    newComment.authorId = this.authService.getUserId();
+    newComment.author = this.authService.getUserEmail();
     newComment.parentId = this.contentItem.$key;
     newComment.timePosted = moment().format();
     this.comments.push(newComment);

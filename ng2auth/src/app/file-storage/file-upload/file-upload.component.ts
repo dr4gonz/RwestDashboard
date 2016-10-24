@@ -11,12 +11,12 @@ import { FileEntry } from '../../models/file-entry.model';
 export class FileUploadComponent implements OnInit {
 
   private storageRef;
-  private aF;
+  private af;
   newFileEntryEvent: EventEmitter<FileEntry>;
 
-  constructor(@Inject(FirebaseApp) firebase: any, aF: AngularFire) {
+  constructor(@Inject(FirebaseApp) firebase: any, af: AngularFire) {
     this.storageRef = firebase.storage().ref();
-    this.aF = aF;
+    this.af = af;
     this.newFileEntryEvent = new EventEmitter();
   }
 
