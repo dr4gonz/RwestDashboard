@@ -12,31 +12,10 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
-  loggedInUser: User;
 
-  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) { }
+  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) { }
 
-  login() {
-    this.af.auth.login({
-      provider: AuthProviders.Google,
-      method: AuthMethods.Popup
-    }).then(response => this.usrLoggedIn = true)
-      .catch(error => alert(error.message))
-  }
-
-  logout() {
-    // To log out, just remove the token and profile
-    // from local storage
-    this.usrLoggedIn = false;
-    this.af.auth.logout();
-
-    // Send the user back to the dashboard after logout
-    this.router.navigateByUrl('');
-  }
-
-  overrideLogin(username: string, password: string) {
-    let _that = this;
-    this.loggedInUser = new User();
+  login(username: string, password: string) {
     this.af.auth.login({
       email: username,
       password: password
@@ -45,12 +24,24 @@ export class AuthService {
       provider: AuthProviders.Password,
       method: AuthMethods.Password
     }).then(function(response) {
-      console.log(response);
-      _that.loggedInUser.email = response.auth.email;
-      _that.loggedInUser.uid = response.uid;
+      localStorage.setItem('userEmail', response.auth.email);
+      localStorage.setItem('uid', response.uid); //localstorage
     })
       .catch(error => alert(error.message))
   }
+
+  logout() {
+    // To log out, just remove the token and profile
+    // from local storage
+    this.usrLoggedIn = false;
+    this.af.auth.logout();
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('uid');
+
+    // Send the user back to the dashboard after logout
+    this.router.navigateByUrl('');
+  }
+
 
   loggedIn() {
     return this.usrLoggedIn;
@@ -58,6 +49,13 @@ export class AuthService {
 
   isAdmin() {
     return true;
+  }
+
+  getUserEmail() {
+    return localStorage.getItem('userEmail');
+  }
+  getUserId() {
+    return localStorage.getItem('uid');
   }
 
 }

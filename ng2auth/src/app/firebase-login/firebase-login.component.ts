@@ -10,22 +10,26 @@ import { FirebaseAuth } from 'angularfire2';
 
 export class FirebaseLoginComponent implements OnInit {
 
+  userEmail: string;
   showLoginForm: boolean = false;
-  
-  constructor(public authService: AuthService, public auth: FirebaseAuth) {
-  }
+
+  constructor(public authService: AuthService, public auth: FirebaseAuth) { }
 
   ngOnInit() { }
 
   passCredentials () {
     let user: string = (<HTMLInputElement>document.getElementById('username')).value;
     let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
-    this.authService.overrideLogin(user, pw);
+    this.authService.login(user, pw);
     this.toggleLoginForm();
   }
 
   toggleLoginForm() {
     this.showLoginForm = !this.showLoginForm;
+  }
+  getUserEmail() {
+    this.userEmail = this.authService.getUserEmail();
+    return this.userEmail;
   }
 
 }
