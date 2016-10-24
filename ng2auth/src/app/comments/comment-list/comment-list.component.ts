@@ -3,6 +3,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../auth.service';
 import { ContentItem } from '../../models/content-item.model';
 import { Comment } from '../../models/comment.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-comment-list',
@@ -36,7 +37,7 @@ export class CommentListComponent implements OnInit {
     newComment.authorId = this.auth.getUserId();
     newComment.author = this.auth.getUserEmail();
     newComment.parentId = this.contentItem.$key;
-    newComment.timePosted = "now";
+    newComment.timePosted = moment().format();
     this.comments.push(newComment);
   }
 
