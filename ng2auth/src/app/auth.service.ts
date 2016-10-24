@@ -46,8 +46,8 @@ export class AuthService {
       method: AuthMethods.Password
     }).then(function(response) {
       console.log(response);
-      _that.loggedInUser.email = response.auth.email;
-      _that.loggedInUser.uid = response.uid; //localstorage
+      localStorage.setItem('userEmail', response.auth.email);
+      localStorage.setItem('uid', response.uid); //localstorage
     })
       .catch(error => alert(error.message))
   }

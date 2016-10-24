@@ -10,9 +10,10 @@ import { FirebaseAuth } from 'angularfire2';
 
 export class FirebaseLoginComponent implements OnInit {
 
+  userEmail: string;
   showLoginForm: boolean = false;
-  
   constructor(public authService: AuthService, public auth: FirebaseAuth) {
+    this.userEmail = localStorage.getItem('userEmail');
   }
 
   ngOnInit() { }
