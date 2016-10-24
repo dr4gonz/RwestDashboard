@@ -12,9 +12,8 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
-  loggedInUser: User;
 
-  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth, @Inject(FirebaseApp) firebase: any) { }
+  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) { }
 
   login(username: string, password: string) {
     this.af.auth.login({
@@ -52,8 +51,11 @@ export class AuthService {
     return true;
   }
 
-  getLoggedInUser() {
+  getUserEmail() {
     return localStorage.getItem('userEmail');
+  }
+  getUserId() {
+    return localStorage.getItem('uid');
   }
 
 }

@@ -28,7 +28,7 @@ export class FirebaseLoginComponent implements OnInit {
     this.showLoginForm = !this.showLoginForm;
   }
   getUserEmail() {
-    this.userEmail = this.authService.getLoggedInUser();
+    this.userEmail = this.authService.getUserEmail();
     return this.userEmail;
   }
 
