@@ -25,9 +25,10 @@ export class AuthService {
       method: AuthMethods.Password
     }).then(function(response) {
       localStorage.setItem('userEmail', response.auth.email);
-      localStorage.setItem('uid', response.uid); 
+      localStorage.setItem('uid', response.uid);
     })
-      .catch(error => alert(error.message))
+      .catch(error => alert(error.message));
+    this.router.navigateByUrl('');
   }
 
   logout() {
