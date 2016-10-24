@@ -25,7 +25,7 @@ export class AuthService {
       method: AuthMethods.Password
     }).then(function(response) {
       localStorage.setItem('userEmail', response.auth.email);
-      localStorage.setItem('uid', response.uid); //localstorage
+      localStorage.setItem('uid', response.uid); 
     })
       .catch(error => alert(error.message))
   }
