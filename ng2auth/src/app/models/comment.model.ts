@@ -4,4 +4,5 @@ export class Comment {
   parentId: string;
   author: string;
   body: string;
+  timePosted: string;
 }

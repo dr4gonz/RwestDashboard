@@ -15,6 +15,7 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
+import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
@@ -56,6 +57,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AdminUserListComponent,
     AdminUserListItemComponent,
     AppComponent,
+    CommentDetailComponent,
     CommentListComponent,
     ContentListItemComponent,
     ContentAdminComponent,

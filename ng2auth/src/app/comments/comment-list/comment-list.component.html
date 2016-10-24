@@ -1,2 +1,3 @@
 {{contentItem.$key}}
 <app-new-comment [contentItem]="contentItem" (newCommentEvent)="saveComment($event)"></app-new-comment>
+<app-comment-detail *ngFor="let comment of comments | async" [comment]="comment"></app-comment-detail>

@@ -29,6 +29,8 @@ export class NewCommentComponent implements OnInit {
   newComment(body: HTMLInputElement) {
     let newComment: Comment = new Comment();
     newComment.body = body.value;
+    body.value = "";
+    this.toggleCommentForm();
     this.newCommentEvent.emit(newComment);
   }
 
