@@ -71,7 +71,10 @@ export class AuthService {
   }
 
   isAdmin() {
-    return this.admin;
+    if (localStorage.getItem('role') == "Admin") {
+      return true;
+    }
+    return false;
   }
 
   getUserEmail() {

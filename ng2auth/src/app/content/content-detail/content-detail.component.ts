@@ -25,7 +25,7 @@ export class ContentDetailComponent implements OnInit {
   hideDetail() {
     this.hideDetailEvent.emit();
   }
-  
+
   updateApprovalStatus() {
     this.updateApprovalEvent.emit(this.contentItem);
   }

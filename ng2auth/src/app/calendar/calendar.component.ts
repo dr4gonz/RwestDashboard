@@ -45,7 +45,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
@@ -73,7 +73,8 @@ export class CalendarComponent implements OnInit {
     start: subDays(endOfMonth(new Date()), 3),
     end: addDays(endOfMonth(new Date()), 3),
     title: 'A long event that spans 2 months',
-    color: colors.blue
+    color: colors.blue,
+    actions: this.actions
   }];
 
   activeDayIsOpen: boolean = true;

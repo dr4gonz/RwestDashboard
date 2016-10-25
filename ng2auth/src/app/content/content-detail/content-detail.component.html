@@ -11,8 +11,8 @@
       </select>
       <button (click)="updateApprovalStatus()" class="btn btn-success">Save Changes</button>
     </li>
-    <li>Date added: {{contentItem.datedAdded}}</li>
-    <li>Created by:</li>
+    <li>Date added: {{contentItem.dateAdded}}</li>
+    <li>Created by: {{contentItem.createdBy}}</li>
   </ul>
 </div>
 <app-comment-list [contentItem]="contentItem"></app-comment-list>

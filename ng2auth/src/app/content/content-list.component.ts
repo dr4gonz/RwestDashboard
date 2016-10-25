@@ -23,8 +23,9 @@ export class ContentListComponent implements OnInit {
   }
 
   saveContent(newContentItem: ContentItem) {
-    newContentItem.dateAdded = Date.now().toString();
+    newContentItem.dateAdded = new Date().toString();
     newContentItem.approvalStatus = "Not Approved";
+    newContentItem.createdBy = this.authService.getUserEmail();
     this.content.push(newContentItem);
   }
 
