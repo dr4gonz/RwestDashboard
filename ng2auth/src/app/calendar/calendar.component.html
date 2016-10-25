@@ -2,13 +2,13 @@
   <div class="row text-center">
     <div class="col-md-4">
        <div class="btn-group">
-         <div class="btn btn-primary" (click)="decrement()">
+         <div class="btn btn-primary btn-sm" (click)="decrement()">
            Previous
          </div>
-         <div class="btn btn-default" (click)="today()">
+         <div class="btn btn-default btn-sm" (click)="today()">
            Today
          </div>
-         <div class="btn btn-primary" (click)="increment()">
+         <div class="btn btn-primary btn-sm" (click)="increment()">
            Next
          </div>
        </div>
@@ -18,9 +18,9 @@
     </div>
     <div class="col-md-4">
       <div class="btn-group">
-        <div class="btn btn-primary" (click)="view = 'month'" [class.active]="view === 'month'">Month</div>
-        <div class="btn btn-primary" (click)="view = 'week'" [class.active]="view === 'week'">Week</div>
-        <div class="btn btn-primary" (click)="view = 'day'" [class.active]="view === 'day'">Day</div>
+        <div class="btn btn-primary btn-sm" (click)="view = 'month'" [class.active]="view === 'month'">Month</div>
+        <div class="btn btn-primary btn-sm" (click)="view = 'week'" [class.active]="view === 'week'">Week</div>
+        <div class="btn btn-primary btn-sm" (click)="view = 'day'" [class.active]="view === 'day'">Day</div>
       </div>
     </div>
   </div>
