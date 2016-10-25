@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContentItem } from '../models/content-item.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'content-list',
@@ -23,9 +24,10 @@ export class ContentListComponent implements OnInit {
   }
 
   saveContent(newContentItem: ContentItem) {
-    newContentItem.dateAdded = new Date().toString();
+    newContentItem.dateAdded = moment().format('MMMM Do YYYY');
     newContentItem.approvalStatus = "Not Approved";
     newContentItem.createdBy = this.authService.getUserEmail();
+    console.log(newContentItem);
     this.content.push(newContentItem);
   }
 
