@@ -24,6 +24,9 @@
       </div>
     </div>
   </div>
+  <div class="row text-center">
+    <div class="btn btn-primary btn-sm" (click)="newEventModal.open()">New Event</div>
+  </div>
   <br>
   <div [ngSwitch]="view">
     <mwl-calendar-month-view
@@ -44,4 +47,31 @@
       [events]="events">
     </mwl-calendar-day-view>
   </div>
+  <modal #newEventModal>
+      <modal-header class="text-center">
+          <h4 *ngIf="!authService.errorMessage" class="text-center">Enter your credentials:</h4>
+          <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
+      </modal-header>
+      <modal-content>
+        <form>
+          <div class="form-group col-xs-12">
+            <input  class="form-control" type="text" name="newTitle" id="newTitle" placeholder="Event Title">
+          </div>
+          <div class="form-group col-xs-12">
+            <input  class="form-control" type="date" name="newStartDate" id="newStartDate">
+          </div>
+          <div class="form-group col-xs-12">
+            <input  class="form-control" type="date" name="newEndDate" id="newEndDate">
+          </div>
+          <div class="form-group col-xs-12">
+            <select class="form-control" id="newColor"  name="newColor">
+              <option *ngFor="let c of selectColors" [value]="c">{{c}}</option>
+            </select>
+          </div>
+            <button class="btn btn-success center-block" (click)="addNewEvent()">
+              Submit
+            </button>
+        </form>
+      </modal-content>
+  </modal>
 </div>
