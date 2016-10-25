@@ -2,17 +2,24 @@
   <p *ngIf="auth | async">Logged in as {{ getUserEmail() }}</p>
   <button class="btn btn-primary btn-xs navbar-right" (click)="authService.logout()" *ngIf="auth | async">Logout</button>
 </div>
-<div *ngIf="showLoginForm">
-  <form class="navbar-nav nav-right" *ngIf="showLoginForm">
-    <input type="text" name="username" id="username" placeholder="Email">
-    <input type="password" name="password" id="password" placeholder="Password">
-  </form>
-  <button class="btn btn-success btn-xs navbar-right" (click)="passCredentials()">
-    Submit
-  </button>
-</div>
-<div *ngIf="!showLoginForm && !(auth | async)">
-  <button class="btn btn-primary btn-xs navbar-right" (click)="toggleLoginForm()">
-    Login
-  </button>
+<div class="row" *ngIf="!(auth | async)">
+    <button class="btn btn-primary btn-xs navbar-right" (click)="myModal.open()">Log In</button>
+    <modal #myModal>
+        <modal-header>
+            <h1 class="text-center">Log In</h1>
+        </modal-header>
+        <modal-content>
+          <form>
+            <div class="form-group col-xs-6">
+              <input  class="form-control" type="text" name="username" id="username" placeholder="Email">
+            </div>
+            <div class="form-group col-xs-6">
+              <input  class="form-control" type="password" name="password" id="password" placeholder="Password">
+            </div>
+              <button class="btn btn-success center-block" (click)="passCredentials()">
+                Submit
+              </button>
+          </form>
+        </modal-content>
+    </modal>
 </div>
