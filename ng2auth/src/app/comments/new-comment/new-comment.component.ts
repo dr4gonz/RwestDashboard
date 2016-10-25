@@ -27,11 +27,15 @@ export class NewCommentComponent implements OnInit {
   }
 
   newComment(body: HTMLInputElement) {
-    let newComment: Comment = new Comment();
-    newComment.body = body.value;
-    body.value = "";
-    this.toggleCommentForm();
-    this.newCommentEvent.emit(newComment);
+    if (body.value !== "") {
+      let newComment: Comment = new Comment();
+      newComment.body = body.value;
+      body.value = "";
+      this.commentForm = false;
+      this.newCommentEvent.emit(newComment);
+    } else {
+      this.commentForm = true;
+    }
   }
 
 }
