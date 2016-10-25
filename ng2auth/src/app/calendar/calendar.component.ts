@@ -145,10 +145,6 @@ export class CalendarComponent implements OnInit {
         pickedColor = colors.blue;
         break;
     }
-    // console.log('Title: ' + newEventTitle);
-    // console.log('Start Date: ' + newStartDate);
-    // console.log('End Date: ' + newEndDate);
-    // console.log('Color: ' + pickedColor);
 
     let newEvent: CalendarEvent = {start: newStartDate, end: newEndDate, title: newEventTitle, color: pickedColor, actions: this.actions, allDay: false, cssClass: null};
     this.events.push(newEvent);
