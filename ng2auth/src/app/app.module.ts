@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CalendarModule } from 'angular2-calendar';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { ModalModule } from 'ng2-modal';
 import { NgModule } from '@angular/core';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
@@ -54,6 +55,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     FormsModule,
     HttpModule,
     JsonpModule,
+    ModalModule,
     routing
   ],
   declarations: [

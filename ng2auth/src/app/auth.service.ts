@@ -13,10 +13,12 @@ export class AuthService {
   role: string;
   usrLoggedIn: boolean = false;
   admin: boolean = false;
+  errorMessage: string;
 
   constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) { }
 
   login(username: string, password: string) {
+    this.errorMessage = "";
     let _that = this;
     this.af.auth.login({
       email: username,
@@ -46,7 +48,7 @@ export class AuthService {
       });
       _that.usrLoggedIn = true;
     })
-      .catch(error => alert(error.message));
+      .catch(error => this.handleLoginError(error));
     this.router.navigateByUrl('');
   }
 
@@ -80,6 +82,24 @@ export class AuthService {
   }
   getUserRole() {
     return localStorage.getItem('role');
+  }
+
+  handleLoginError(error) {
+    console.log(error.message);
+    switch (error.code) {
+      case "auth/invalid-email":
+        this.errorMessage = "Please enter your email address.";
+        break;
+      case "auth/user-not-found":
+        this.errorMessage = "User not found.";
+        break;
+      case "auth/wrong-password":
+        this.errorMessage = "Incorrect password.";
+        break;
+      default:
+        this.errorMessage = "Login failed.";
+        break;
+    }
   }
 
 }
