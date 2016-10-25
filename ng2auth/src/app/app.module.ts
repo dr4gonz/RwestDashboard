@@ -1,6 +1,7 @@
 /** Dependencies **/
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
+import { CalendarModule } from 'angular2-calendar';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { Keys } from '../keys';
 import { AppComponent } from './app.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
+import { CalendarComponent } from './calendar/calendar.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
@@ -48,6 +50,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
+    CalendarModule.forRoot(),
     FormsModule,
     HttpModule,
     JsonpModule,
@@ -57,6 +60,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AdminUserListComponent,
     AdminUserListItemComponent,
     AppComponent,
+    CalendarComponent,
     CommentDetailComponent,
     CommentListComponent,
     ContentListItemComponent,

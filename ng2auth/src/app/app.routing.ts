@@ -3,6 +3,7 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthGuardAdmin } from './auth-guard-admin.service'
 
 import { AppComponent } from './app.component';
+import { CalendarComponent } from './calendar/calendar.component';
 import { PublicComponent } from './public/public.component';
 import { BehindAuthComponent } from './behind-auth/behind-auth.component';
 import { AdminComponent } from './admin/admin.component';
@@ -38,8 +39,13 @@ const appRoutes: Routes = [
     path: 'file-storage',
     component: FileStorageComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, ContentListComponent, FileStorageComponent, PublicComponent];
+export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, CalendarComponent, ContentListComponent, FileStorageComponent, PublicComponent];
