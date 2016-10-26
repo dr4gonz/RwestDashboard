@@ -20,7 +20,7 @@ export class AddDocumentComponent implements OnInit {
   }
 
   newDocumentItem(title: HTMLInputElement, link: HTMLInputElement) {
-    if (title.value !== "" && link.value !== "") {
+    if (title.value !== "" && this.validateLink(link.value)) {
       let newDoc: DocumentItem = new DocumentItem();
       newDoc.title = title.value;
       newDoc.link = link.value;
@@ -28,6 +28,22 @@ export class AddDocumentComponent implements OnInit {
       link.value = "";
       this.newDocumentEvent.emit(newDoc);
       window.location.reload();
+    }
+  }
+
+  validateLink(link: string) {
+    try {
+      let suffix = link.slice(link.length - 4);
+      let prefix = link.slice(0, 33);
+      if (suffix !== "/pub") {
+        console.log(suffix);
+        return false;
+      } else if (prefix !== "https://docs.google.com/document/") {
+        console.log(prefix);
+        return false;
+      } else return true;
+    } catch (ex) {
+      return false;
     }
   }
 

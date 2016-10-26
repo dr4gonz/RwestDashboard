@@ -22,7 +22,6 @@ import { ContentDetailComponent } from './content/content-detail/content-detail.
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
-import { DocumentListItemComponent } from './documents/document-list-item/document-list-item.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
 import { LinksAdminComponent } from './links-admin/links-admin.component';
@@ -71,7 +70,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentListItemComponent,
     ContentAdminComponent,
     ContentDetailComponent,
-    DocumentListItemComponent,
     FileUploadComponent,
     FirebaseLoginComponent,
     LinksComponent,

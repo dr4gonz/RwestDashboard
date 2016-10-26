@@ -1,3 +1,14 @@
+.doc-list-item {
+  background-color: rgba(119, 128, 175, .5);
+  border-radius: 5px;
+  margin: 15px;
+  padding: 10px 30px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 /* this selector applies styling to all iframe children of component*/
 :host >>> iframe {
   width: 100%;

@@ -1,12 +1,16 @@
-<div *ngIf="!selectedDocument">
-  <app-add-document (newDocumentEvent)="saveDocumentItem($event)"></app-add-document>
-  <ul *ngFor="let doc of documents | async" (click)="selectDocument(doc)">
-    <a>{{doc.title}}</a>
-  </ul>
-</div>
-<div *ngIf="selectedDocument" [innerHTML]="iframeHtml" class="iframe-container">
-<!-- <div *ngIf="selectedDocument"class="iframe-container"> -->
-  <button (click)="unselectDocument()">Close</button>
-  <a href="iframeUrl">Original document</a>
-  <iframe src="iframeUrl"></iframe>
+<div>
+  <div *ngIf="!selectedDocument"  class="text-center">
+    <app-add-document (newDocumentEvent)="saveDocumentItem($event)"></app-add-document>
+    <div *ngFor="let doc of documents | async" (click)="selectDocument(doc)">
+      <div class="doc-list-item">
+        <h4>
+          <a>{{doc.title}}</a>
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedDocument" class="iframe-container">
+    <h4 class="text-center"><a (click)="unselectDocument()">Back to list</a> - <a [href]="extDocUrl" target="_blank">View/Edit on Google Docs</a></h4>
+    <iframe [src]="iframeUrl"></iframe>
+  </div>
 </div>

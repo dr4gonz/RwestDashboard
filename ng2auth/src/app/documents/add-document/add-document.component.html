@@ -1,4 +1,4 @@
-<button (click)="addDoc.open()">Add new document</button>
+<h3 (click)="addDoc.open()" class="text-center"><a href="#">Add new document</a></h3>
 <modal #addDoc>
     <modal-content>
       <form>
@@ -18,8 +18,8 @@
       <ul>
         <li>Open your google document</li>
         <li>From the 'File' menu, select 'Publish to the web...'</li>
-        <li>Select 'embed'</li>
-        <li>Copy and paste the text into above 'link' form</li>
+        <li>Click 'Publish'</li>
+        <li>Copy and paste the text into above 'link' form. It should look something like this: https://docs.google.com/document/d/1xFG...8ts/pub</li>
       </ul>
     </modal-footer>
 </modal>
