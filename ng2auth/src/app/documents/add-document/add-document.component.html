@@ -1,0 +1,25 @@
+<h3 (click)="addDoc.open()" class="text-center"><a href="#">Add new document</a></h3>
+<modal #addDoc>
+    <modal-content>
+      <form>
+        <div class="form-group col-xs-6">
+          <input  class="form-control" type="text" name="title" placeholder="Title" #title>
+        </div>
+        <div class="form-group col-xs-6">
+          <input  class="form-control" type="text" name="link" placeholder="Link text" #link>
+        </div>
+          <button class="btn btn-success center-block" (click)="newDocumentItem(title, link)">
+            Submit
+          </button>
+      </form>
+    </modal-content>
+    <modal-footer class="text-center">
+      <h4>Instructions</h4>
+      <ul>
+        <li>Open your google document</li>
+        <li>From the 'File' menu, select 'Publish to the web...'</li>
+        <li>Click 'Publish'</li>
+        <li>Copy and paste the text into above 'link' form. It should look something like this: https://docs.google.com/document/d/1xFG...8ts/pub</li>
+      </ul>
+    </modal-footer>
+</modal>

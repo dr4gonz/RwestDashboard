@@ -13,6 +13,7 @@ import { Keys } from '../keys';
 
 /** Components **/
 import { AppComponent } from './app.component';
+import { AddDocumentComponent } from './documents/add-document/add-document.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -59,6 +60,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     routing
   ],
   declarations: [
+    AddDocumentComponent,
     AdminUserListComponent,
     AdminUserListItemComponent,
     AppComponent,

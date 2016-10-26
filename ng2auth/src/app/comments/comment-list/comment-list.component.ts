@@ -24,7 +24,6 @@ export class CommentListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.contentItem);
     this.comments = this.af.database.list('/comments', {
       query: {
         orderByChild: 'parentId',
