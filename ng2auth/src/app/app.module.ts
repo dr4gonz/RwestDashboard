@@ -34,6 +34,7 @@ import { StorageListItemComponent } from './file-storage/storage-list-item/stora
 import { routing, routedComponents } from './app.routing';
 
 /** Pipes **/
+import { TimePipe } from './time.pipe';
 
 /** Services **/
 import { AuthGuard } from './auth-guard.service'
@@ -79,7 +80,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     NewContentComponent,
     RegisterUserComponent,
     routedComponents,
-    StorageListItemComponent
+    StorageListItemComponent,
+    TimePipe
   ],
   providers: [
     AuthService,

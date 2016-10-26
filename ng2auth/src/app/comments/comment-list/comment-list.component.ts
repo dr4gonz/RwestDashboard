@@ -38,20 +38,12 @@ export class CommentListComponent implements OnInit {
     newComment.authorId = this.authService.getUserId();
     newComment.author = this.authService.getUserEmail();
     newComment.parentId = this.contentItem.$key;
-    newComment.timePosted = moment().format();
+    newComment.creationTime = moment().format();
     this.comments.push(newComment);
-  }
-
-  sortComments() {
-    // JavaScript's sort method expects a callback function that returns -1 if two adjactent
-    // items are in the incorrect order, 1 if they are in the correct order, and 0 if they are identical.
-    // As such, sortComments expects an argument of either 1 (which it defaults to with no arg) or -1 (or 0).
-    return this.comments.map(c => c.sort((a, b) => this.compareDates(a.timePosted, b.timePosted) * this.ascOrDesc)) as FirebaseListObservable<Comment[]>;
   }
 
   sortChange(sortBy: number) {
     this.ascOrDesc = sortBy;
-    this.comments = this.sortComments();
   }
 
   compareDates(a: string, b: string): number {

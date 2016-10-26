@@ -16,7 +16,7 @@ export class CommentDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.timeSincePosted = moment(this.comment.timePosted).fromNow();
+    this.timeSincePosted = moment(this.comment.creationTime).fromNow();
   }
 
 }

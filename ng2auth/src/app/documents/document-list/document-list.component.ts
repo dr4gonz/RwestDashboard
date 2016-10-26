@@ -25,7 +25,6 @@ export class DocumentListComponent implements OnInit {
   }
 
   saveDocumentItem(newDoc: DocumentItem) {
-    console.log(newDoc);
     this.documents.push(newDoc);
   }
 
