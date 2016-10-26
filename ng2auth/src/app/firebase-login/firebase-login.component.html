@@ -1,6 +1,6 @@
 <ul *ngIf="auth | async" class="nav navbar-nav navbar-right">
   <li><a >Logged in as {{ getUserEmail() }}</a></li>
-  <li><a href="#" (click)="authService.logout()" *ngIf="auth | async">Logout</a></li>
+  <li><a (click)="authService.logout()" *ngIf="auth | async" class="logout">Logout</a></li>
 </ul>
 <div class="row" *ngIf="!(auth | async)">
   <ul class="nav navbar-nav navbar-right">
