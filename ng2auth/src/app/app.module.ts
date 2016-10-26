@@ -38,6 +38,7 @@ import { routing, routedComponents } from './app.routing';
 import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
+import { CalendarEventService } from './calendar-event.service';
 
 /********** End imports **********/
 
@@ -82,8 +83,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
   providers: [
     AuthService,
     AuthGuard,
-    AuthGuardAdmin
-
+    AuthGuardAdmin,
+    CalendarEventService
   ],
   bootstrap: [AppComponent]
 })

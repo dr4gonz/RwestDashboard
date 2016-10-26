@@ -17,6 +17,10 @@ import {
 } from 'angular2-calendar';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
+import { CalendarEventService } from '../calendar-event.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
 import * as moment from 'moment';
 
 const colors: any = {
@@ -38,15 +42,20 @@ const colors: any = {
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
+
 export class CalendarComponent implements OnInit {
   view: string = 'month';
   selectColors = ['Red','Yellow','Blue'];
-
   viewDate: Date = new Date();
+  events: CalendarEvent[] = [];
+  obsEvents: FirebaseListObservable<CalendarEvent[]>;
+  activeDayIsOpen: boolean = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
+  }
 
   ngOnInit() {
+    this.obsEvents = this.calendarEventService.getEvents();
   }
 
   actions: CalendarEventAction[] = [{
@@ -61,49 +70,22 @@ export class CalendarComponent implements OnInit {
     }
   }];
 
-  events: CalendarEvent[] = [{
-    start: subDays(startOfDay(new Date()), 1),
-    end: addDays(new Date(), 1),
-    title: 'A 3 day event',
-    color: colors.red,
-    actions: this.actions
-  }, {
-    start: startOfDay(new Date()),
-    title: 'An event with no end date',
-    color: colors.yellow,
-    actions: this.actions
-  }, {
-    start: subDays(endOfMonth(new Date()), 3),
-    end: addDays(endOfMonth(new Date()), 3),
-    title: 'A long event that spans 2 months',
-    color: colors.blue,
-    actions: this.actions
-  }];
-
-  activeDayIsOpen: boolean = true;
-
   increment(): void {
-
     const addFn: any = {
       day: addDays,
       week: addWeeks,
       month: addMonths
     }[this.view];
-
     this.viewDate = addFn(this.viewDate, 1);
-
   }
 
   decrement(): void {
-
     const subFn: any = {
       day: subDays,
       week: subWeeks,
       month: subMonths
     }[this.view];
-
     this.viewDate = subFn(this.viewDate, 1);
-
   }
 
   today(): void {
@@ -127,8 +109,8 @@ export class CalendarComponent implements OnInit {
 
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
-    let newStartDate: Date = moment((<HTMLInputElement>document.getElementById('newStartDate')).value).toDate();
-    let newEndDate: Date = moment((<HTMLInputElement>document.getElementById('newEndDate')).value).toDate();
+    let newStartDate: string = moment((<HTMLInputElement>document.getElementById('newStartDate')).value).toString();
+    let newEndDate: string = moment((<HTMLInputElement>document.getElementById('newEndDate')).value).toString();
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
     let pickedColor: any;
     switch (inputColor) {
@@ -145,9 +127,20 @@ export class CalendarComponent implements OnInit {
         pickedColor = colors.blue;
         break;
     }
+    this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, null, false, null);
+    window.location.reload();
+  }
 
-    let newEvent: CalendarEvent = {start: newStartDate, end: newEndDate, title: newEventTitle, color: pickedColor, actions: this.actions, allDay: false, cssClass: null};
-    this.events.push(newEvent);
+  getEvents() {
+    let _that = this;
+    this.calendarEventService.getEvents().subscribe(dbEvents => {
+        dbEvents.forEach(dbEvent => {
+          dbEvent.actions = _that.actions;
+          dbEvent.start = moment(dbEvent.start).toDate();
+          dbEvent.end = moment(dbEvent.end).toDate();
+          _that.events.push(dbEvent);
+        });
+      });
   }
 
 }
