@@ -1,2 +1,6 @@
 <app-new-comment [contentItem]="contentItem" (newCommentEvent)="saveComment($event)"></app-new-comment>
+<select (change)="sortChange($event.target.value)">
+  <option selected value="1">Oldest First</option>
+  <option value="-1">Newest First</option>
+</select>
 <app-comment-detail *ngFor="let comment of comments | async" [comment]="comment"></app-comment-detail>
