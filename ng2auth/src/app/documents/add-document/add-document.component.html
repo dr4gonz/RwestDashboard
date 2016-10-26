@@ -1,0 +1,25 @@
+<button (click)="addDoc.open()">Add new document</button>
+<modal #addDoc>
+    <modal-content>
+      <form>
+        <div class="form-group col-xs-6">
+          <input  class="form-control" type="text" name="title" placeholder="Title" #title>
+        </div>
+        <div class="form-group col-xs-6">
+          <input  class="form-control" type="text" name="link" placeholder="Link text" #link>
+        </div>
+          <button class="btn btn-success center-block" (click)="newDocumentItem(title, link)">
+            Submit
+          </button>
+      </form>
+    </modal-content>
+    <modal-footer class="text-center">
+      <h4>Instructions</h4>
+      <ul>
+        <li>Open your google document</li>
+        <li>From the 'File' menu, select 'Publish to the web...'</li>
+        <li>Select 'embed'</li>
+        <li>Copy and paste the text into above 'link' form</li>
+      </ul>
+    </modal-footer>
+</modal>

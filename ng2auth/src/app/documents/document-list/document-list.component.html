@@ -1,0 +1,12 @@
+<div *ngIf="!selectedDocument">
+  <app-add-document (newDocumentEvent)="saveDocumentItem($event)"></app-add-document>
+  <ul *ngFor="let doc of documents | async" (click)="selectDocument(doc)">
+    <a>{{doc.title}}</a>
+  </ul>
+</div>
+<div *ngIf="selectedDocument" [innerHTML]="iframeHtml" class="iframe-container">
+<!-- <div *ngIf="selectedDocument"class="iframe-container"> -->
+  <button (click)="unselectDocument()">Close</button>
+  <a href="iframeUrl">Original document</a>
+  <iframe src="iframeUrl"></iframe>
+</div>
