@@ -9,6 +9,11 @@
   text-align: center;
 }
 
+.doc-list-item:hover {
+  cursor: pointer;
+  background-color: rgba(119, 128, 175, .7);
+}
+
 /* this selector applies styling to all iframe children of component*/
 :host >>> iframe {
   width: 100%;

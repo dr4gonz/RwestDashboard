@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { DocumentItem } from '../../models/document-item.model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-document-list',
@@ -15,9 +16,11 @@ export class DocumentListComponent implements OnInit {
   selectedDocument: DocumentItem = null;
   iframeUrl: SafeUrl = null;
   extDocUrl: SafeUrl = null;
+  authService: AuthService;
 
-  constructor(af: AngularFire, private sanitizer: DomSanitizer) {
+  constructor(af: AngularFire, private sanitizer: DomSanitizer, authService: AuthService) {
     this.af = af;
+    this.authService = authService;
   }
 
   ngOnInit() {
@@ -56,6 +59,11 @@ export class DocumentListComponent implements OnInit {
     } catch (ex) {
       return false;
     }
+  }
+
+  removeDoc() {
+    this.documents.remove(this.selectedDocument.$key);
+    this.unselectDocument();
   }
 
 }

@@ -30,6 +30,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NewCommentComponent } from './comments/new-comment/new-comment.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { routing, routedComponents } from './app.routing';
 
@@ -79,6 +80,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     NewCommentComponent,
     NewContentComponent,
     RegisterUserComponent,
+    RemoveDocumentComponent,
     routedComponents,
     StorageListItemComponent,
     TimePipe
