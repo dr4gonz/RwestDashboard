@@ -49,7 +49,12 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.events = this.af.database.list('/events');
+    this.events = this.af.database.list('/events', {
+      query: {
+        orderByChild: 'start'
+      }
+    });
+    console.log(this.events);
   }
 
   addNewEvent() {
