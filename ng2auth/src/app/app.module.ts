@@ -17,6 +17,7 @@ import { AddDocumentComponent } from './documents/add-document/add-document.comp
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarListItemComponent } from './calendar/calendar-list-item/calendar-list-item.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
@@ -37,6 +38,7 @@ import { routing, routedComponents } from './app.routing';
 
 /** Pipes **/
 import { TimePipe } from './time.pipe';
+import { ToDatePipe } from './pipes/todate.pipe';
 
 /** Services **/
 import { AuthGuard } from './auth-guard.service'
@@ -70,6 +72,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AdminUserListItemComponent,
     AppComponent,
     CalendarComponent,
+    CalendarListItemComponent,
     CommentDetailComponent,
     CommentListComponent,
     ContentListItemComponent,
@@ -87,7 +90,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     RemoveCommentComponent,
     routedComponents,
     StorageListItemComponent,
-    TimePipe
+    TimePipe,
+    ToDatePipe
   ],
   providers: [
     AuthService,

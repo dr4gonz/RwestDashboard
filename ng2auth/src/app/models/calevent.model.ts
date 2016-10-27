@@ -1,13 +1,13 @@
 export class CalEvent {
-  start: string;
-  end?: string;
+  start: number;
+  end?: number;
   title: string;
   color: any;
   actions?: any[];
   allDay?: boolean;
   cssClass?: string;
 
-  constructor(title: string, startDate: string, endDate: string, color: any, actions: any[], allDay: boolean, cssClass: string) {
+  constructor(title: string, startDate: number, endDate: number, color: any, actions: any[], allDay: boolean, cssClass: string) {
     this.start = startDate;
     this.end = endDate;
     this.title = title;

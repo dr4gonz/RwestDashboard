@@ -5,3 +5,7 @@ h3 {
 .container {
   padding-bottom: 50px;
 }
+
+ul {
+  list-style: none;
+}
