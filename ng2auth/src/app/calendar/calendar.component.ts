@@ -36,6 +36,7 @@ const colors: any = {
 };
 @Component({
   selector: 'app-calendar',
+  inputs: ['calendarEvents'],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
@@ -45,8 +46,6 @@ export class CalendarComponent implements OnInit {
   selectColors = ['Red','Yellow','Blue'];
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
-  // events: FirebaseListObservable<any[]>;
-  obsEvents: FirebaseListObservable<CalendarEvent[]>;
   activeDayIsOpen: boolean = true;
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
@@ -130,16 +129,16 @@ export class CalendarComponent implements OnInit {
   }
 
   getEvents() {
-    let _that = this;
     let returnedEvents: any[] = [];
     this.calendarEventService.getEvents().subscribe(dbEvents => {
-        dbEvents.forEach(dbEvent => {
-          dbEvent.actions = _that.actions;
-          dbEvent.start = moment(dbEvent.start).toDate();
-          dbEvent.end = moment(dbEvent.end).toDate();
-          returnedEvents.push(dbEvent);
-        });
+      returnedEvents = [];
+      dbEvents.forEach(dbEvent => {
+        dbEvent.actions = this.actions;
+        dbEvent.start = moment(dbEvent.start).toDate();
+        dbEvent.end = moment(dbEvent.end).toDate();
+        returnedEvents.push(dbEvent);
       });
+    });
     return returnedEvents;
   }
 

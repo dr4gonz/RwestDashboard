@@ -27,9 +27,6 @@
   <div class="row text-center">
     <div class="btn btn-primary btn-sm" (click)="newEventModal.open()">New Event</div>
   </div>
-  <!-- <ul>
-    <li *ngFor="let r of obsEvents | async">{{r.title}}</li>
-  </ul> -->
   <br>
   <div [ngSwitch]="view">
     <mwl-calendar-month-view
