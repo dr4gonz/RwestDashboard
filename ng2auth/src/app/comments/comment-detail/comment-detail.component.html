@@ -3,4 +3,5 @@
   <p>
     {{comment.author}} - {{timeSincePosted}}
   </p>
+  <app-remove-comment *ngIf="authService.getUserId() === comment.authorId" (removeCommentEvent)="removeComment()"></app-remove-comment>
 </div>

@@ -3,4 +3,4 @@
   <option selected value="1">Oldest First</option>
   <option value="-1">Newest First</option>
 </select>
-<app-comment-detail *ngFor="let comment of comments | timePipe:ascOrDesc | async" [comment]="comment"></app-comment-detail>
+<app-comment-detail *ngFor="let comment of comments | timePipe:ascOrDesc | async" [comment]="comment" (removeCommentEvent)="removeComment(comment)"></app-comment-detail>

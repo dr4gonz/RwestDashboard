@@ -1,0 +1,12 @@
+<div class="row">
+  <h4 class="text-center"><a class="text-danger remove-doc" (click)="confirmDelete.open()">Remove Comment</a></h4>
+  <modal #confirmDelete>
+      <modal-header class="text-center">
+          <h3 class="text-danger">Are you sure you want to remove this comment?</h3>
+      </modal-header>
+      <modal-content>
+          <button class="btn btn-danger center-block" (click)="removeComment()">Confirm</button>
+      </modal-content>
+  </modal>
+</div>
+``
