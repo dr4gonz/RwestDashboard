@@ -41,6 +41,7 @@ import { TimePipe } from './time.pipe';
 import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
+import { MailSenderService } from './mail-sender.service';
 
 /********** End imports **********/
 
@@ -88,8 +89,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
   providers: [
     AuthService,
     AuthGuard,
-    AuthGuardAdmin
-
+    AuthGuardAdmin,
+    MailSenderService
   ],
   bootstrap: [AppComponent]
 })

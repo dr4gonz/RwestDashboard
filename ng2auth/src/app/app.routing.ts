@@ -11,6 +11,8 @@ import { DocumentListComponent } from './documents/document-list/document-list.c
 import { FileStorageComponent } from './file-storage/file-storage.component';
 import { PublicComponent } from './public/public.component';
 
+import { MailTestComponent } from './mail-test/mail-test.component';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -50,8 +52,13 @@ const appRoutes: Routes = [
     path: 'calendar',
     component: CalendarComponent,
     canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'mail-test',
+    component: MailTestComponent
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, CalendarComponent, ContentListComponent, DocumentListComponent,FileStorageComponent, PublicComponent];
+export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, CalendarComponent, ContentListComponent, DocumentListComponent, FileStorageComponent, PublicComponent, MailTestComponent];
