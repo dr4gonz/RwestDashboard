@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarEvent, CalendarEventAction } from 'angular2-calendar';
+import { ModalModule } from 'ng2-modal';
+import { AuthService } from '../auth.service';
+import { CalendarEventService } from '../calendar-event.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
+import * as moment from 'moment';
 import {
   startOfDay,
   subDays,
@@ -11,17 +19,6 @@ import {
   addMonths,
   subMonths
 } from 'date-fns';
-import {
-  CalendarEvent,
-  CalendarEventAction
-} from 'angular2-calendar';
-import { ModalModule } from 'ng2-modal';
-import { AuthService } from '../auth.service';
-import { CalendarEventService } from '../calendar-event.service';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/from';
-import * as moment from 'moment';
 
 const colors: any = {
   red: {
@@ -48,6 +45,7 @@ export class CalendarComponent implements OnInit {
   selectColors = ['Red','Yellow','Blue'];
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
+  // events: FirebaseListObservable<any[]>;
   obsEvents: FirebaseListObservable<CalendarEvent[]>;
   activeDayIsOpen: boolean = true;
 
@@ -55,7 +53,7 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obsEvents = this.calendarEventService.getEvents();
+    this.events = this.getEvents();
   }
 
   actions: CalendarEventAction[] = [{
@@ -133,14 +131,16 @@ export class CalendarComponent implements OnInit {
 
   getEvents() {
     let _that = this;
+    let returnedEvents: any[] = [];
     this.calendarEventService.getEvents().subscribe(dbEvents => {
         dbEvents.forEach(dbEvent => {
           dbEvent.actions = _that.actions;
           dbEvent.start = moment(dbEvent.start).toDate();
           dbEvent.end = moment(dbEvent.end).toDate();
-          _that.events.push(dbEvent);
+          returnedEvents.push(dbEvent);
         });
       });
+    return returnedEvents;
   }
 
 }
