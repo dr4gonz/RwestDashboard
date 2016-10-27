@@ -37,7 +37,7 @@ import { StorageListItemComponent } from './file-storage/storage-list-item/stora
 import { routing, routedComponents } from './app.routing';
 
 /** Pipes **/
-import { TimePipe } from './time.pipe';
+import { TimePipe } from './pipes/time.pipe';
 import { ToDatePipe } from './pipes/todate.pipe';
 
 /** Services **/
