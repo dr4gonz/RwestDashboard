@@ -1,0 +1,13 @@
+
+<div class="row">
+  <h4 class="text-center"><a class="text-danger remove-doc" (click)="confirmDelete.open()">Remove Document</a></h4>
+  <modal #confirmDelete>
+      <modal-header class="text-center">
+          <h3 class="text-danger">Are you sure you want to remove this document?</h3>
+          <h4>(It will not be removed from Google Drive, only from this page)</h4>
+      </modal-header>
+      <modal-content>
+          <button class="btn btn-danger center-block" (click)="removeDoc()">Confirm</button>
+      </modal-content>
+  </modal>
+</div>

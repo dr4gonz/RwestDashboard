@@ -13,6 +13,7 @@ import { Keys } from '../keys';
 
 /** Components **/
 import { AppComponent } from './app.component';
+import { AddDocumentComponent } from './documents/add-document/add-document.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -29,16 +30,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NewCommentComponent } from './comments/new-comment/new-comment.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
+import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { routing, routedComponents } from './app.routing';
 
 /** Pipes **/
+import { TimePipe } from './time.pipe';
 
 /** Services **/
 import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
+import { MailSenderService } from './mail-sender.service';
 
 /********** End imports **********/
 
@@ -60,6 +65,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     routing
   ],
   declarations: [
+    AddDocumentComponent,
     AdminUserListComponent,
     AdminUserListItemComponent,
     AppComponent,
@@ -77,14 +83,18 @@ export const firebaseConfig = Keys.FireBaseConfig;
     NewCommentComponent,
     NewContentComponent,
     RegisterUserComponent,
+    RemoveDocumentComponent,
+    RemoveCommentComponent,
     routedComponents,
-    StorageListItemComponent
+    StorageListItemComponent,
+    TimePipe
   ],
   providers: [
     AuthService,
     AuthGuard,
     AuthGuardAdmin,
-    CalendarEventService
+    CalendarEventService,
+    MailSenderService
   ],
   bootstrap: [AppComponent]
 })

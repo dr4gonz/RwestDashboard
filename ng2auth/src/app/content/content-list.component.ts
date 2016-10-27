@@ -13,6 +13,7 @@ export class ContentListComponent implements OnInit {
 
   content: FirebaseListObservable<ContentItem[]>;
   selectedContentItem: ContentItem;
+  ascOrDesc: number = 1;
 
 
   constructor(af: AngularFire, private authService: AuthService) {
@@ -24,7 +25,7 @@ export class ContentListComponent implements OnInit {
   }
 
   saveContent(newContentItem: ContentItem) {
-    newContentItem.dateAdded = moment().format('MMMM Do YYYY');
+    newContentItem.creationTime = moment().format();
     newContentItem.approvalStatus = "Not Approved";
     newContentItem.createdBy = this.authService.getUserEmail();
     console.log(newContentItem);
@@ -41,6 +42,11 @@ export class ContentListComponent implements OnInit {
 
   deselectContentItem() {
     this.selectedContentItem = null;
+  }
+
+  sortChange(sortBy: number) {
+    this.ascOrDesc = sortBy;
+    console.log(sortBy);
   }
 
 }

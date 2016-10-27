@@ -2,13 +2,16 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { AuthGuardAdmin } from './auth-guard-admin.service'
 
-import { AppComponent } from './app.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { PublicComponent } from './public/public.component';
-import { BehindAuthComponent } from './behind-auth/behind-auth.component';
 import { AdminComponent } from './admin/admin.component';
+import { AppComponent } from './app.component';
+import { BehindAuthComponent } from './behind-auth/behind-auth.component';
+import { CalendarComponent } from './calendar/calendar.component';
 import { ContentListComponent } from './content/content-list.component';
+import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { FileStorageComponent } from './file-storage/file-storage.component';
+import { PublicComponent } from './public/public.component';
+
+import { MailTestComponent } from './mail-test/mail-test.component';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +35,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'documents',
+    component: DocumentListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'public',
     component: PublicComponent
   },
@@ -44,8 +52,13 @@ const appRoutes: Routes = [
     path: 'calendar',
     component: CalendarComponent,
     canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'mail-test',
+    component: MailTestComponent
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, CalendarComponent, ContentListComponent, FileStorageComponent, PublicComponent];
+export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, CalendarComponent, ContentListComponent, DocumentListComponent, FileStorageComponent, PublicComponent, MailTestComponent];

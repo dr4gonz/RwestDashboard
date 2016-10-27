@@ -3,5 +3,5 @@ export class ContentItem {
   description: string;
   approvalStatus: string;
   createdBy: string;
-  dateAdded: string;
+  creationTime: string;
 }
