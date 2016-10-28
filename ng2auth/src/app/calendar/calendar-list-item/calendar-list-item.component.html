@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row cal-event-day" [style.background-color]="getBackgroundColor(calendarEvent)">
   <h6>{{calendarEvent.title}}</h6>
   <h6>{{calendarEvent.start | toDate }}</h6>
   <h6>{{calendarEvent.end | toDate }}</h6>

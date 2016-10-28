@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalEvent } from '../../models/calevent.model';
-
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 @Component({
   selector: 'app-calendar-list-item',
   inputs: ['calendarEvent'],
@@ -9,9 +9,13 @@ import { CalEvent } from '../../models/calevent.model';
 })
 export class CalendarListItemComponent implements OnInit {
   calendarEvent;
-  constructor() { }
+  backgroundStyle: SafeStyle = null;
+  constructor(private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit() {
   }
-
+  getBackgroundColor(ce: CalEvent) {
+    return this.sanitizer.bypassSecurityTrustStyle(ce.color.secondary);
+  }
 }
