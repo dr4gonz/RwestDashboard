@@ -4,7 +4,6 @@ import { AuthGuardAdmin } from './auth-guard-admin.service'
 
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
-import { BehindAuthComponent } from './behind-auth/behind-auth.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ContentListComponent } from './content/content-list.component';
 import { DocumentListComponent } from './documents/document-list/document-list.component';
@@ -21,11 +20,6 @@ const appRoutes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuardAdmin]
-  },
-  {
-    path: 'behind-auth',
-    component: BehindAuthComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'content-list',
@@ -54,4 +48,4 @@ const appRoutes: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, BehindAuthComponent, CalendarComponent, ContentListComponent, DocumentListComponent, FileStorageComponent, PublicComponent];
+export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, ContentListComponent, DocumentListComponent, FileStorageComponent, PublicComponent];
