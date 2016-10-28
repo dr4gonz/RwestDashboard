@@ -5,18 +5,6 @@ import { CalendarEventService } from '../calendar-event.service';
 import { CalEvent } from '../models/calevent.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import * as moment from 'moment';
-import {
-  startOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addWeeks,
-  subWeeks,
-  addMonths,
-  subMonths
-} from 'date-fns';
 
 const colors: any = {
   red: {
@@ -83,4 +71,5 @@ export class CalendarComponent implements OnInit {
     }
     this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null);
   }
+
 }

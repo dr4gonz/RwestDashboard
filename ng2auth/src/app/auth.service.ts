@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';

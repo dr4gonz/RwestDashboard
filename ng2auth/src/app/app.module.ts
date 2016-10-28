@@ -1,12 +1,10 @@
 /** Dependencies **/
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
-import { CalendarModule } from 'angular2-calendar';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-modal';
 import { NgModule } from '@angular/core';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 /** Keys **/
 import { Keys } from '../keys';
@@ -45,7 +43,6 @@ import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
-import { MailSenderService } from './mail-sender.service';
 
 /********** End imports **********/
 
@@ -59,10 +56,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
-    CalendarModule.forRoot(),
     FormsModule,
     HttpModule,
-    JsonpModule,
     ModalModule,
     routing
   ],
@@ -98,7 +93,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
-    MailSenderService
   ],
   bootstrap: [AppComponent]
 })
