@@ -3,6 +3,8 @@
     <div class="btn-group">
       <div class="btn btn-primary" (click)="prevMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
       <div class="btn btn-primary" (click)="today()">Today</div>
+      <div class="btn btn-primary" *ngIf="!showAllEvents" (click)="showAll()">Show All</div>
+      <div class="btn btn-primary" *ngIf="showAllEvents" (click)="showMonth()">Show Month</div>
       <div class="btn btn-primary" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
     </div>
   </div>
@@ -16,7 +18,7 @@
   <div class="container">
     <div class="col-sm-12">
       <ul>
-        <li *ngFor="let event of events | monthPipe: currentMonth | async">
+        <li *ngFor="let event of events | monthPipe: currentMonth:showAllEvents | async">
           <app-calendar-list-item [calendarEvent]="event"></app-calendar-list-item>
         </li>
       </ul>
