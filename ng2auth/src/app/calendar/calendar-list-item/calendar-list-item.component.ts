@@ -11,6 +11,7 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 export class CalendarListItemComponent implements OnInit {
   calendarEvent;
   backgroundStyle: SafeStyle = null;
+  showDetails: boolean = false;
   private removeEvent: EventEmitter<any>;
 
   constructor(private sanitizer: DomSanitizer) {
@@ -23,14 +24,19 @@ export class CalendarListItemComponent implements OnInit {
   getPrimaryColor(ce: CalEvent) {
     return this.sanitizer.bypassSecurityTrustStyle(ce.color.primary);
   }
-  
+
   getSecondaryColor(ce: CalEvent) {
     return this.sanitizer.bypassSecurityTrustStyle(ce.color.secondary);
   }
 
   destroyEvent(ce: CalEvent) {
-    console.log('from item');
     this.removeEvent.emit();
+  }
+  expandDetails() {
+    this.showDetails = true;
+  }
+  hideDetails() {
+    this.showDetails = false;
   }
 
 }

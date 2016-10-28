@@ -7,8 +7,9 @@ export class CalEvent {
   actions?: any[];
   allDay?: boolean;
   cssClass?: string;
+  createdBy: string;
 
-  constructor(title: string, startDate: number, endDate: number, color: any, actions: any[], allDay: boolean, cssClass: string) {
+  constructor(title: string, startDate: number, endDate: number, color: any, actions: any[], allDay: boolean, cssClass: string, createdBy: string) {
     this.start = startDate;
     this.end = endDate;
     this.title = title;
@@ -16,5 +17,6 @@ export class CalEvent {
     this.actions = actions;
     this.allDay = allDay;
     this.cssClass = cssClass;
+    this.createdBy = createdBy;
   }
 }

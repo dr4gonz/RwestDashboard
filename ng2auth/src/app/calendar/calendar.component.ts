@@ -18,6 +18,14 @@ const colors: any = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA'
+  },
+  green: {
+    primary: '#067a06',
+    secondary: '#c8f7c8'
+  },
+  purple: {
+    primary: '#3e0e82',
+    secondary: '#dbc8f7'
   }
 };
 
@@ -28,7 +36,7 @@ const colors: any = {
 })
 
 export class CalendarComponent implements OnInit {
-  selectColors = ['Red','Yellow','Blue'];
+  selectColors = ['Red','Yellow','Blue', 'Green', 'Purple'];
   viewDate: Date = new Date();
   events: FirebaseListObservable<CalEvent[]>;
   activeDayIsOpen: boolean = true;
@@ -55,6 +63,7 @@ export class CalendarComponent implements OnInit {
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
     let newStartUnix = moment(newStartDate+"T"+newStartTime).unix() * 1000;
     let newEndUnix = moment(newEndDate+"T"+newEndTime).unix() * 1000;
+    let user = this.authService.getUserEmail();
     let pickedColor: any;
     switch (inputColor) {
       case "Red":
@@ -66,11 +75,17 @@ export class CalendarComponent implements OnInit {
       case "Yellow":
         pickedColor = colors.yellow;
         break;
+      case "Purple":
+        pickedColor = colors.purple;
+        break;
+      case "Green":
+        pickedColor = colors.green;
+        break;
       default:
         pickedColor = colors.blue;
         break;
     }
-    this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null);
+    this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null, user);
   }
   prevMonth() {
     this.currentMonth -= 1;

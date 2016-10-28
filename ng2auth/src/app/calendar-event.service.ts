@@ -10,9 +10,9 @@ export class CalendarEventService {
   constructor(private af: AngularFire) { }
 
 
-  addEvent(title: string, startDate: number, endDate: number, color: any, actions: any[], allDay: boolean, cssClass: string) {
+  addEvent(title: string, startDate: number, endDate: number, color: any, actions: any[], allDay: boolean, cssClass: string, createdBy: string) {
     let eventRef = this.af.database.list('/events');
-    let newEvent = new CalEvent(title, startDate, endDate, color, actions, allDay, cssClass);
+    let newEvent = new CalEvent(title, startDate, endDate, color, actions, allDay, cssClass, createdBy);
     eventRef.push(newEvent);
   }
   getEvents() {

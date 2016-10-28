@@ -38,6 +38,7 @@ import { routing, routedComponents } from './app.routing';
 import { MonthPipe } from './pipes/month.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { ToDatePipe } from './pipes/todate.pipe';
+import { ToTimePipe } from './pipes/totime.pipe';
 
 
 /** Services **/
@@ -89,7 +90,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     routedComponents,
     StorageListItemComponent,
     TimePipe,
-    ToDatePipe
+    ToDatePipe,
+    ToTimePipe
   ],
   providers: [
     AuthService,
