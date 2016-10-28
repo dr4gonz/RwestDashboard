@@ -90,9 +90,6 @@ export class CalendarComponent implements OnInit {
   prevMonth() {
     this.currentMonth -= 1;
   }
-  today() {
-    this.currentMonth = moment().get('month');
-  }
   nextMonth() {
       this.currentMonth += 1;
   }

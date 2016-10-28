@@ -2,7 +2,7 @@
   <div class="row text-center">
     <div class="btn-group">
       <div class="btn btn-primary" (click)="prevMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
-      <div class="btn btn-primary" (click)="today()">Today</div>
+      <!-- <div class="btn btn-primary" (click)="today()">Today</div> -->
       <div class="btn btn-primary" *ngIf="!showAllEvents" (click)="showAll()">Show All</div>
       <div class="btn btn-primary" *ngIf="showAllEvents" (click)="showMonth()">Show Month</div>
       <div class="btn btn-primary" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
