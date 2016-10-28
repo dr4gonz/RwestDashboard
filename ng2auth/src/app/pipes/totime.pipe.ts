@@ -8,7 +8,7 @@ export class ToTimePipe implements PipeTransform {
 
   transform(value: number, args?: any): any {
     if(value) {
-      return moment(value).format('h:mm');
+      return moment(value).format('h:mm a');
     }
   }
 
