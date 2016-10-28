@@ -1,16 +1,27 @@
 <div class="container">
-
+  <div class="row text-center">
+    <div class="btn-group">
+      <div class="btn btn-primary" (click)="prevMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
+      <div class="btn btn-primary" (click)="today()">Today</div>
+      <div class="btn btn-primary" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <h2>{{displayMonth()}}</h2>
+  </div>
+  <br>
   <div class="row text-center">
     <div class="btn btn-primary btn-sm" (click)="newEventModal.open()">New Event</div>
   </div>
-
-  <br>
-
-  <ul>
-    <li *ngFor="let event of events | async">
-      <app-calendar-list-item [calendarEvent]="event"></app-calendar-list-item>
-    </li>
-  </ul>
+  <div class="container">
+    <div class="col-sm-12">
+      <ul>
+        <li *ngFor="let event of events | monthPipe: currentMonth | async">
+          <app-calendar-list-item [calendarEvent]="event"></app-calendar-list-item>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <modal #newEventModal>
       <modal-header class="text-center">
