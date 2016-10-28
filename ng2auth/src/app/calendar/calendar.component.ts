@@ -32,6 +32,8 @@ export class CalendarComponent implements OnInit {
   viewDate: Date = new Date();
   events: FirebaseListObservable<CalEvent[]>;
   activeDayIsOpen: boolean = true;
+  currentMonth = moment().get('month');
+  showAllEvents: boolean = false;
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
   }
@@ -42,7 +44,6 @@ export class CalendarComponent implements OnInit {
         orderByChild: 'start'
       }
     });
-    console.log(this.events);
   }
 
   addNewEvent() {
@@ -71,5 +72,22 @@ export class CalendarComponent implements OnInit {
     }
     this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null);
   }
-
+  prevMonth() {
+    this.currentMonth -= 1;
+  }
+  today() {
+    this.currentMonth = moment().get('month');
+  }
+  nextMonth() {
+      this.currentMonth += 1;
+  }
+  displayMonth() {
+    return moment().month(this.currentMonth).format('MMMM YYYY');
+  }
+  showAll() {
+    this.showAllEvents = true;
+  }
+  showMonth() {
+    this.showAllEvents = false;
+  }
 }
