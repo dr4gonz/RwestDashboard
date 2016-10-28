@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CalendarEvent, CalendarEventAction } from 'angular2-calendar';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { CalEvent } from './models/calevent.model';
 import * as moment from 'moment';

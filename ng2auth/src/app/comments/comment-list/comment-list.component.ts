@@ -8,13 +8,13 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-comment-list',
-  inputs: ['contentItem'],
+  inputs: ['parentKey'],
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit {
 
-  contentItem: ContentItem;
+  parentKey: string;
   comments: FirebaseListObservable<Comment[]>;
   af: AngularFire;
   authService: AuthService;
@@ -29,7 +29,7 @@ export class CommentListComponent implements OnInit {
     this.comments = this.af.database.list('/comments', {
       query: {
         orderByChild: 'parentId',
-        equalTo: this.contentItem.$key,
+        equalTo: this.parentKey,
       }
     }).map(c => c.sort((a, b) => this.compareDates(a.timePosted, b.timePosted))) as FirebaseListObservable<Comment[]>;
   }
@@ -37,7 +37,7 @@ export class CommentListComponent implements OnInit {
   saveComment(newComment: Comment) {
     newComment.authorId = this.authService.getUserId();
     newComment.author = this.authService.getUserEmail();
-    newComment.parentId = this.contentItem.$key;
+    newComment.parentId = this.parentKey;
     newComment.creationTime = moment().format();
     this.comments.push(newComment);
   }
