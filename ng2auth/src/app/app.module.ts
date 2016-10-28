@@ -23,8 +23,6 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
 import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
-import { LinksAdminComponent } from './links-admin/links-admin.component';
-import { LinksComponent } from './links/links.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewCommentComponent } from './comments/new-comment/new-comment.component';
 import { NewContentComponent } from './content/new-content/new-content.component';
@@ -78,8 +76,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentDetailComponent,
     FileUploadComponent,
     FirebaseLoginComponent,
-    LinksComponent,
-    LinksAdminComponent,
     MonthPipe,
     NavbarComponent,
     NewCommentComponent,

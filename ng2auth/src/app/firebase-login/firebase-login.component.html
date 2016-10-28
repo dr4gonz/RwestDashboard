@@ -1,28 +1,20 @@
-<ul *ngIf="auth | async" class="nav navbar-nav navbar-right">
-  <li><a >Logged in as {{ getUserEmail() }}</a></li>
-  <li><a (click)="authService.logout()" *ngIf="auth | async" class="logout">Logout</a></li>
-</ul>
-<div class="row" *ngIf="!(auth | async)">
-  <ul class="nav navbar-nav navbar-right">
-    <li><a (click)="loginModal.open()">Log In</a></li>
-  </ul>
-    <modal #loginModal>
-        <modal-header class="text-center">
-            <h4 *ngIf="!authService.errorMessage" class="text-center">Enter your credentials:</h4>
-            <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
-        </modal-header>
-        <modal-content>
-          <form>
-            <div class="form-group col-xs-6">
-              <input  class="form-control" type="text" name="username" id="username" placeholder="Email">
-            </div>
-            <div class="form-group col-xs-6">
-              <input  class="form-control" type="password" name="password" id="password" placeholder="Password">
-            </div>
-              <button class="btn btn-success center-block" (click)="passCredentials()">
-                Submit
-              </button>
-          </form>
-        </modal-content>
-    </modal>
+<div *ngIf="!(auth | async)">
+  <h4 *ngIf="!authService.errorMessage" class="text-center">Enter your credentials:</h4>
+  <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
+  <form>
+    <div class="form-group col-xs-6">
+      <input  class="form-control" type="text" name="username" id="username" placeholder="Email">
+    </div>
+    <div class="form-group col-xs-6">
+      <input  class="form-control" type="password" name="password" id="password" placeholder="Password">
+    </div>
+    <button class="btn btn-success center-block" (click)="passCredentials()">
+      Submit
+    </button>
+  </form>
+</div>
+<div *ngIf="(auth | async)">
+  <p>
+    You're logged in. (We'll put something cool here later)
+  </p>
 </div>
