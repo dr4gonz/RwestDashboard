@@ -90,4 +90,7 @@ export class CalendarComponent implements OnInit {
   showMonth() {
     this.showAllEvents = false;
   }
+  removeEvent(ce: CalEvent){
+    this.events.remove(ce.$key);
+  }
 }

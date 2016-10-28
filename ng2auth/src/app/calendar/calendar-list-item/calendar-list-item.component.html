@@ -1,5 +1,16 @@
-<div class="row cal-event-day" [style.background-color]="getBackgroundColor(calendarEvent)">
-  <h6>{{calendarEvent.title}}</h6>
-  <h6>{{calendarEvent.start | toDate }}</h6>
-  <h6>{{calendarEvent.end | toDate }}</h6>
+<div class="row cal-event-day" [style.background-color]="getSecondaryColor(calendarEvent)">
+  <div class="row">
+    <div class="col-sm-2">
+      <h6>{{calendarEvent.title}}</h6>
+    </div>
+    <div class="col-sm-2 col-sm-offset-1">
+      <h6>Start: {{calendarEvent.start | toDate }}</h6>
+    </div>
+    <div class="col-sm-2 col-sm-offset-1">
+      <h6>End: {{calendarEvent.end | toDate }}</h6>
+    </div>
+    <div class="col-sm-1 col-sm-offset-3">
+      <i (click)="destroyEvent(calendarEvent)" [style.color]="getPrimaryColor(calendarEvent)" class="btn fa fa-fw fa-lg fa-times"></i>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 export class CalEvent {
+  $key: string;
   start: number;
   end?: number;
   title: string;
