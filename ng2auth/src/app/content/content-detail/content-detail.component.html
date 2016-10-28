@@ -15,4 +15,4 @@
     <li>Created by: {{contentItem.createdBy}}</li>
   </ul>
 </div>
-<app-comment-list [contentItem]="contentItem"></app-comment-list>
+<app-comment-list [parentKey]="contentItem.$key"></app-comment-list>
