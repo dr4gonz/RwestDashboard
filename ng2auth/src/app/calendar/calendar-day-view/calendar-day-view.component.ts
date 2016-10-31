@@ -15,23 +15,24 @@ export class CalendarDayViewComponent implements OnInit {
 
   constructor(private af: AngularFire) { }
 
-  ngOnInit() {this.events = this.af.database.list('/events', {
-    query: {
-      orderByChild: 'start'
-    }
-  });
-}
-prevDay() {
-  this.currentDay -= 1;
-}
-nextDay() {
-    this.currentDay += 1;
-}
-displayDay() {
-  return moment().dayOfYear(this.currentDay).format('MMMM Do YYYY');
-}
-removeEvent(ce: CalEvent){
-  this.events.remove(ce.$key);
-}
+  ngOnInit() {
+    this.events = this.af.database.list('/events', {
+      query: {
+        orderByChild: 'start'
+      }
+    });
+  }
+  prevDay() {
+    this.currentDay -= 1;
+  }
+  nextDay() {
+      this.currentDay += 1;
+  }
+  displayDay() {
+    return moment().dayOfYear(this.currentDay).format('MMMM Do YYYY');
+  }
+  removeEvent(ce: CalEvent){
+    this.events.remove(ce.$key);
+  }
 
 }

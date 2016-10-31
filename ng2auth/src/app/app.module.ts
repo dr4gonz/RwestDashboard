@@ -43,6 +43,7 @@ import { MonthPipe } from './pipes/month.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { ToDatePipe } from './pipes/todate.pipe';
 import { ToTimePipe } from './pipes/totime.pipe';
+import { WeekPipe } from './pipes/week.pipe';
 
 
 /** Services **/
@@ -99,7 +100,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     StorageListItemComponent,
     TimePipe,
     ToDatePipe,
-    ToTimePipe
+    ToTimePipe,
+    WeekPipe
   ],
   providers: [
     AuthService,
