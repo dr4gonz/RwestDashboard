@@ -60,7 +60,6 @@ export class CommentListComponent implements OnInit {
   }
 
   removeComment(comment: Comment) {
-    console.log('list');
     this.comments.remove(comment.$key);
   }
 

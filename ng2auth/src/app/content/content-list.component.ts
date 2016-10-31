@@ -37,7 +37,6 @@ export class ContentListComponent implements OnInit {
     newContentItem.creationTime = moment().format();
     newContentItem.approvalStatus = "Not Approved";
     newContentItem.createdBy = this.authService.getUserEmail();
-    console.log(newContentItem);
     this.content.push(newContentItem);
   }
 
@@ -55,7 +54,6 @@ export class ContentListComponent implements OnInit {
 
   sortChange(sortBy: number) {
     this.ascOrDesc = sortBy;
-    console.log(sortBy);
   }
 
 }

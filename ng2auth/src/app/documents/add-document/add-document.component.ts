@@ -36,10 +36,8 @@ export class AddDocumentComponent implements OnInit {
       let suffix = link.slice(link.length - 4);
       let prefix = link.slice(0, 33);
       if (suffix !== "/pub") {
-        console.log(suffix);
         return false;
       } else if (prefix !== "https://docs.google.com/document/") {
-        console.log(prefix);
         return false;
       } else return true;
     } catch (ex) {

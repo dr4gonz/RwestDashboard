@@ -26,7 +26,6 @@ export class FileUploadComponent implements OnInit {
   fileChangeEvent(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
       let file = fileInput.target.files[0];
-      console.log(file);
       let newFileRef = this.storageRef.child(file.name);
       let eventRef = this.newFileEntryEvent;
       newFileRef.put(file).then(function() {

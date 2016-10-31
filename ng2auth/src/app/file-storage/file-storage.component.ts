@@ -18,7 +18,6 @@ export class FileStorageComponent implements OnInit {
 
   constructor(@Inject(FirebaseApp) firebase: any, af: AngularFire) {
     this.fileEntries = af.database.list('/fileEntries');
-    console.log(this.fileEntries);
   }
 
   ngOnInit() {

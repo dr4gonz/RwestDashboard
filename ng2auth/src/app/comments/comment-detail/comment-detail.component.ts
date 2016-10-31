@@ -24,8 +24,6 @@ export class CommentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.timeSincePosted = moment(this.comment.creationTime).fromNow();
-    console.log(this.comment.authorId);
-    console.log(this.authService.getUserId());
   }
 
   removeComment(comment) {
