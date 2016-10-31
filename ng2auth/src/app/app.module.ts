@@ -35,6 +35,7 @@ import { StorageListItemComponent } from './file-storage/storage-list-item/stora
 import { routing, routedComponents } from './app.routing';
 
 /** Pipes **/
+import { DayPipe } from './pipes/day.pipe';
 import { MonthPipe } from './pipes/month.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { ToDatePipe } from './pipes/todate.pipe';
@@ -76,6 +77,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentListItemComponent,
     ContentAdminComponent,
     ContentDetailComponent,
+    DayPipe,
     FileUploadComponent,
     FirebaseLoginComponent,
     LinksComponent,

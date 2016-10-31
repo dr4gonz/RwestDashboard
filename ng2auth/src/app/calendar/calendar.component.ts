@@ -41,6 +41,7 @@ export class CalendarComponent implements OnInit {
   events: FirebaseListObservable<CalEvent[]>;
   activeDayIsOpen: boolean = true;
   currentMonth = moment().get('month');
+  currentDay: number = null;
   showAllEvents: boolean = false;
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
@@ -103,5 +104,8 @@ export class CalendarComponent implements OnInit {
   }
   removeEvent(ce: CalEvent){
     this.events.remove(ce.$key);
+  }
+  showCurrentDay() {
+    this.currentDay = moment().dayOfYear();
   }
 }
