@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'content-list',
+  selector: 'content',
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.css', '../slider.css'],
   animations: [routerAnimations('routeAnimations')]

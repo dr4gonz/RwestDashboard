@@ -1,0 +1,17 @@
+<div class="row text-center">
+  <div class="row text-center">
+    <h3>{{displayDay()}}</h3>
+  </div>
+  <div class="btn-group">
+    <div class="btn btn-primary" (click)="prevDay()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
+    <div class="btn btn-primary" (click)="nextDay()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
+  </div>
+</div>
+<br>
+<div class="col-sm-12">
+  <ul>
+    <li *ngFor="let event of events | dayPipe: currentDay | async">
+      <app-calendar-list-item [calendarEvent]="event" (removeEvent)="removeEvent(event)"></app-calendar-list-item>
+    </li>
+  </ul>
+</div>
