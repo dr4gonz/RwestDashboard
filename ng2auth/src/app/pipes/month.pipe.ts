@@ -10,7 +10,7 @@ import * as moment from 'moment';
 
 export class MonthPipe implements PipeTransform {
   transform(input: FirebaseListObservable<any[]>, args1: any, args2: any): any {
-    if (!args2) {
+    if (!args2 && args1 != null) {
       let result = input.map(e => e.filter(this.checkMonth, args1)) as FirebaseListObservable<any[]>;
       return result;
     }

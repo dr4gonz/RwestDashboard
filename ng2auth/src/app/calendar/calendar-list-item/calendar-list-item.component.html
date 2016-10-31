@@ -2,20 +2,30 @@
   <div class="row">
     <div class="col-sm-2">
       <h6>{{calendarEvent.title}}</h6>
-      <h6 *ngIf="showDetails"> {{ calendarEvent.createdBy }}</h6>
     </div>
     <div class="col-sm-2 col-sm-offset-1">
       <h6>Start: {{calendarEvent.start | toDate }}</h6>
-      <h6 *ngIf="showDetails"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.start | toTime }}</h6>
     </div>
     <div class="col-sm-2 col-sm-offset-1">
       <h6>End: {{calendarEvent.end | toDate }}</h6>
-      <h6 *ngIf="showDetails"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.end | toTime }}</h6>
     </div>
     <div class="col-sm-1 col-sm-offset-3">
       <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-fw fa-lg fa-caret-down"></i>
       <i (click)="hideDetails()" *ngIf="showDetails" class="btn fa fa-fw fa-lg fa-caret-up"></i>
-      <i (click)="destroyEvent(calendarEvent)" [style.color]="getPrimaryColor(calendarEvent)" class="btn fa fa-fw fa-lg fa-times"></i>
+      <i (click)="destroyEvent()" [style.color]="getPrimaryColor(calendarEvent)" class="btn fa fa-fw fa-lg fa-times"></i>
+    </div>
+  </div>
+  <div class="row" *ngIf="showDetails" >
+    <div class="col-sm-2">
+      <h6> {{ calendarEvent.createdBy }}</h6>
+    </div>
+    <div class="col-sm-2 col-sm-offset-1">
+      <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.start | toTime }}</h6>
+    </div>
+    <div class="col-sm-2 col-sm-offset-1">
+      <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.end | toTime }}</h6>
+    </div>
+    <div class="col-sm-1 col-sm-offset-3">
     </div>
   </div>
 </div>
