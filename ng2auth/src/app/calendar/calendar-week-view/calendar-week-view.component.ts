@@ -25,7 +25,7 @@ export class CalendarWeekViewComponent implements OnInit {
       this.currentWeek += 1;
   }
   displayWeek() {
-    return moment().week(this.currentWeek).format('MMMM YYYY WW');
+    return moment().startOf('week').week(this.currentWeek).format('MMMM Do YYYY');
   }
   removeEvent(ce: CalEvent){
     this.events.remove(ce.$key);

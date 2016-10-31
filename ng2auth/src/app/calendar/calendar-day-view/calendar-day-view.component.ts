@@ -25,7 +25,7 @@ export class CalendarDayViewComponent implements OnInit {
       this.currentDay += 1;
   }
   displayDay() {
-    return moment().dayOfYear(this.currentDay).format('MMMM Do YYYY');
+    return moment().dayOfYear(this.currentDay).format('ddd MMMM Do YYYY');
   }
   removeEvent(ce: CalEvent){
     this.events.remove(ce.$key);
