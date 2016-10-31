@@ -16,7 +16,9 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarListItemComponent } from './calendar/calendar-list-item/calendar-list-item.component';
+import { CalendarDayViewComponent } from './calendar/calendar-day-view/calendar-day-view.component';
 import { CalendarMonthViewComponent } from './calendar/calendar-month-view/calendar-month-view.component';
+import { CalendarWeekViewComponent } from './calendar/calendar-week-view/calendar-week-view.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
@@ -73,7 +75,9 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AppComponent,
     CalendarComponent,
     CalendarListItemComponent,
+    CalendarDayViewComponent,
     CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
     CommentDetailComponent,
     CommentListComponent,
     ContentListItemComponent,

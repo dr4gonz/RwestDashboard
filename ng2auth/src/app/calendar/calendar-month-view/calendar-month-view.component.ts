@@ -11,9 +11,8 @@ import * as moment from 'moment';
   styleUrls: ['./calendar-month-view.component.css']
 })
 export class CalendarMonthViewComponent implements OnInit {
-  events;
+  events: FirebaseListObservable<any[]>;
   currentMonth = moment().get('month');
-  showAllEvents: boolean = false;
 
   constructor(private af: AngularFire) {
   }
@@ -24,12 +23,6 @@ export class CalendarMonthViewComponent implements OnInit {
         orderByChild: 'start'
       }
     });
-  }
-  showAll() {
-    this.showAllEvents = true;
-  }
-  showMonth() {
-    this.showAllEvents = false;
   }
   prevMonth() {
     this.currentMonth -= 1;
