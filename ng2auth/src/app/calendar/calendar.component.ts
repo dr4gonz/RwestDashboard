@@ -8,24 +8,28 @@ import * as moment from 'moment';
 
 const colors: any = {
   red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3'
+    primary: '#F44336',
+    secondary: '#FFCDD2'
   },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
+  orange: {
+    primary: '#FF9800',
+    secondary: '#FFE0B2'
   },
   yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
+    primary: '#FFEB3B',
+    secondary: '#FFF9C4'
   },
   green: {
-    primary: '#067a06',
-    secondary: '#c8f7c8'
+    primary: '#009688',
+    secondary: '#B2DFDB'
+  },
+  blue: {
+    primary: '#2196F3',
+    secondary: '#BBDEFB'
   },
   purple: {
-    primary: '#3e0e82',
-    secondary: '#dbc8f7'
+    primary: '#9C27B0',
+    secondary: '#E1BEE7'
   }
 };
 
@@ -37,7 +41,7 @@ const colors: any = {
 })
 
 export class CalendarComponent implements OnInit {
-  selectColors = ['Red','Yellow','Blue', 'Green','Purple'];
+  selectColors = ['Red','Orange','Yellow', 'Green','Blue','Purple'];
   view: string = 'month';
   events: FirebaseListObservable<any[]>;
 
@@ -65,6 +69,9 @@ export class CalendarComponent implements OnInit {
     switch (inputColor) {
       case "Red":
         pickedColor = colors.red;
+        break;
+      case "Orange":
+        pickedColor = colors.orange;
         break;
       case "Blue":
         pickedColor = colors.blue;
