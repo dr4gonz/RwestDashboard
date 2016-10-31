@@ -51,13 +51,9 @@ export class CalendarComponent implements OnInit {
   @HostBinding('@routeAnimations')
   public animatePage = true;
 
-  selectColors = ['Red','Yellow','Blue', 'Green', 'Purple'];
-  viewDate: Date = new Date();
+  selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
   events: FirebaseListObservable<CalEvent[]>;
-  activeDayIsOpen: boolean = true;
-  currentMonth = moment().get('month');
-  showAllEvents: boolean = false;
-
+  view: string = 'month';
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
 
