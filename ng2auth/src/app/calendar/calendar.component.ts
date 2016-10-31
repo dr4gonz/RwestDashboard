@@ -39,11 +39,17 @@ const colors: any = {
 export class CalendarComponent implements OnInit {
   selectColors = ['Red','Yellow','Blue', 'Green','Purple'];
   view: string = 'month';
+  events: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
+  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
+
+  ngOnInit() {
+    this.events = this.af.database.list('/events', {
+      query: {
+        orderByChild: 'start'
+      }
+    });
   }
-
-  ngOnInit() { }
 
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;

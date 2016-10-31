@@ -6,6 +6,7 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-day-view',
+  inputs: ['events'],
   templateUrl: './calendar-day-view.component.html',
   styleUrls: ['./calendar-day-view.component.css']
 })
@@ -15,13 +16,8 @@ export class CalendarDayViewComponent implements OnInit {
 
   constructor(private af: AngularFire) { }
 
-  ngOnInit() {
-    this.events = this.af.database.list('/events', {
-      query: {
-        orderByChild: 'start'
-      }
-    });
-  }
+  ngOnInit() { }
+
   prevDay() {
     this.currentDay -= 1;
   }

@@ -6,23 +6,18 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-week-view',
+  inputs: ['events'],
   templateUrl: './calendar-week-view.component.html',
   styleUrls: ['./calendar-week-view.component.css']
 })
 export class CalendarWeekViewComponent implements OnInit {
   currentWeek = moment().week();
-  weeksInYear = moment().weeksInYear();
   events: FirebaseListObservable<any[]>;
 
   constructor(private af: AngularFire) { }
 
-  ngOnInit() {
-    this.events = this.af.database.list('/events', {
-      query: {
-        orderByChild: 'start'
-      }
-    });
-  }
+  ngOnInit() { }
+
   prevWeek() {
     this.currentWeek -= 1;
   }

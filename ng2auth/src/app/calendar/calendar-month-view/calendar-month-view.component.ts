@@ -18,11 +18,6 @@ export class CalendarMonthViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.events = this.af.database.list('/events', {
-      query: {
-        orderByChild: 'start'
-      }
-    });
   }
   prevMonth() {
     this.currentMonth -= 1;
