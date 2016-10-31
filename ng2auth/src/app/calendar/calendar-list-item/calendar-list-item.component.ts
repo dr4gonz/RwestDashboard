@@ -27,7 +27,7 @@ export class CalendarListItemComponent implements OnInit {
   getSecondaryColor(ce: CalEvent) {
     return this.sanitizer.bypassSecurityTrustStyle(ce.color.secondary);
   }
-  destroyEvent(ce: CalEvent) {
+  destroyEvent() {
     this.removeEvent.emit();
   }
   expandDetails() {

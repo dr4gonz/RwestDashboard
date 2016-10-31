@@ -31,29 +31,20 @@ const colors: any = {
 
 @Component({
   selector: 'app-calendar',
+  inputs: ['removeEvent'],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 
 export class CalendarComponent implements OnInit {
-  selectColors = ['Red','Yellow','Blue', 'Green', 'Purple'];
-  viewDate: Date = new Date();
-  events: FirebaseListObservable<CalEvent[]>;
-  activeDayIsOpen: boolean = true;
-  currentMonth = moment().get('month');
-  currentDay: number = null;
-  showAllEvents: boolean = false;
+  selectColors = ['Red','Yellow','Blue', 'Green','Purple'];
+  view: string = 'month';
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
   }
 
-  ngOnInit() {
-    this.events = this.af.database.list('/events', {
-      query: {
-        orderByChild: 'start'
-      }
-    });
-  }
+  ngOnInit() { }
+
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
@@ -86,26 +77,5 @@ export class CalendarComponent implements OnInit {
         break;
     }
     this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null, user);
-  }
-  prevMonth() {
-    this.currentMonth -= 1;
-  }
-  nextMonth() {
-      this.currentMonth += 1;
-  }
-  displayMonth() {
-    return moment().month(this.currentMonth).format('MMMM YYYY');
-  }
-  showAll() {
-    this.showAllEvents = true;
-  }
-  showMonth() {
-    this.showAllEvents = false;
-  }
-  removeEvent(ce: CalEvent){
-    this.events.remove(ce.$key);
-  }
-  showCurrentDay() {
-    this.currentDay = moment().dayOfYear();
   }
 }

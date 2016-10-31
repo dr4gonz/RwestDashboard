@@ -15,7 +15,7 @@
     <div class="col-sm-1 col-sm-offset-3">
       <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-fw fa-lg fa-caret-down"></i>
       <i (click)="hideDetails()" *ngIf="showDetails" class="btn fa fa-fw fa-lg fa-caret-up"></i>
-      <i (click)="destroyEvent(calendarEvent)" [style.color]="getPrimaryColor(calendarEvent)" class="btn fa fa-fw fa-lg fa-times"></i>
+      <i (click)="destroyEvent()" [style.color]="getPrimaryColor(calendarEvent)" class="btn fa fa-fw fa-lg fa-times"></i>
     </div>
   </div>
 </div>
