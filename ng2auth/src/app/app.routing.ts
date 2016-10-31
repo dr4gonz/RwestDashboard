@@ -8,13 +8,13 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ContentListComponent } from './content/content-list.component';
 import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { FileStorageComponent } from './file-storage/file-storage.component';
-import { PublicComponent } from './public/public.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/public'
+    redirectTo: 'home'
   },
   {
     path: 'admin',
@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardAdmin]
   },
   {
-    path: 'content-list',
+    path: 'content',
     component: ContentListComponent,
     canActivate: [AuthGuard]
   },
@@ -32,8 +32,8 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'public',
-    component: PublicComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'file-storage',
@@ -48,4 +48,4 @@ const appRoutes: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, ContentListComponent, DocumentListComponent, FileStorageComponent, PublicComponent];
+export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, ContentListComponent, DocumentListComponent, FileStorageComponent, HomeComponent];

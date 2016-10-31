@@ -10,11 +10,26 @@ import { FirebaseAuth, FirebaseApp } from 'angularfire2';
   providers: [ FirebaseLoginComponent ]
 })
 export class NavbarComponent implements OnInit {
+
   role: string;
+  userEmail: string;
+
   constructor(public firebaseLogin: FirebaseLoginComponent, public auth: FirebaseAuth, public authService: AuthService) { }
+
   ngOnInit() { }
 
   loggedIn() {
     this.role = this.authService.getUserRole();
+  }
+
+  passCredentials () {
+    let user: string = (<HTMLInputElement>document.getElementById('username')).value;
+    let pw: string = (<HTMLInputElement>document.getElementById('password')).value;
+    this.authService.login(user, pw);
+  }
+
+  getUserEmail() {
+    this.userEmail = this.authService.getUserEmail();
+    return this.userEmail;
   }
 }

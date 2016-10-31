@@ -4,7 +4,7 @@ import { FirebaseAuth } from 'angularfire2';
 import { ModalModule } from 'ng2-modal';
 
 @Component({
-  selector: 'firebase-login',
+  selector: 'app-firebase-login',
   templateUrl: './firebase-login.component.html',
   styleUrls: ['./firebase-login.component.css']
 })

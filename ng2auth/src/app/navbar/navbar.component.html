@@ -2,7 +2,13 @@
   <div class="navbar-header">
     <a class="navbar-brand" routerLink="/">R/West Client Dashboard</a>
   </div>
-  <app-links *ngIf="auth | async"></app-links>
-  <app-links-admin *ngIf="authService.isAdmin()"></app-links-admin>
-  <firebase-login></firebase-login>
+  <ul class="nav navbar-nav">
+    <li *ngIf="(auth | async)"><a routerLink="/documents">Documents</a></li>
+    <li *ngIf="(auth | async)"><a routerLink="/file-storage">File Storage</a></li>
+    <li *ngIf="(auth | async)"><a routerLink="/content">Content</a></li>
+    <li *ngIf="(auth | async)"><a routerLink="/calendar">Calendar</a></li>
+    <li *ngIf="authService.isAdmin()"><a routerLink="/admin">User Management <i class="fa fa-users" aria-hidden="true"></i></a></li>
+    <li *ngIf="(auth | async)"><a>Logged in as {{ getUserEmail() }}</a></li>
+    <li *ngIf="(auth | async)"><a (click)="authService.logout()" *ngIf="auth | async" class="logout">Logout</a></li>
+  </ul>
 </nav>
