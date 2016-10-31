@@ -3,3 +3,13 @@
   margin: 5px;
   padding: 15px;
 }
+.hidden-details {
+  opacity: 0;
+  height: 0;
+  transition: height 0.5s linear,  opacity 0.5s linear;
+}
+.hidden-details:hover {
+  opacity: 1;
+  height: 50px;
+  display: block;
+}

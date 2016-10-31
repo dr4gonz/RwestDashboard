@@ -8,43 +8,44 @@ import * as moment from 'moment';
 
 const colors: any = {
   red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3'
+    primary: '#F44336',
+    secondary: '#FFCDD2'
   },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
+  orange: {
+    primary: '#FF9800',
+    secondary: '#FFE0B2'
   },
   yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
+    primary: '#FFEB3B',
+    secondary: '#FFF9C4'
   },
   green: {
-    primary: '#067a06',
-    secondary: '#c8f7c8'
+    primary: '#009688',
+    secondary: '#B2DFDB'
+  },
+  blue: {
+    primary: '#2196F3',
+    secondary: '#BBDEFB'
   },
   purple: {
-    primary: '#3e0e82',
-    secondary: '#dbc8f7'
+    primary: '#9C27B0',
+    secondary: '#E1BEE7'
   }
 };
 
 @Component({
   selector: 'app-calendar',
+  inputs: ['removeEvent'],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 
 export class CalendarComponent implements OnInit {
-  selectColors = ['Red','Yellow','Blue', 'Green', 'Purple'];
-  viewDate: Date = new Date();
-  events: FirebaseListObservable<CalEvent[]>;
-  activeDayIsOpen: boolean = true;
-  currentMonth = moment().get('month');
-  showAllEvents: boolean = false;
+  selectColors = ['Red','Orange','Yellow', 'Green','Blue','Purple'];
+  view: string = 'month';
+  events: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) {
-  }
+  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
 
   ngOnInit() {
     this.events = this.af.database.list('/events', {
@@ -69,6 +70,9 @@ export class CalendarComponent implements OnInit {
       case "Red":
         pickedColor = colors.red;
         break;
+      case "Orange":
+        pickedColor = colors.orange;
+        break;
       case "Blue":
         pickedColor = colors.blue;
         break;
@@ -86,23 +90,5 @@ export class CalendarComponent implements OnInit {
         break;
     }
     this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null, user);
-  }
-  prevMonth() {
-    this.currentMonth -= 1;
-  }
-  nextMonth() {
-      this.currentMonth += 1;
-  }
-  displayMonth() {
-    return moment().month(this.currentMonth).format('MMMM YYYY');
-  }
-  showAll() {
-    this.showAllEvents = true;
-  }
-  showMonth() {
-    this.showAllEvents = false;
-  }
-  removeEvent(ce: CalEvent){
-    this.events.remove(ce.$key);
   }
 }

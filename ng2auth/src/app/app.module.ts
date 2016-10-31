@@ -16,6 +16,9 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarListItemComponent } from './calendar/calendar-list-item/calendar-list-item.component';
+import { CalendarDayViewComponent } from './calendar/calendar-day-view/calendar-day-view.component';
+import { CalendarMonthViewComponent } from './calendar/calendar-month-view/calendar-month-view.component';
+import { CalendarWeekViewComponent } from './calendar/calendar-week-view/calendar-week-view.component';
 import { ContentAdminComponent } from './content/content-admin/content-admin.component';
 import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
@@ -33,10 +36,12 @@ import { StorageListItemComponent } from './file-storage/storage-list-item/stora
 import { routing, routedComponents } from './app.routing';
 
 /** Pipes **/
+import { DayPipe } from './pipes/day.pipe';
 import { MonthPipe } from './pipes/month.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { ToDatePipe } from './pipes/todate.pipe';
 import { ToTimePipe } from './pipes/totime.pipe';
+import { WeekPipe } from './pipes/week.pipe';
 
 
 /** Services **/
@@ -69,11 +74,15 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AppComponent,
     CalendarComponent,
     CalendarListItemComponent,
+    CalendarDayViewComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
     CommentDetailComponent,
     CommentListComponent,
     ContentListItemComponent,
     ContentAdminComponent,
     ContentDetailComponent,
+    DayPipe,
     FileUploadComponent,
     FirebaseLoginComponent,
     MonthPipe,
@@ -87,7 +96,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     StorageListItemComponent,
     TimePipe,
     ToDatePipe,
-    ToTimePipe
+    ToTimePipe,
+    WeekPipe
   ],
   providers: [
     AuthService,
