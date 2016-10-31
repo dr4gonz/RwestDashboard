@@ -8,7 +8,7 @@
     <li *ngIf="(auth | async)"><a routerLink="/content">Content</a></li>
     <li *ngIf="(auth | async)"><a routerLink="/calendar">Calendar</a></li>
     <li *ngIf="authService.isAdmin()"><a routerLink="/admin">User Management <i class="fa fa-users" aria-hidden="true"></i></a></li>
-    <li *ngIf="(auth | async)"><a >Logged in as {{ getUserEmail() }}</a></li>
+    <li *ngIf="(auth | async)"><a>Logged in as {{ getUserEmail() }}</a></li>
     <li *ngIf="(auth | async)"><a (click)="authService.logout()" *ngIf="auth | async" class="logout">Logout</a></li>
   </ul>
 </nav>

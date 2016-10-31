@@ -6,11 +6,11 @@
     </div>
     <div class="col-sm-2 col-sm-offset-1">
       <h6>Start: {{calendarEvent.start | toDate }}</h6>
-      <h6 *ngIf="showDetails">Time: {{calendarEvent.start | toTime }}</h6>
+      <h6 *ngIf="showDetails"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.start | toTime }}</h6>
     </div>
     <div class="col-sm-2 col-sm-offset-1">
       <h6>End: {{calendarEvent.end | toDate }}</h6>
-      <h6 *ngIf="showDetails">Time: {{calendarEvent.end | toTime }}</h6>
+      <h6 *ngIf="showDetails"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.end | toTime }}</h6>
     </div>
     <div class="col-sm-1 col-sm-offset-3">
       <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-fw fa-lg fa-caret-down"></i>
