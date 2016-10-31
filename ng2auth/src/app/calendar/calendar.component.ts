@@ -53,7 +53,6 @@ export class CalendarComponent implements OnInit {
       }
     });
   }
-
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
