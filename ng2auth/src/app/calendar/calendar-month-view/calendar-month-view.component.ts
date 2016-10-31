@@ -17,8 +17,8 @@ export class CalendarMonthViewComponent implements OnInit {
   constructor(private af: AngularFire) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+  
   prevMonth() {
     this.currentMonth -= 1;
   }
