@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  HostBinding
+} from '@angular/core';
+import {default as routerAnimations} from '../route_animations';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
 import { CalendarEventService } from '../calendar-event.service';
@@ -32,10 +37,15 @@ const colors: any = {
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css', '../slider.css'],
+  animations: [routerAnimations('routeAnimations')]
 })
 
 export class CalendarComponent implements OnInit {
+
+  @HostBinding('@routeAnimations')
+  public animatePage = true;
+
   selectColors = ['Red','Yellow','Blue', 'Green', 'Purple'];
   viewDate: Date = new Date();
   events: FirebaseListObservable<CalEvent[]>;
