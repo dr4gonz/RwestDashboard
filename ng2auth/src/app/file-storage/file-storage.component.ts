@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FirebaseApp, AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../auth.service';
 import { FileEntry } from '../models/file-entry.model';
 
@@ -15,8 +15,10 @@ export class FileStorageComponent implements OnInit {
   storage;
   storageRef;
   image;
+  showDetail: boolean = false;
+  selectedFile: FileEntry = null;
 
-  constructor(@Inject(FirebaseApp) firebase: any, af: AngularFire) {
+  constructor(af: AngularFire) {
     this.fileEntries = af.database.list('/fileEntries');
   }
 
@@ -26,6 +28,20 @@ export class FileStorageComponent implements OnInit {
   saveFileEntry(fE: FileEntry) {
     this.fileEntries.push(fE);
     alert("File saved");
+  }
+
+  toggleDetail() {
+    this.showDetail = !this.showDetail;
+  }
+
+  selectFile(fE: FileEntry) {
+    this.selectedFile = fE;
+    this.toggleDetail();
+  }
+
+  unselectFile() {
+    this.selectedFile = null;
+    this.toggleDetail();
   }
 
 }

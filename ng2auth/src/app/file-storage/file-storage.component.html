@@ -1,7 +1,11 @@
-<ul>
-  <div *ngFor="let fileEntry of fileEntries | async">
-    <app-storage-list-item [fileEntry]="fileEntry"></app-storage-list-item>
-  </div>
-</ul>
-
-<app-file-upload (newFileEntryEvent)="saveFileEntry($event)"></app-file-upload>
+<div *ngIf="!showDetail">
+  <ul>
+    <div *ngFor="let fileEntry of fileEntries | async">
+      <app-storage-list-item [fileEntry]="fileEntry" (click)="selectFile(fileEntry)"></app-storage-list-item>
+    </div>
+  </ul>
+  <app-file-upload (newFileEntryEvent)="saveFileEntry($event)"></app-file-upload>
+</div>
+<div *ngIf="showDetail">
+  <app-file-detail [fileEntry]="selectedFile" (unselectFileEvent)="unselectFile($event)"></app-file-detail>
+</div>
