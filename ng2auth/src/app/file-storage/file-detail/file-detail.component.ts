@@ -17,9 +17,9 @@ export class FileDetailComponent implements OnInit {
   private storage;
   private firebase;
   private errorMsg: string;
-  private imgUrl: SafeUrl = null;
+  private safeUrl: SafeUrl;
   private sanitizer: DomSanitizer;
-  private url: string;
+  private fileUrl: string;
   private ref: ChangeDetectorRef;
 
   constructor(@Inject(FirebaseApp) firebase: any, sanitizer: DomSanitizer, ref: ChangeDetectorRef,) {
@@ -29,13 +29,22 @@ export class FileDetailComponent implements OnInit {
     this.ref = ref;
   }
 
+  /*** Acceptable filetypes to embed ***
+    * jpg/jpeg
+    * mp4
+    * pdf
+    * webm
+    * ogg
+    * png
+  **************************************/
+
+
   ngOnInit() {
     let thisRef = this;
     this.storage.ref(this.fileEntry.filePath).getDownloadURL().then(function(url) {
-      console.log("In the then block");
-      thisRef.url = url;
+      thisRef.fileUrl = url;
+      thisRef.safeUrl = thisRef.sanitizeUrl(url);
       thisRef.ref.detectChanges();
-      console.log(url);
     }).catch(function(error) {
       console.log(error);
       thisRef.errorMsg = "Error downloading file";
