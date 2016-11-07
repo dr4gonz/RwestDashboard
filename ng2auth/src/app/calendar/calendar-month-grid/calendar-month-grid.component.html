@@ -1,3 +1,45 @@
-<p>
-  calendar-month-grid works!
-</p>
+<div class="row text-center">
+  <div class="row text-center">
+    <h3>{{displayMonth()}}</h3>
+  </div>
+  <div class="btn-group">
+    <div class="btn btn-primary" (click)="prevMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
+    <div class="btn btn-primary" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-7 col-sm-offset-2">
+    <div class="row">
+      <div class="col-sm-1 calendar-grid-day-title">
+        Sun
+      </div>
+      <div class="col-sm-1 calendar-grid-day-title">
+        Mon
+      </div>
+      <div class="col-sm-1 calendar-grid-day-title">
+        Tue
+      </div>
+      <div class="col-sm-1 calendar-grid-day-title">
+        Wed
+      </div>
+      <div class="col-sm-1 calendar-grid-day-title">
+        Thu
+      </div>
+      <div class="col-sm-1 calendar-grid-day-title">
+        Fri
+      </div>
+      <div class="col-sm-1 calendar-grid-day-title">
+        Sat
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-7 col-sm-offset-2 calendar-grid">
+    <div class="row">
+      <div class="col-sm-1 calendar-grid-day" *ngFor="let day of monthArray">
+        <app-calendar-day-block [day]="day"></app-calendar-day-block>
+      </div>
+    </div>
+  </div>
+</div>

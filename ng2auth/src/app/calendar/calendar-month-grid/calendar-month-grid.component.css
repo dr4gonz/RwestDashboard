@@ -1,0 +1,12 @@
+.calendar-grid {
+  border: 1px solid black;
+}
+.calendar-grid-day {
+  border: 1px solid red;
+  width: 14.285714%;
+  height: 50px;
+}
+.calendar-grid-day-title {
+  width: 14.285714%;
+  height: 20px;
+}
