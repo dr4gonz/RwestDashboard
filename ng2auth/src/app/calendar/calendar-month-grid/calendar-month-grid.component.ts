@@ -20,49 +20,42 @@ export class CalendarMonthGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.numberDaysInMonth();
+    this.constructMonthArray();
   }
 
   prevMonth() {
-    this.currentMonth -= 1;
-    this.monthArray = [];
-    this.numberDaysInMonth();
+    this.currentMonth--;
+    this.constructMonthArray();
   }
   nextMonth() {
-    this.currentMonth += 1;
-    this.monthArray = [];
-    this.numberDaysInMonth();
+    this.currentMonth++;
+    this.constructMonthArray();
   }
 
   displayMonth() {
     return moment().month(this.currentMonth).format('MMMM YYYY');
   }
 
-  numberDaysInMonth() {
+  constructMonthArray() {
+    this.monthArray = [];
     let days = moment().month(this.currentMonth).daysInMonth();
-    // console.log('total days: ' + days);
     let firstDay = moment().month(this.currentMonth).startOf('month').format('ddd');
-    // console.log('first day: ' + firstDay);
     let lastDay = moment().month(this.currentMonth).endOf('month').format('ddd');
-    // console.log('last day: ' + lastDay);
     this.monthPrevOffset(firstDay);
     this.monthFollOffset(lastDay);
-    // console.log('prevoffset: ' + this.prevOffset);
-    // console.log('folloffset: ' + this.follOffset);
     let daysInPreviousMonth = moment().month(this.currentMonth - 1).daysInMonth();
-    //add days in monthArray for current month
-    for(let i = 0; i < days; i++) {
-      this.monthArray.push(i+1);
+    for(let i = 0 - this.prevOffset; i < days + this.follOffset; i++) {
+      this.monthArray.push(moment().month(this.currentMonth).date(i+1).dayOfYear());
     }
     //add days at beginning of monthArray
-    for(let j = 0; j < this.prevOffset; j++) {
-      this.monthArray.unshift(daysInPreviousMonth);
-      daysInPreviousMonth -= 1;
-    }
-    //add days at end of monthArray
-    for(let k = 0; k < this.follOffset; k++) {
-      this.monthArray.push(k+1);
-    }
+    // for(let j = 0; j < this.prevOffset; j++) {
+    //   this.monthArray.unshift(daysInPreviousMonth);
+    //   daysInPreviousMonth -= 1;
+    // }
+    // //add days at end of monthArray
+    // for(let k = 0; k < this.follOffset; k++) {
+    //   this.monthArray.push(k+1);
+    // }
   }
 
   monthPrevOffset(dow: string) {
@@ -125,10 +118,9 @@ export class CalendarMonthGridComponent implements OnInit {
 
   showDay(day: number) {
     console.log(day + ' clicked');
-    console.log(this.getDOY(day));
   }
   getDOY(day: number) {
-    return moment().month(this.currentMonth).date(day).dayOfYear();
+    return moment().date(day).dayOfYear();
   }
 
 }

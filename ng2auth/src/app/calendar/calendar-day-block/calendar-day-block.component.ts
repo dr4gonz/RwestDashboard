@@ -12,13 +12,15 @@ import * as moment from 'moment';
 })
 export class CalendarDayBlockComponent implements OnInit {
   day;
+  dayOfMonth;
   month;
   currentDay;
   events: FirebaseListObservable<any[]>;
   constructor() { }
 
   ngOnInit() {
-    this.currentDay = this.getDOY(this.day);
+    this.currentDay = this.day;
+    this.dayOfMonth = moment().dayOfYear(this.day).format('D');
   }
 
   getDOY(day: number) {
