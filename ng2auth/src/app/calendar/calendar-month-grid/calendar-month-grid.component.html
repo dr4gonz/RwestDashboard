@@ -7,8 +7,9 @@
     <div class="btn btn-primary" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
   </div>
 </div>
+<br>
 <div class="row">
-  <div class="col-sm-7 col-sm-offset-2">
+  <div class="col-sm-8 col-sm-offset-2">
     <div class="row">
       <div class="col-sm-1 calendar-grid-day-title">
         Sun
@@ -35,7 +36,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-7 col-sm-offset-2 calendar-grid">
+  <div class="col-sm-8 col-sm-offset-2 calendar-grid">
     <div class="row">
       <div class="col-sm-1 calendar-grid-day" *ngFor="let day of monthArray" (click)="showDay(day)">
         <app-calendar-day-block [day]="day" [events]="events" [month]="currentMonth"></app-calendar-day-block>

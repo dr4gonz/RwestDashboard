@@ -1,13 +1,14 @@
 .calendar-grid {
-  border: 1px solid black;
 }
 .calendar-grid-day {
-  border: 1px solid red;
+  border: 1px solid #555;
+  background-color: #EEEEEE;
   width: 14.285714%;
   height: 80px;
 }
 .calendar-grid-day:hover {
   cursor: pointer;
+  background-color: #FAFAFA;
 }
 .calendar-grid-day-title {
   width: 14.285714%;
