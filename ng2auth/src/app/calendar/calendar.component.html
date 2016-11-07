@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="btn-group">
-        <div class="btn btn-primary" (click)="view = 'month'">Month</div>
+        <div class="btn btn-primary" (click)="view = 'grid'">Month(Grid)</div>
+        <div class="btn btn-primary" (click)="view = 'month'">Month(Agenda)</div>
         <div class="btn btn-primary" (click)="view = 'week'">Week</div>
         <div class="btn btn-primary" (click)="view = 'day'">Day</div>
       </div>
@@ -13,6 +14,9 @@
   </div>
 
   <div [ngSwitch]="view">
+    <app-calendar-month-grid [events]="events" *ngSwitchCase="'grid'">
+      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    </app-calendar-month-grid>
     <app-calendar-month-view [events]="events" *ngSwitchCase="'month'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-month-view>
