@@ -17,6 +17,7 @@ import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-li
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarListItemComponent } from './calendar/calendar-list-item/calendar-list-item.component';
 import { CalendarDayBlockComponent } from './calendar/calendar-day-block/calendar-day-block.component';
+import { CalendarDayBlockDetailComponent } from './calendar/calendar-day-block-detail/calendar-day-block-detail.component';
 import { CalendarDayViewComponent } from './calendar/calendar-day-view/calendar-day-view.component';
 import { CalendarMonthGridComponent } from './calendar/calendar-month-grid/calendar-month-grid.component';
 import { CalendarMonthViewComponent } from './calendar/calendar-month-view/calendar-month-view.component';
@@ -103,7 +104,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ToTimePipe,
     WeekPipe,
     CalendarMonthGridComponent,
-    CalendarDayBlockComponent
+    CalendarDayBlockComponent,
+    CalendarDayBlockDetailComponent
   ],
   providers: [
     AuthService,

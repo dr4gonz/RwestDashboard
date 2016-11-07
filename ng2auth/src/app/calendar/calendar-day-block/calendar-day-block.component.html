@@ -1,1 +1,9 @@
-{{day}}
+<div class="text-right">{{day}}</div>
+<div class="text-center" *ngIf="events">
+  <ul>
+    <li *ngFor="let event of events | dayPipe: currentDay | async">
+      <app-calendar-day-block-detail [calendarEvent]="event"></app-calendar-day-block-detail>
+    </li>
+  </ul>
+
+</div>

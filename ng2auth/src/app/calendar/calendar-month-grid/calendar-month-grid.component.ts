@@ -16,6 +16,7 @@ export class CalendarMonthGridComponent implements OnInit {
   monthArray: any[] = [];
   prevOffset: number = 0;
   follOffset: number = 0;
+  currentDay = moment().dayOfYear();
   constructor() { }
 
   ngOnInit() {
@@ -24,13 +25,11 @@ export class CalendarMonthGridComponent implements OnInit {
 
   prevMonth() {
     this.currentMonth -= 1;
-    console.log(this.currentMonth);
     this.monthArray = [];
     this.numberDaysInMonth();
   }
   nextMonth() {
     this.currentMonth += 1;
-    console.log(this.currentMonth);
     this.monthArray = [];
     this.numberDaysInMonth();
   }
@@ -41,15 +40,15 @@ export class CalendarMonthGridComponent implements OnInit {
 
   numberDaysInMonth() {
     let days = moment().month(this.currentMonth).daysInMonth();
-    console.log('total days: ' + days);
+    // console.log('total days: ' + days);
     let firstDay = moment().month(this.currentMonth).startOf('month').format('ddd');
-    console.log('first day: ' + firstDay);
+    // console.log('first day: ' + firstDay);
     let lastDay = moment().month(this.currentMonth).endOf('month').format('ddd');
-    console.log('last day: ' + lastDay);
+    // console.log('last day: ' + lastDay);
     this.monthPrevOffset(firstDay);
     this.monthFollOffset(lastDay);
-    console.log('prevoffset: ' + this.prevOffset);
-    console.log('folloffset: ' + this.follOffset);
+    // console.log('prevoffset: ' + this.prevOffset);
+    // console.log('folloffset: ' + this.follOffset);
     let daysInPreviousMonth = moment().month(this.currentMonth - 1).daysInMonth();
     //add days in monthArray for current month
     for(let i = 0; i < days; i++) {
@@ -94,6 +93,7 @@ export class CalendarMonthGridComponent implements OnInit {
         break;
     }
   }
+
   monthFollOffset(dow: string) {
     switch (dow) {
       case "Sun":
@@ -121,6 +121,14 @@ export class CalendarMonthGridComponent implements OnInit {
         this.follOffset = 6;
         break;
     }
+  }
+
+  showDay(day: number) {
+    console.log(day + ' clicked');
+    console.log(this.getDOY(day));
+  }
+  getDOY(day: number) {
+    return moment().month(this.currentMonth).date(day).dayOfYear();
   }
 
 }

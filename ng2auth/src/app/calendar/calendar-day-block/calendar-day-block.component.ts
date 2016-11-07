@@ -6,15 +6,23 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-day-block',
-  inputs: ['day'],
+  inputs: ['day', 'events', 'month'],
   templateUrl: './calendar-day-block.component.html',
   styleUrls: ['./calendar-day-block.component.css']
 })
 export class CalendarDayBlockComponent implements OnInit {
   day;
+  month;
+  currentDay;
+  events: FirebaseListObservable<any[]>;
   constructor() { }
 
   ngOnInit() {
+    this.currentDay = this.getDOY(this.day);
+  }
+
+  getDOY(day: number) {
+    return moment().month(this.month).date(day).dayOfYear();
   }
 
 }
