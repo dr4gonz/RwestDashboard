@@ -1,3 +1,9 @@
 ul {
   list-style-type: none;
+  margin-left: none;
+  margin-right: none;
+}
+
+.show-upload {
+  margin-bottom: 20px;
 }
