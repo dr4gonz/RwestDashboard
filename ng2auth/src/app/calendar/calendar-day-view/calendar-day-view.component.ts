@@ -15,7 +15,6 @@ export class CalendarDayViewComponent implements OnInit {
   currentDay: number;
   events: FirebaseListObservable<any[]>;
 
-
   constructor(private af: AngularFire) { }
 
   ngOnInit() {
