@@ -2,19 +2,19 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="btn-group">
-        <div class="btn btn-primary" (click)="view = 'grid'">Month(Grid)</div>
-        <div class="btn btn-primary" (click)="view = 'month'">Month(Agenda)</div>
-        <div class="btn btn-primary" (click)="view = 'week'">Week</div>
-        <div class="btn btn-primary" (click)="view = 'day'">Day</div>
+        <div class="btn btn-default btn-xs" (click)="view = 'grid'">Month(Grid)</div>
+        <div class="btn btn-default btn-xs" (click)="view = 'month'">Month(Agenda)</div>
+        <div class="btn btn-default btn-xs" (click)="view = 'week'">Week</div>
+        <div class="btn btn-default btn-xs" (click)="view = 'day'">Day</div>
       </div>
     </div>
     <div class="col-sm-2 col-sm-offset-6">
-      <div class="btn btn-primary btn-sm" (click)="newEventModal.open()">New Event</div>
+      <div class="btn btn-default btn-xs" (click)="newEventModal.open()">New Event</div>
     </div>
   </div>
 
   <div [ngSwitch]="view">
-    <app-calendar-month-grid [events]="events" *ngSwitchCase="'grid'">
+    <app-calendar-month-grid [events]="events" (dayClicked)="switchView($event)" *ngSwitchCase="'grid'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-month-grid>
     <app-calendar-month-view [events]="events" *ngSwitchCase="'month'">
@@ -23,7 +23,7 @@
     <app-calendar-week-view [events]="events" *ngSwitchCase="'week'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-week-view>
-    <app-calendar-day-view [events]="events" *ngSwitchCase="'day'">
+    <app-calendar-day-view [events]="events" [day]="currentDay" *ngSwitchCase="'day'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-day-view>
   </div>

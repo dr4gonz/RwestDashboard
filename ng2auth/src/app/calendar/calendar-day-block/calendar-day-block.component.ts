@@ -26,5 +26,4 @@ export class CalendarDayBlockComponent implements OnInit {
   getDOY(day: number) {
     return moment().month(this.month).date(day).dayOfYear();
   }
-
 }

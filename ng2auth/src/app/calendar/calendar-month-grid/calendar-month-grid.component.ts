@@ -7,6 +7,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-month-grid',
   inputs: ['events'],
+  outputs: ['dayClicked'],
   templateUrl: './calendar-month-grid.component.html',
   styleUrls: ['./calendar-month-grid.component.css']
 })
@@ -17,7 +18,10 @@ export class CalendarMonthGridComponent implements OnInit {
   prevOffset: number = 0;
   follOffset: number = 0;
   currentDay = moment().dayOfYear();
-  constructor() { }
+  private dayClicked: EventEmitter<any>;
+  constructor() {
+    this.dayClicked = new EventEmitter();
+  }
 
   ngOnInit() {
     this.constructMonthArray();
@@ -47,15 +51,6 @@ export class CalendarMonthGridComponent implements OnInit {
     for(let i = 0 - this.prevOffset; i < days + this.follOffset; i++) {
       this.monthArray.push(moment().month(this.currentMonth).date(i+1).dayOfYear());
     }
-    //add days at beginning of monthArray
-    // for(let j = 0; j < this.prevOffset; j++) {
-    //   this.monthArray.unshift(daysInPreviousMonth);
-    //   daysInPreviousMonth -= 1;
-    // }
-    // //add days at end of monthArray
-    // for(let k = 0; k < this.follOffset; k++) {
-    //   this.monthArray.push(k+1);
-    // }
   }
 
   monthPrevOffset(dow: string) {
@@ -117,7 +112,7 @@ export class CalendarMonthGridComponent implements OnInit {
   }
 
   showDay(day: number) {
-    console.log(day + ' clicked');
+    this.dayClicked.emit({day: day});
   }
   getDOY(day: number) {
     return moment().date(day).dayOfYear();
