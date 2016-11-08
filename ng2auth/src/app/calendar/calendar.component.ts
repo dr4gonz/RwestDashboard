@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  HostBinding
-} from '@angular/core';
+import { Component, OnInit, HostBinding, EventEmitter } from '@angular/core';
 import {default as routerAnimations} from '../route_animations';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
@@ -41,6 +37,7 @@ const colors: any = {
 @Component({
   selector: 'app-calendar',
   inputs: ['removeEvent'],
+  outputs: ['currentDay'],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css', '../slider.css'],
   animations: [routerAnimations('routeAnimations')]
@@ -53,7 +50,8 @@ export class CalendarComponent implements OnInit {
 
   selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
   events: FirebaseListObservable<CalEvent[]>;
-  view: string = 'month';
+  view: string = 'grid';
+  currentDay: number = moment().dayOfYear();
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
 
@@ -100,5 +98,11 @@ export class CalendarComponent implements OnInit {
         break;
     }
     this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null, user);
+    window.location.reload();
+  }
+
+  switchView($event) {
+    this.currentDay = $event.day;
+    this.view = 'day';
   }
 }

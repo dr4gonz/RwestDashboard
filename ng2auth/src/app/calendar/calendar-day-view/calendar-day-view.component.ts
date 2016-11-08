@@ -6,17 +6,21 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-day-view',
-  inputs: ['events'],
+  inputs: ['events', 'day'],
   templateUrl: './calendar-day-view.component.html',
   styleUrls: ['./calendar-day-view.component.css']
 })
 export class CalendarDayViewComponent implements OnInit {
-  currentDay = moment().dayOfYear();
+  day;
+  currentDay: number;
   events: FirebaseListObservable<any[]>;
+
 
   constructor(private af: AngularFire) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.currentDay = this.day;
+  }
 
   prevDay() {
     this.currentDay -= 1;
