@@ -17,13 +17,13 @@
     <app-calendar-month-grid [events]="events" (dayClicked)="switchView($event)" *ngSwitchCase="'grid'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-month-grid>
-    <app-calendar-month-view [events]="events" *ngSwitchCase="'month'">
+    <app-calendar-month-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" *ngSwitchCase="'month'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-month-view>
-    <app-calendar-week-view [events]="events" *ngSwitchCase="'week'">
+    <app-calendar-week-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" *ngSwitchCase="'week'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-week-view>
-    <app-calendar-day-view [events]="events" [day]="currentDay" *ngSwitchCase="'day'">
+    <app-calendar-day-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" [day]="currentDay" *ngSwitchCase="'day'">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </app-calendar-day-view>
   </div>
@@ -34,14 +34,14 @@
         <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
     </modal-header>
     <modal-content>
-      <form>
+      <form id="newEventForm">
         <div class="form-group col-xs-12">
           <label for="newTitle">Title</label>
-          <input class="form-control" type="text" name="newTitle" id="newTitle" placeholder="Title">
+          <input class="form-control" type="text" name="newTitle" id="newTitle" value="" placeholder="Title" required>
         </div>
         <div class="form-group col-xs-12">
           <label for="newStartDate">Start Date</label>
-          <input class="form-control" type="date" name="newStartDate" id="newStartDate">
+          <input class="form-control" type="date" name="newStartDate" id="newStartDate" required>
         </div>
         <div class="form-group col-xs-12">
           <label for="newStartTime" *ngIf="!allDay">Start Time</label>
@@ -49,7 +49,7 @@
         </div>
         <div class="form-group col-xs-12">
           <label for="newEndDate">End Date</label>
-          <input class="form-control" type="date" name="newEndDate" id="newEndDate">
+          <input class="form-control" type="date" name="newEndDate" id="newEndDate" required>
         </div>
         <div class="form-group col-xs-12">
           <label for="newEndTime" *ngIf="!allDay">End Time</label>
@@ -65,7 +65,38 @@
             <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
           </select>
         </div>
-          <button class="btn btn-success center-block" (click)="addNewEvent(); newEventModal.close()">
+          <button class="btn btn-success center-block" (click)="addNewEvent(); newEventModal.close(); formReset()">
+            Submit
+          </button>
+      </form>
+    </modal-content>
+  </modal>
+
+  <modal #editEventModal modalClass="modal-md">
+    <modal-header class="text-center">
+        <h4 *ngIf="!authService.errorMessage" class="text-center">Edit Event</h4>
+        <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
+    </modal-header>
+    <modal-content>
+      <form>
+        <div *ngIf="editObject" class="form-group col-xs-12">
+          <label for="newTitle">Title</label>
+          <input class="form-control" type="text" name="eventTitle" id="eventTitle"  value={{editObject.title}} required>
+        </div>
+        <div *ngIf="editObject" class="form-group col-xs-12">
+          <label for="newStartDate">Start Date</label>
+          <input class="form-control" type="date" name="eventStart" id="eventStart" value={{editObject.start}} required>
+        </div>
+        <div *ngIf="editObject" class="form-group col-xs-12">
+          <label for="newEndDate">End Date</label>
+          <input class="form-control" type="date" name="eventEnd" id="eventEnd" value={{editObject.end}} required>
+        </div>
+        <div *ngIf="editObject" class="form-group col-xs-12">
+          <select class="form-control" id="eventColor"  name="eventColor">
+            <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
+          </select>
+        </div>
+          <button class="btn btn-success center-block" (click)="submitEditedEvent(); editEventModal.close()">
             Submit
           </button>
       </form>

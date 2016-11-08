@@ -5,7 +5,7 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 @Component({
   selector: 'app-calendar-list-item',
   inputs: ['calendarEvent'],
-  outputs: ['removeEvent'],
+  outputs: ['removeEvent', 'editEvent'],
   templateUrl: './calendar-list-item.component.html',
   styleUrls: ['./calendar-list-item.component.css']
 })
@@ -15,12 +15,16 @@ export class CalendarListItemComponent implements OnInit {
   backgroundStyle: SafeStyle = null;
   showDetails: boolean = false;
   private removeEvent: EventEmitter<any>;
+  private editEvent: EventEmitter<any>;
 
   constructor(private sanitizer: DomSanitizer) {
     this.removeEvent = new EventEmitter();
+    this.editEvent = new EventEmitter();
   }
+
   ngOnInit() {
   }
+
   getPrimaryColor(ce: CalEvent) {
     return this.sanitizer.bypassSecurityTrustStyle(ce.color.primary);
   }
@@ -35,5 +39,8 @@ export class CalendarListItemComponent implements OnInit {
   }
   hideDetails() {
     this.showDetails = false;
+  }
+  editEventClick() {
+    this.editEvent.emit();
   }
 }

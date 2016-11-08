@@ -7,14 +7,18 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-week-view',
   inputs: ['events'],
+  outputs: ['eventToEdit'],
   templateUrl: './calendar-week-view.component.html',
   styleUrls: ['./calendar-week-view.component.css']
 })
 export class CalendarWeekViewComponent implements OnInit {
   currentWeek = moment().week();
   events: FirebaseListObservable<any[]>;
+  private eventToEdit: EventEmitter<any>;
 
-  constructor(private af: AngularFire) { }
+  constructor(private af: AngularFire) {
+    this.eventToEdit = new EventEmitter();
+  }
 
   ngOnInit() { }
 
@@ -29,6 +33,9 @@ export class CalendarWeekViewComponent implements OnInit {
   }
   removeEvent(ce: CalEvent){
     this.events.remove(ce.$key);
+  }
+  editEvent(ce: CalEvent) {
+    this.eventToEdit.emit(ce);
   }
 
 }

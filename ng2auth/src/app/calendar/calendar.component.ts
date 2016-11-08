@@ -1,10 +1,10 @@
-import { Component, OnInit, HostBinding, EventEmitter } from '@angular/core';
+import { Component, Inject, OnInit, HostBinding, EventEmitter } from '@angular/core';
 import {default as routerAnimations} from '../route_animations';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
 import { CalendarEventService } from '../calendar-event.service';
 import { CalEvent } from '../models/calevent.model';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
 import * as moment from 'moment';
 
 const colors: any = {
@@ -36,7 +36,6 @@ const colors: any = {
 
 @Component({
   selector: 'app-calendar',
-  inputs: ['removeEvent'],
   outputs: ['currentDay'],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css', '../slider.css'],
@@ -50,11 +49,14 @@ export class CalendarComponent implements OnInit {
 
   selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
   events: FirebaseListObservable<CalEvent[]>;
+  firebase: any;
   view: string = 'grid';
   currentDay: number = moment().dayOfYear();
   allDay: boolean = true;
-
-  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
+  editObject: CalEvent = null;
+  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any) {
+    this.firebase = firebase.database();
+  }
 
   ngOnInit() {
     this.events = this.af.database.list('/events', {
@@ -72,17 +74,16 @@ export class CalendarComponent implements OnInit {
     let newStartUnix: any;
     let newEndUnix: any;
     let allDayBool: boolean = true;
+
     if(!this.allDay){
       let newStartTime: string = (<HTMLInputElement>document.getElementById('newStartTime')).value;
       let newEndTime: string = (<HTMLInputElement>document.getElementById('newEndTime')).value;
       allDayBool = false;
-      newStartUnix = moment(newStartDate+"T"+newStartTime).unix() * 1000;
-      newEndUnix = moment(newEndDate+"T"+newEndTime).unix() * 1000;
-    } else {
-      newStartUnix = moment(newStartDate).unix() * 1000;
-      newEndUnix = moment(newEndDate).unix() * 1000;
+      newStartDate = newStartDate + 'T' + newStartTime;
+      newEndDate = newEndDate + 'T' + newEndTime;
+      console.log(newStartDate);
+      console.log(newEndDate);
     }
-
     let user = this.authService.getUserEmail();
     let pickedColor: any;
     switch (inputColor) {
@@ -108,9 +109,14 @@ export class CalendarComponent implements OnInit {
         pickedColor = colors.blue;
         break;
     }
-    this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, allDayBool, null, user);
+    this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, null, allDayBool, null, user);
   }
-
+  formReset() {
+    (<HTMLInputElement>document.getElementById('newTitle')).value = null;
+    (<HTMLInputElement>document.getElementById('newStartDate')).value = null;
+    (<HTMLInputElement>document.getElementById('newEndDate')).value = null;
+    (<HTMLInputElement>document.getElementById('newColor')).value = null;
+  }
   switchView($event) {
     this.currentDay = $event.day;
     this.view = 'day';
@@ -120,5 +126,40 @@ export class CalendarComponent implements OnInit {
   }
   turnOnAllDay() {
     this.allDay = true;
+  }
+  editEvent($event) {
+    this.editObject = $event;
+  }
+  submitEditedEvent() {
+    let event = this.firebase.ref('events/' + this.editObject.$key);
+    let editedTitle = (<HTMLInputElement>document.getElementById('eventTitle')).value;
+    let editedStart = (<HTMLInputElement>document.getElementById('eventStart')).value;
+    let editedEnd = (<HTMLInputElement>document.getElementById('eventEnd')).value;
+    let inputColor = (<HTMLInputElement>document.getElementById('eventColor')).value;
+    let editedColor: any;
+    switch (inputColor) {
+      case "Red":
+        editedColor = colors.red;
+        break;
+      case "Orange":
+        editedColor = colors.orange;
+        break;
+      case "Blue":
+        editedColor = colors.blue;
+        break;
+      case "Yellow":
+        editedColor = colors.yellow;
+        break;
+      case "Purple":
+        editedColor = colors.purple;
+        break;
+      case "Green":
+        editedColor = colors.green;
+        break;
+      default:
+        editedColor = colors.blue;
+        break;
+    }
+    event.update({"title": editedTitle, "start": editedStart, "end": editedEnd, "color": editedColor});
   }
 }

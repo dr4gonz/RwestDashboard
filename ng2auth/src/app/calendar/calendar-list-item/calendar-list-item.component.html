@@ -9,10 +9,11 @@
     <div class="col-sm-2 col-sm-offset-1">
       <h6>End: {{calendarEvent.end | toDate }}</h6>
     </div>
-    <div class="col-sm-1 col-sm-offset-3">
-      <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-fw fa-lg fa-caret-down"></i>
-      <i (click)="hideDetails()" *ngIf="showDetails" class="btn fa fa-fw fa-lg fa-caret-up"></i>
-      <i (click)="destroyEvent()" [style.color]="getPrimaryColor(calendarEvent)" class="btn fa fa-fw fa-lg fa-times"></i>
+    <div class="col-sm-2 col-sm-offset-2">
+      <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-fw fa-1 fa-caret-down" aria-hidden="true"></i>
+      <i (click)="hideDetails()" *ngIf="showDetails" class="btn fa fa-fw fa-1 fa-caret-up" aria-hidden="true"></i>
+      <i (click)="editEventClick()" class="btn fa fa-fw fa-1 fa-pencil" aria-hidden="true"></i>
+      <i (click)="destroyEvent()" class="btn fa fa-fw fa-1 fa-times" aria-hidden="true"></i>
     </div>
   </div>
   <div class="row" *ngIf="showDetails">

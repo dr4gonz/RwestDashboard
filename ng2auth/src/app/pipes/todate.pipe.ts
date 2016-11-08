@@ -6,7 +6,7 @@ import * as moment from 'moment';
 })
 export class ToDatePipe implements PipeTransform {
 
-  transform(value: number, args?: any): any {
+  transform(value: string, args?: any): any {
     if(value) {
       return moment(value).format('MMM Do YYYY');
     }

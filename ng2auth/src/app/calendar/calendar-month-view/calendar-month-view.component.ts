@@ -7,18 +7,21 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-month-view',
   inputs: ['events'],
+  outputs: ['eventToEdit'],
   templateUrl: './calendar-month-view.component.html',
   styleUrls: ['./calendar-month-view.component.css']
 })
 export class CalendarMonthViewComponent implements OnInit {
   events: FirebaseListObservable<any[]>;
   currentMonth = moment().get('month');
+  private eventToEdit: EventEmitter<any>;
 
   constructor(private af: AngularFire) {
+    this.eventToEdit = new EventEmitter();
   }
 
   ngOnInit() { }
-  
+
   prevMonth() {
     this.currentMonth -= 1;
   }
@@ -30,5 +33,8 @@ export class CalendarMonthViewComponent implements OnInit {
   }
   removeEvent(ce: CalEvent){
     this.events.remove(ce.$key);
+  }
+  editEvent(ce: CalEvent) {
+    this.eventToEdit.emit(ce);
   }
 }

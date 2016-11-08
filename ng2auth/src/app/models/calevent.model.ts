@@ -1,7 +1,7 @@
 export class CalEvent {
   $key: string;
-  start: number;
-  end?: number;
+  start: string;
+  end?: string;
   title: string;
   color: any;
   actions?: any[];
@@ -9,7 +9,7 @@ export class CalEvent {
   cssClass?: string;
   createdBy: string;
 
-  constructor(title: string, startDate: number, endDate: number, color: any, actions: any[], allDay: boolean, cssClass: string, createdBy: string) {
+  constructor(title: string, startDate: string, endDate: string, color: any, actions: any[], allDay: boolean, cssClass: string, createdBy: string) {
     this.start = startDate;
     this.end = endDate;
     this.title = title;
