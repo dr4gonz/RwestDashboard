@@ -28,7 +28,7 @@
     </app-calendar-day-view>
   </div>
 
-  <modal #newEventModal>
+  <modal #newEventModal modalClass="modal-md">
     <modal-header class="text-center">
         <h4 *ngIf="!authService.errorMessage" class="text-center">Event</h4>
         <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
@@ -65,7 +65,7 @@
             <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
           </select>
         </div>
-          <button class="btn btn-success center-block" (click)="addNewEvent()">
+          <button class="btn btn-success center-block" (click)="addNewEvent(); newEventModal.close()">
             Submit
           </button>
       </form>
