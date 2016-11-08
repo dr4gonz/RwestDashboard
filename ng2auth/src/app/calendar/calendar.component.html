@@ -29,37 +29,47 @@
   </div>
 
   <modal #newEventModal>
-      <modal-header class="text-center">
-          <h4 *ngIf="!authService.errorMessage" class="text-center">Enter your credentials:</h4>
-          <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
-      </modal-header>
-      <modal-content>
-        <form>
-          <div class="form-group col-xs-12">
-            <input class="form-control" type="text" name="newTitle" id="newTitle" placeholder="Title">
-          </div>
-          <div class="form-group col-xs-12">
-            <input class="form-control" type="date" name="newStartDate" id="newStartDate">
-          </div>
-          <div class="form-group col-xs-12">
-            <input class="form-control" type="time" name="newStartTime" id="newStartTime">
-          </div>
-          <div class="form-group col-xs-12">
-            <input class="form-control" type="date" name="newEndDate" id="newEndDate">
-          </div>
-          <div class="form-group col-xs-12">
-            <input class="form-control" type="time" name="newEndTime" id="newEndTime">
-          </div>
-          <div class="form-group col-xs-12">
-            <select class="form-control" id="newColor"  name="newColor">
-              <option *ngFor="let c of selectColors" [value]="c">{{c}}</option>
-            </select>
-          </div>
-            <button class="btn btn-success center-block" (click)="addNewEvent()">
-              Submit
-            </button>
-        </form>
-      </modal-content>
+    <modal-header class="text-center">
+        <h4 *ngIf="!authService.errorMessage" class="text-center">Event</h4>
+        <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
+    </modal-header>
+    <modal-content>
+      <form>
+        <div class="form-group col-xs-12">
+          <label for="newTitle">Title</label>
+          <input class="form-control" type="text" name="newTitle" id="newTitle" placeholder="Title">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="newStartDate">Start Date</label>
+          <input class="form-control" type="date" name="newStartDate" id="newStartDate">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="newStartTime" *ngIf="!allDay">Start Time</label>
+          <input class="form-control" *ngIf="!allDay" type="time" name="newStartTime" id="newStartTime">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="newEndDate">End Date</label>
+          <input class="form-control" type="date" name="newEndDate" id="newEndDate">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="newEndTime" *ngIf="!allDay">End Time</label>
+          <input class="form-control"  *ngIf="!allDay" type="time" name="newEndTime" id="newEndTime">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="allDayEvent">All Day?</label>
+          <input class="form-control" *ngIf="allDay"type="checkbox" checked (click)="turnOffAllDay()">
+          <input class="form-control" *ngIf="!allDay" type="checkbox" (click)="turnOnAllDay()">
+        </div>
+        <div class="form-group col-xs-12">
+          <select class="form-control" id="newColor"  name="newColor">
+            <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
+          </select>
+        </div>
+          <button class="btn btn-success center-block" (click)="addNewEvent()">
+            Submit
+          </button>
+      </form>
+    </modal-content>
   </modal>
 
 </div>

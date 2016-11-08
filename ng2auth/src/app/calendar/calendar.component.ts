@@ -52,6 +52,7 @@ export class CalendarComponent implements OnInit {
   events: FirebaseListObservable<CalEvent[]>;
   view: string = 'grid';
   currentDay: number = moment().dayOfYear();
+  allDay: boolean = true;
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
 
@@ -66,12 +67,22 @@ export class CalendarComponent implements OnInit {
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
-    let newStartTime: string = (<HTMLInputElement>document.getElementById('newStartTime')).value;
     let newEndDate: string = (<HTMLInputElement>document.getElementById('newEndDate')).value;
-    let newEndTime: string = (<HTMLInputElement>document.getElementById('newEndTime')).value;
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
-    let newStartUnix = moment(newStartDate+"T"+newStartTime).unix() * 1000;
-    let newEndUnix = moment(newEndDate+"T"+newEndTime).unix() * 1000;
+    let newStartUnix: any;
+    let newEndUnix: any;
+    let allDayBool: boolean = true;
+    if(!this.allDay){
+      let newStartTime: string = (<HTMLInputElement>document.getElementById('newStartTime')).value;
+      let newEndTime: string = (<HTMLInputElement>document.getElementById('newEndTime')).value;
+      allDayBool = false;
+      newStartUnix = moment(newStartDate+"T"+newStartTime).unix() * 1000;
+      newEndUnix = moment(newEndDate+"T"+newEndTime).unix() * 1000;
+    } else {
+      newStartUnix = moment(newStartDate).unix() * 1000;
+      newEndUnix = moment(newEndDate).unix() * 1000;
+    }
+
     let user = this.authService.getUserEmail();
     let pickedColor: any;
     switch (inputColor) {
@@ -97,12 +108,18 @@ export class CalendarComponent implements OnInit {
         pickedColor = colors.blue;
         break;
     }
-    this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null, user);
+    this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, allDayBool, null, user);
     window.location.reload();
   }
 
   switchView($event) {
     this.currentDay = $event.day;
     this.view = 'day';
+  }
+  turnOffAllDay() {
+    this.allDay = false;
+  }
+  turnOnAllDay() {
+    this.allDay = true;
   }
 }
