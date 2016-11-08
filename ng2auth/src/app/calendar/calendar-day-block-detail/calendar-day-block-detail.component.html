@@ -1,1 +1,4 @@
-<i class="fa fa-circle fa-1" [style.color]="getPrimaryColor(calendarEvent)"></i>
+<!-- <i class="fa fa-circle fa-1" [style.color]="getPrimaryColor(calendarEvent)"></i> -->
+<div class="calendar-day-block-event" [style.background-color]="getSecondaryColor(calendarEvent)">
+  {{calendarEvent.title}}
+</div>

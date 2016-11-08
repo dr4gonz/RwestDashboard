@@ -19,8 +19,9 @@ export class DayPipe implements PipeTransform {
 
   checkDay(event) {
     let dayToFilter: any = this;
-    let day = moment(event.start).dayOfYear();
-    if (day == parseInt(dayToFilter))
+    let startDay = moment(event.start).dayOfYear();
+    let endDay = moment(event.end).dayOfYear();
+    if (moment(dayToFilter).isBetween(startDay, endDay, null, '[]'))
     {
       return true;
     }

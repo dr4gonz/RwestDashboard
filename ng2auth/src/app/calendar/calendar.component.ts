@@ -53,7 +53,7 @@ export class CalendarComponent implements OnInit {
 
   selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
   events: FirebaseListObservable<CalEvent[]>;
-  view: string = 'month';
+  view: string = 'grid';
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService) { }
 
