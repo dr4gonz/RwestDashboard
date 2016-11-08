@@ -100,5 +100,6 @@ export class CalendarComponent implements OnInit {
         break;
     }
     this.calendarEventService.addEvent(newEventTitle, newStartUnix, newEndUnix, pickedColor, null, false, null, user);
+    window.location.reload();
   }
 }
