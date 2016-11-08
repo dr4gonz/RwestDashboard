@@ -17,16 +17,6 @@ export class FileDetailComponent implements OnInit {
     this.unselectFileEvent = new EventEmitter();
   }
 
-  /*** Acceptable filetypes to embed ***
-    * jpg/jpeg
-    * mp4
-    * pdf
-    * webm
-    * ogg
-    * png
-  **************************************/
-
-
   ngOnInit() {
   }
 

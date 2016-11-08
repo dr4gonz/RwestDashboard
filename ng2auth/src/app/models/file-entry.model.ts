@@ -3,4 +3,6 @@ export class FileEntry {
   filePath: string;
   fileType: string;
   creationTime: string;
+  title: string;
+  notes: string;
 }

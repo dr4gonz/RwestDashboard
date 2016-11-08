@@ -18,13 +18,13 @@ export class FilePreviewComponent implements OnInit {
   private safeUrl: SafeUrl;
   private sanitizer: DomSanitizer;
   private fileUrl: string;
-  private ref: ChangeDetectorRef;
+  private changeRef: ChangeDetectorRef;
   private containerType: string = "";
 
-  constructor(@Inject(FirebaseApp) firebase: any, sanitizer: DomSanitizer, ref: ChangeDetectorRef,) {
+  constructor(@Inject(FirebaseApp) firebase: any, sanitizer: DomSanitizer, changeRef: ChangeDetectorRef,) {
     this.storage = firebase.storage();
     this.sanitizer = sanitizer;
-    this.ref = ref;
+    this.changeRef = changeRef;
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class FilePreviewComponent implements OnInit {
       thisRef.fileUrl = url;
       thisRef.safeUrl = thisRef.sanitizeUrl(url);
       thisRef.assignContainerType();
-      thisRef.ref.detectChanges();
+      thisRef.changeRef.detectChanges();
     }).catch(function(error) {
       console.log(error);
       thisRef.errorMsg = "Error downloading file";
@@ -48,7 +48,7 @@ export class FilePreviewComponent implements OnInit {
     let types: string[] = this.fileEntry.fileType.split("/");
     let category: string = types[0];
     let type: string = types[1];
-    if (type === 'tif' || type === 'tiff' || type === 'flv' || type === '3gp') {
+    if (type === 'tif' || type === 'tiff' || type === 'flv' || type === '3gp' || type === 'x-flv') {
       this.errorMsg = 'Unable to preview ' + type + ' files.'
       return;
     } else {

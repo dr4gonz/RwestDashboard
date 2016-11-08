@@ -1,2 +1,10 @@
-<input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
-   <img id="preview" src="" alt="Preview">
+<form class="form-inline upload-form">
+  <div class="form-group">
+    <input type="file" (change)="fileSelected($event)" placeholder="Select a file to upload" class="form-control upload-input"/>
+    <input type="text" #title placeholder="Title" class="form-control upload-input"/>
+  </div>
+  <br />
+  <textarea #description placeholder="Description (optional)" rows="8" cols="80" class="form-control"></textarea>
+  <br />
+  <button type="button" (click)="fileUpload()" class="btn btn-large btn-success text-center upload-submit">Submit</button>
+</form>
