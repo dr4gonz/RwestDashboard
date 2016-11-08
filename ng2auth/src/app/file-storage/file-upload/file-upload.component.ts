@@ -13,6 +13,7 @@ export class FileUploadComponent implements OnInit {
   private storageRef;
   private af;
   newFileEntryEvent: EventEmitter<FileEntry>;
+  private fileTarget: any;
 
   constructor(@Inject(FirebaseApp) firebase: any, af: AngularFire) {
     this.storageRef = firebase.storage().ref();
@@ -23,9 +24,18 @@ export class FileUploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  fileChangeEvent(fileInput: any) {
+  fileSelected(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
-      let file = fileInput.target.files[0];
+      this.fileTarget = fileInput.target.files[0];
+      console.log(this.fileTarget);
+    }
+  }
+
+  fileUpload() {
+    let file = this.fileTarget;
+    if (!file) {
+      alert("Please select a file to upload.")
+    } else {
       let newFileRef = this.storageRef.child(file.name);
       let eventRef = this.newFileEntryEvent;
       newFileRef.put(file).then(function() {

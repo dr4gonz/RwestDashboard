@@ -28,6 +28,7 @@ import { CommentDetailComponent } from './comments/comment-detail/comment-detail
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
 import { FileDetailComponent } from './file-storage/file-detail/file-detail.component';
+import { FilePreviewComponent } from './file-storage/file-preview/file-preview.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -88,6 +89,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ContentDetailComponent,
     DayPipe,
     FileDetailComponent,
+    FilePreviewComponent,
     FileUploadComponent,
     FirebaseLoginComponent,
     MonthPipe,

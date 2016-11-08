@@ -1,0 +1,11 @@
+.upload-form {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upload-input, .upload-submit {
+  text-align: center;
+  margin: 15px;
+}

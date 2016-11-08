@@ -1,10 +1,14 @@
-<div *ngIf="!showDetail">
+<div *ngIf="showUpload" class="jumbotron bg-info">
+  <app-file-upload (newFileEntryEvent)="saveFileEntry($event)"></app-file-upload>
+</div>
+<div *ngIf="!showDetail && !showUpload">
+  <h4 *ngIf="statusMessage">{{statusMessage}}</h4>
+  <button (click)="showUploadAction()">Upload File</button>
   <ul>
     <div *ngFor="let fileEntry of fileEntries | async">
       <app-storage-list-item [fileEntry]="fileEntry" (click)="selectFile(fileEntry)"></app-storage-list-item>
     </div>
   </ul>
-  <app-file-upload (newFileEntryEvent)="saveFileEntry($event)"></app-file-upload>
 </div>
 <div *ngIf="showDetail">
   <app-file-detail [fileEntry]="selectedFile" (unselectFileEvent)="unselectFile($event)"></app-file-detail>

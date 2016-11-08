@@ -1,9 +1,3 @@
 <h4 class="text-center"><a (click)="unselectFile()">Back to list</a></h4>
-<div *ngIf="safeUrl">
-  <object [data]="safeUrl" [type]="fileEntry.fileType" width="100%" height="100%">
-    <iframe [src]="safeUrl" width="100%" height="100%" style="border: none;">
-      <p>Error displaying file.</p>
-    </iframe>
-  </object>
-</div>
+<app-file-preview [fileEntry]='fileEntry'></app-file-preview>
 <app-comment-list [parentKey]="fileEntry.$key"></app-comment-list>
