@@ -6,7 +6,7 @@ import * as moment from 'moment';
 })
 export class ToTimePipe implements PipeTransform {
 
-  transform(value: number, args?: any): any {
+  transform(value: string, args?: any): any {
     if(value) {
       return moment(value).format('h:mm a');
     }
