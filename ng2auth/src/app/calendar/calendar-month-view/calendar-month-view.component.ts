@@ -7,7 +7,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-month-view',
   inputs: ['events'],
-  outputs: ['eventToEdit'],
+  outputs: ['eventToEdit','selectedFile'],
   templateUrl: './calendar-month-view.component.html',
   styleUrls: ['./calendar-month-view.component.css']
 })
@@ -15,9 +15,11 @@ export class CalendarMonthViewComponent implements OnInit {
   events: FirebaseListObservable<any[]>;
   currentMonth = moment().get('month');
   private eventToEdit: EventEmitter<any>;
+  private selectedFile: EventEmitter<any>;
 
   constructor(private af: AngularFire) {
     this.eventToEdit = new EventEmitter();
+    this.selectedFile = new EventEmitter();
   }
 
   ngOnInit() { }
@@ -36,5 +38,8 @@ export class CalendarMonthViewComponent implements OnInit {
   }
   editEvent(ce: CalEvent) {
     this.eventToEdit.emit(ce);
+  }
+  fileSelected($event: any) {
+    this.selectedFile.emit($event);
   }
 }

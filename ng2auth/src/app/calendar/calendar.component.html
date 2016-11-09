@@ -18,10 +18,10 @@
       <app-calendar-month-grid [events]="events" (dayClicked)="switchView($event)" *ngSwitchCase="'grid'">
         <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
       </app-calendar-month-grid>
-      <app-calendar-month-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" *ngSwitchCase="'month'">
+      <app-calendar-month-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" (selectedFile)="fileSelected($event)" *ngSwitchCase="'month'">
         <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
       </app-calendar-month-view>
-      <app-calendar-week-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" *ngSwitchCase="'week'">
+      <app-calendar-week-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" (selectedFile)="fileSelected($event)" *ngSwitchCase="'week'">
         <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
       </app-calendar-week-view>
       <app-calendar-day-view [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" (selectedFile)="fileSelected($event)" [day]="currentDay" *ngSwitchCase="'day'">

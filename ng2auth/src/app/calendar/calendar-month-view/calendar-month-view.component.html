@@ -11,7 +11,7 @@
 <div class="col-sm-12">
   <ul>
     <li *ngFor="let event of events | monthPipe: currentMonth:showAllEvents | async">
-      <app-calendar-list-item [calendarEvent]="event" (removeEvent)="removeEvent(event)" (editEvent)="editEvent(event)"></app-calendar-list-item>
+      <app-calendar-list-item [calendarEvent]="event" (removeEvent)="removeEvent(event)" (editEvent)="editEvent(event)" (selectedFile)="fileSelected($event)"></app-calendar-list-item>
     </li>
   </ul>
 </div>
