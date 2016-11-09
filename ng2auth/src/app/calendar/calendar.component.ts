@@ -75,6 +75,7 @@ export class CalendarComponent implements OnInit {
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newEndDate: string = (<HTMLInputElement>document.getElementById('newEndDate')).value;
     let newFiles: string[] = [];
+    console.log((<HTMLInputElement>document.getElementById('attachFile')).value);
     newFiles.push((<HTMLInputElement>document.getElementById('attachFile')).value);
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
     let newStartUnix: any;
