@@ -65,6 +65,11 @@
             <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
           </select>
         </div>
+        <div class="form-group col-xs-12">
+          <select class="form-control" id="attachFile"  name="attachFile">
+            <option *ngFor="let file of files | async" [value]="file.filePath">{{file.filePath}}</option>
+          </select>
+        </div>
           <button class="btn btn-success center-block" (click)="addNewEvent(); newEventModal.close(); formReset()">
             Submit
           </button>
@@ -102,5 +107,4 @@
       </form>
     </modal-content>
   </modal>
-
 </div>

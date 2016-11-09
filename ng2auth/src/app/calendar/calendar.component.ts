@@ -4,6 +4,7 @@ import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
 import { CalendarEventService } from '../calendar-event.service';
 import { CalEvent } from '../models/calevent.model';
+import { FileEntry } from '../models/file-entry.model';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
 import * as moment from 'moment';
 
@@ -47,13 +48,15 @@ export class CalendarComponent implements OnInit {
   @HostBinding('@routeAnimations')
   public animatePage = true;
 
-  selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
-  events: FirebaseListObservable<CalEvent[]>;
-  firebase: any;
-  view: string = 'grid';
-  currentDay: number = moment().dayOfYear();
   allDay: boolean = true;
+  currentDay: number = moment().dayOfYear();
   editObject: CalEvent = null;
+  events: FirebaseListObservable<CalEvent[]>;
+  files: FirebaseListObservable<FileEntry[]>;
+  firebase: any;
+  selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
+  view: string = 'grid';
+
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any) {
     this.firebase = firebase.database();
     this.events = af.database.list('/events', {
@@ -63,12 +66,16 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getFiles();
+  }
 
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newEndDate: string = (<HTMLInputElement>document.getElementById('newEndDate')).value;
+    let newFiles: string[] = [];
+    newFiles.push((<HTMLInputElement>document.getElementById('attachFile')).value);
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
     let newStartUnix: any;
     let newEndUnix: any;
@@ -79,12 +86,10 @@ export class CalendarComponent implements OnInit {
       allDayBool = false;
       newStartDate = newStartDate + 'T' + newStartTime;
       newEndDate = newEndDate + 'T' + newEndTime;
-      console.log(newStartDate);
-      console.log(newEndDate);
     }
     let user = this.authService.getUserEmail();
     let pickedColor: any = this.getColor(inputColor);
-    this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, null, allDayBool, null, user);
+    this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, newFiles, allDayBool, null, user);
   }
   formReset() {
     (<HTMLInputElement>document.getElementById('newTitle')).value = null;
@@ -131,5 +136,8 @@ export class CalendarComponent implements OnInit {
     let inputColor = (<HTMLInputElement>document.getElementById('eventColor')).value;
     let editedColor: any = this.getColor(inputColor);
     event.update({"title": editedTitle, "start": editedStart, "end": editedEnd, "color": editedColor});
+  }
+  getFiles() {
+    this.files = this.af.database.list('/fileEntries');
   }
 }

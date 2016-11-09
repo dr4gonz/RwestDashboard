@@ -16,20 +16,32 @@
       <i (click)="destroyEvent()" class="btn fa fa-fw fa-1 fa-times" aria-hidden="true"></i>
     </div>
   </div>
-  <div class="row" *ngIf="showDetails">
-    <div class="col-sm-2">
-      <h6>Created By: {{ calendarEvent.createdBy }}</h6>
+
+  <div *ngIf="showDetails">
+    <div class="row">
+      <div class="col-sm-2">
+        <h6>Created By: {{ calendarEvent.createdBy }}</h6>
+      </div>
+      <div class="col-sm-2 col-sm-offset-1" *ngIf=calendarEvent.allDay>
+        <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>All Day</h6>
+      </div>
+      <div class="col-sm-2 col-sm-offset-1" *ngIf=!calendarEvent.allDay>
+        <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.start | toTime }}</h6>
+      </div>
+      <div class="col-sm-2 col-sm-offset-1" *ngIf=!calendarEvent.allDay>
+        <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.end | toTime }}</h6>
+      </div>
+      <div class="col-sm-3 col-sm-offset-1">
+      </div>
     </div>
-    <div class="col-sm-2 col-sm-offset-1" *ngIf=calendarEvent.allDay>
-      <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>All Day</h6>
+
+    <div class="row" *ngIf="calendarEvent.files">
+      <ul>
+        <li *ngFor="let file of calendarEvent.files">
+          {{ file }}
+        </li>
+      </ul>
     </div>
-    <div class="col-sm-2 col-sm-offset-1" *ngIf=!calendarEvent.allDay>
-      <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.start | toTime }}</h6>
-    </div>
-    <div class="col-sm-2 col-sm-offset-1" *ngIf=!calendarEvent.allDay>
-      <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.end | toTime }}</h6>
-    </div>
-    <div class="col-sm-1 col-sm-offset-3">
-    </div>
+
   </div>
 </div>
