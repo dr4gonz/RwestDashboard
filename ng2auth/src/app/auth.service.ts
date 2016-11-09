@@ -42,8 +42,7 @@ export class AuthService {
         });
       });
       _that.usrLoggedIn = true;
-    })
-      .catch(error => this.handleLoginError(error));
+    }).catch(error => this.handleLoginError(error));
     this.router.navigateByUrl('');
   }
 

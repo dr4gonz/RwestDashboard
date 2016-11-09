@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../auth.service';
 import { FileEntry } from '../models/file-entry.model';
@@ -17,13 +17,11 @@ export class FileStorageComponent implements OnInit {
   image;
   showDetail: boolean = false;
   selectedFile: FileEntry = null;
-  changeRef: ChangeDetectorRef;
   statusMessage: string;
   showUpload: boolean = false;
 
-  constructor(af: AngularFire, changeRef: ChangeDetectorRef) {
+  constructor(af: AngularFire) {
     this.fileEntries = af.database.list('/fileEntries');
-    this.changeRef = changeRef;
   }
 
   ngOnInit() {
@@ -33,28 +31,33 @@ export class FileStorageComponent implements OnInit {
     let thisRef = this;
     this.fileEntries.push(fE).then(function() {
       thisRef.statusMessage = "File uploaded successfully.";
+      thisRef.showUpload = false;
+      window.location.reload;
     }).catch(function(error) {
       thisRef.statusMessage = "Error saving file...";
       console.log("error:", error);
+      window.location.reload;
     });
-    this.showUpload = false;
-    thisRef.changeRef.detectChanges();
   }
 
   showUploadAction() {
+    this.statusMessage = "";
     this.showUpload = true;
   }
 
   toggleDetail() {
+    this.statusMessage = "";
     this.showDetail = !this.showDetail;
   }
 
   selectFile(fE: FileEntry) {
+    this.statusMessage = "";
     this.selectedFile = fE;
     this.toggleDetail();
   }
 
   unselectFile() {
+    this.statusMessage = "";
     this.selectedFile = null;
     this.toggleDetail();
   }

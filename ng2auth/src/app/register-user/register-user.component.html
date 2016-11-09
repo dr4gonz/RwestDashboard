@@ -1,5 +1,5 @@
 <div class="container">
-  <div [hidden]="submitted" class="createUser col-md-4">
+  <div [hidden]="submitted" class="createUser col-md-4 col-md-offset-4">
       <div class="form-group">
         <input class="form-control" type="text" name="email" id="email" placeholder="Email Address" required>
       </div>
@@ -12,7 +12,9 @@
         <option *ngFor="let r of roles" [value]="r">{{r}}</option>
       </select>
       </div>
-      <button (click)="registerUser()" class="btn btn-primary btn-sm" type="button" name="submit">Add User</button>
+      <div class="text-center">
+        <button (click)="registerUser()" class="btn btn-primary btn-sm" type="button" name="submit">Add User</button>
+      </div>
   </div>
 
   <div [hidden]="!submitted">
