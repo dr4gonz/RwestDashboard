@@ -15,12 +15,16 @@ export class CalendarDayBlockComponent implements OnInit {
   dayOfMonth;
   month;
   currentDay;
+  isToday: boolean = false;
   events: FirebaseListObservable<any[]>;
   constructor() { }
 
   ngOnInit() {
     this.currentDay = this.day;
     this.dayOfMonth = moment().dayOfYear(this.day).format('D');
+    if(this.currentDay == moment().dayOfYear()) {
+      this.isToday = true;
+    }
   }
 
   getDOY(day: number) {
