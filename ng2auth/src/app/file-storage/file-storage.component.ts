@@ -43,7 +43,6 @@ export class FileStorageComponent implements OnInit {
 
   showUploadAction() {
     this.showUpload = true;
-    console.log("ding");
   }
 
   toggleDetail() {
@@ -58,6 +57,10 @@ export class FileStorageComponent implements OnInit {
   unselectFile() {
     this.selectedFile = null;
     this.toggleDetail();
+  }
+
+  hideUploadForm() {
+    this.showUpload = false;
   }
 
 }

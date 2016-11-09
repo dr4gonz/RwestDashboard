@@ -3,3 +3,12 @@
 .load-icon {
   margin-top: 150px;
 }
+
+.panel-default {
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.panel-footer {
+  background-color: inherit;
+}

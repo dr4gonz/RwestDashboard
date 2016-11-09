@@ -5,4 +5,7 @@ export class FileEntry {
   creationTime: string;
   title: string;
   notes: string;
+  status: string;
+  uploaderId: string;
+  uploaderEmail: string;
 }

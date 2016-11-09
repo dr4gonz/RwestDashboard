@@ -1,10 +1,13 @@
 <form class="form-inline upload-form">
   <div class="form-group">
-    <input type="file" (change)="fileSelected($event)" placeholder="Select a file to upload" class="form-control upload-input"/>
+    <label for="fileInput">Select a file to upload</label>
+    <input type="file" (change)="fileSelected($event)" class="upload-input" id="fileInput"/>
+    <br />
     <input type="text" #title placeholder="Title" class="form-control upload-input"/>
   </div>
   <br />
-  <textarea #description placeholder="Description (optional)" rows="8" cols="80" class="form-control"></textarea>
+  <textarea #notes placeholder="Notes (optional)" rows="8" cols="80" class="form-control"></textarea>
   <br />
-  <button type="button" (click)="fileUpload()" class="btn btn-large btn-success text-center upload-submit">Submit</button>
+  <button type="button" (click)="fileUpload(notes, title)" class="btn btn-large btn-success text-center upload-submit">Submit</button>
+    <button type="button" (click)="cancelUpload()" class="btn btn-large btn-warning text-center upload-submit">Cancel</button>
 </form>

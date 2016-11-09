@@ -1,7 +1,7 @@
-<div class="jumbotron">
+<div class="panel panel-default text-center comment-container">
   <p>{{comment.body}}</p>
-  <p>
-    {{comment.author}} - {{timeSincePosted}}
-  </p>
-  <app-remove-comment *ngIf="authService.getUserId() === comment.authorId" (removeCommentEvent)="removeComment()"></app-remove-comment>
+  <div class="panel-footer">
+    <p>{{comment.author}} - {{timeSincePosted}}</p>
+    <app-remove-comment *ngIf="authService.getUserId() === comment.authorId" (removeCommentEvent)="removeComment()"></app-remove-comment>
+  </div>
 </div>

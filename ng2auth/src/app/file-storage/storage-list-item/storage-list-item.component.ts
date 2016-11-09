@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileEntry } from '../../models/file-entry.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-storage-list-item',
@@ -9,11 +10,13 @@ import { FileEntry } from '../../models/file-entry.model';
 })
 export class StorageListItemComponent implements OnInit {
 
-  fileEntry: FileEntry;
+  private formattedTime: string
+  private fileEntry: FileEntry;
 
   constructor() { }
 
   ngOnInit() {
+    this.formattedTime = moment(this.fileEntry.creationTime).format('LLL');
   }
 
 }
