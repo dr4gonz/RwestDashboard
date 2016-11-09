@@ -7,7 +7,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-day-view',
   inputs: ['events', 'day'],
-  outputs: ['eventToEdit'],
+  outputs: ['eventToEdit','selectedFile'],
   templateUrl: './calendar-day-view.component.html',
   styleUrls: ['./calendar-day-view.component.css']
 })
@@ -15,10 +15,12 @@ export class CalendarDayViewComponent implements OnInit {
   day;
   currentDay: number;
   events: FirebaseListObservable<any[]>;
+  private selectedFile: EventEmitter<any>;
   private eventToEdit: EventEmitter<any>;
 
   constructor(private af: AngularFire) {
     this.eventToEdit = new EventEmitter();
+    this.selectedFile = new EventEmitter();
   }
 
   ngOnInit() {
@@ -39,6 +41,9 @@ export class CalendarDayViewComponent implements OnInit {
   }
   editEvent(ce: CalEvent) {
     this.eventToEdit.emit(ce);
+  }
+  fileSelected($event: any) {
+    this.selectedFile.emit($event);
   }
 
 }

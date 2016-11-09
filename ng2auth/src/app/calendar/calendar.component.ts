@@ -56,6 +56,8 @@ export class CalendarComponent implements OnInit {
   firebase: any;
   selectColors = ['Red','Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
   view: string = 'grid';
+  showFileDetail: boolean = false;
+  selectedFile: FileEntry = null;
 
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any) {
     this.firebase = firebase.database();
@@ -77,6 +79,7 @@ export class CalendarComponent implements OnInit {
     let newFiles: string[] = [];
     let length: number = ((<HTMLSelectElement>document.getElementById('attachFile')).selectedOptions).length;
     for(let i = 0; i < length; i++) {
+      console.log((<HTMLSelectElement>document.getElementById('attachFile'))[i].value.$key);
       newFiles.push((<HTMLSelectElement>document.getElementById('attachFile'))[i].value)
     }
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
@@ -142,5 +145,15 @@ export class CalendarComponent implements OnInit {
   }
   getFiles() {
     this.files = this.af.database.list('/fileEntries');
+  }
+  fileSelected($event: any) {
+    let route = '/fileEntries/' + $event;
+    let selected = this.af.database.object(route).subscribe(file => {
+      this.selectedFile = file;
+      this.showFileDetail = true;
+    });
+  }
+  fileUnselected() {
+    this.showFileDetail = false;
   }
 }

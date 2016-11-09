@@ -1,4 +1,4 @@
-<div class="row cal-event-day" [style.background-color]="getSecondaryColor(calendarEvent)">
+<div class="row cal-event-day" *ngIf="!showFileDetail" [style.background-color]="getSecondaryColor(calendarEvent)">
   <div class="row">
     <div class="col-sm-2">
       <h6>{{calendarEvent.title}}</h6>
@@ -16,7 +16,6 @@
       <i (click)="destroyEvent()" class="btn fa fa-fw fa-1 fa-times" aria-hidden="true"></i>
     </div>
   </div>
-
   <div *ngIf="showDetails">
     <div class="row">
       <div class="col-sm-2">
@@ -34,15 +33,16 @@
       <div class="col-sm-3 col-sm-offset-1">
       </div>
     </div>
-
     <div class="row" *ngIf="calendarEvent.files">
       <ul>
         <h6>Files</h6>
-        <li *ngFor="let file of calendarEvent.files">
+        <li *ngFor="let file of calendarEvent.files" (click)="fileSelected(file)">
           {{ file }}
         </li>
       </ul>
     </div>
-
   </div>
+</div>
+<div class="row" *ngIf="showFileDetail">
+  <app-file-detail *ngIf="selectedFile" [fileEntry]="selectedFile" (unselectFile)="fileUnselected()"></app-file-detail>
 </div>
