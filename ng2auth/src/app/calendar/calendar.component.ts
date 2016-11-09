@@ -74,7 +74,6 @@ export class CalendarComponent implements OnInit {
     let newStartUnix: any;
     let newEndUnix: any;
     let allDayBool: boolean = true;
-
     if(!this.allDay){
       let newStartTime: string = (<HTMLInputElement>document.getElementById('newStartTime')).value;
       let newEndTime: string = (<HTMLInputElement>document.getElementById('newEndTime')).value;
@@ -85,30 +84,7 @@ export class CalendarComponent implements OnInit {
       console.log(newEndDate);
     }
     let user = this.authService.getUserEmail();
-    let pickedColor: any;
-    switch (inputColor) {
-      case "Red":
-        pickedColor = colors.red;
-        break;
-      case "Orange":
-        pickedColor = colors.orange;
-        break;
-      case "Blue":
-        pickedColor = colors.blue;
-        break;
-      case "Yellow":
-        pickedColor = colors.yellow;
-        break;
-      case "Purple":
-        pickedColor = colors.purple;
-        break;
-      case "Green":
-        pickedColor = colors.green;
-        break;
-      default:
-        pickedColor = colors.blue;
-        break;
-    }
+    let pickedColor: any = this.getColor(inputColor);
     this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, null, allDayBool, null, user);
   }
   formReset() {
@@ -130,36 +106,31 @@ export class CalendarComponent implements OnInit {
   editEvent($event) {
     this.editObject = $event;
   }
+  getColor(inputColor: string) {
+    switch (inputColor) {
+      case "Red":
+        return colors.red;
+      case "Orange":
+        return colors.orange;
+      case "Blue":
+        return colors.blue;
+      case "Yellow":
+        return colors.yellow;
+      case "Purple":
+        return colors.purple;
+      case "Green":
+        return colors.green;
+      default:
+        return colors.blue;
+    }
+  }
   submitEditedEvent() {
     let event = this.firebase.ref('events/' + this.editObject.$key);
     let editedTitle = (<HTMLInputElement>document.getElementById('eventTitle')).value;
     let editedStart = (<HTMLInputElement>document.getElementById('eventStart')).value;
     let editedEnd = (<HTMLInputElement>document.getElementById('eventEnd')).value;
     let inputColor = (<HTMLInputElement>document.getElementById('eventColor')).value;
-    let editedColor: any;
-    switch (inputColor) {
-      case "Red":
-        editedColor = colors.red;
-        break;
-      case "Orange":
-        editedColor = colors.orange;
-        break;
-      case "Blue":
-        editedColor = colors.blue;
-        break;
-      case "Yellow":
-        editedColor = colors.yellow;
-        break;
-      case "Purple":
-        editedColor = colors.purple;
-        break;
-      case "Green":
-        editedColor = colors.green;
-        break;
-      default:
-        editedColor = colors.blue;
-        break;
-    }
+    let editedColor: any = this.getColor(inputColor);
     event.update({"title": editedTitle, "start": editedStart, "end": editedEnd, "color": editedColor});
   }
 }
