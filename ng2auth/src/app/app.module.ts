@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-modal';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 
 /** Keys **/
 import { Keys } from '../keys';
@@ -110,6 +112,10 @@ export const firebaseConfig = Keys.FireBaseConfig;
     CalendarDayBlockDetailComponent
   ],
   providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
     AuthService,
     AuthGuard,
     AuthGuardAdmin,
