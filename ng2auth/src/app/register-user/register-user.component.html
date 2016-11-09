@@ -1,19 +1,18 @@
 <div class="container">
   <div [hidden]="submitted" class="createUser col-md-4 col-md-offset-4">
       <div class="form-group">
-        <input class="form-control" type="text" name="email" id="email" placeholder="Email Address" required>
+        <input class="form-control" type="text" name="em" placeholder="Email Address" required #em>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="password" id="password" placeholder="Password" required>
+        <input class="form-control" type="text" name="pw" placeholder="Password" required #pw>
       </div>
       <div class="form-group">
-        <select class="form-control" id="role"
-        required name="role">
+        <select class="form-control" required name="rl" #rl>
         <option *ngFor="let r of roles" [value]="r">{{r}}</option>
       </select>
       </div>
       <div class="text-center">
-        <button (click)="registerUser()" class="btn btn-primary btn-sm" type="button" name="submit">Add User</button>
+        <button (click)="registerUser(em, pw, rl)" class="btn btn-primary btn-sm" type="button" name="submit">Add User</button>
       </div>
   </div>
 

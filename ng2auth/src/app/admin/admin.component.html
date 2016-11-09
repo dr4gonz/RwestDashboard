@@ -1,2 +1,5 @@
-<app-register-user></app-register-user>
-<app-admin-user-list></app-admin-user-list>
+<app-register-user *ngIf="showRegisterForm" (hideFormEvent)="hideForm()"></app-register-user>
+<div *ngIf="(!showRegisterForm)">
+  <app-admin-user-list *ngIf="(!showRegisterForm)" [users]="users"></app-admin-user-list>
+  <h4 class="text-center"><a (click)="showForm()">Create new user</a></h4>
+</div>
