@@ -56,15 +56,14 @@ export class CalendarComponent implements OnInit {
   editObject: CalEvent = null;
   constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any) {
     this.firebase = firebase.database();
-  }
-
-  ngOnInit() {
-    this.events = this.af.database.list('/events', {
+    this.events = af.database.list('/events', {
       query: {
         orderByChild: 'start'
       }
     });
   }
+
+  ngOnInit() { }
 
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
