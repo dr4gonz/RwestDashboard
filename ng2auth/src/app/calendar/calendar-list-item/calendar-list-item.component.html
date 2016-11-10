@@ -36,8 +36,8 @@
     <div class="row" *ngIf="calendarEvent.files">
       <ul>
         <h6>Files</h6>
-        <li *ngFor="let file of calendarEvent.files" (click)="fileSelected(file)">
-          {{ file }}
+        <li *ngFor="let file of fileList" (click)="fileSelected(file.$key)">
+          {{ file.filePath }}
         </li>
       </ul>
     </div>

@@ -79,7 +79,6 @@ export class CalendarComponent implements OnInit {
     let newFiles: string[] = [];
     let length: number = ((<HTMLSelectElement>document.getElementById('attachFile')).selectedOptions).length;
     for(let i = 0; i < length; i++) {
-      console.log((<HTMLSelectElement>document.getElementById('attachFile'))[i].value.$key);
       newFiles.push((<HTMLSelectElement>document.getElementById('attachFile'))[i].value)
     }
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;

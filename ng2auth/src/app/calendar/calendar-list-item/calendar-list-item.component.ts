@@ -14,6 +14,7 @@ import { AngularFire } from 'angularfire2';
 
 export class CalendarListItemComponent implements OnInit {
   calendarEvent;
+  fileList: FileEntry[] = [];
   backgroundStyle: SafeStyle = null;
   showDetails: boolean = false;
   private selectedFile: EventEmitter<any>;
@@ -27,7 +28,17 @@ export class CalendarListItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.calendarEvent.files) {
+      this.calendarEvent.files.forEach(key => {
+        let route = '/fileEntries/' + key;
+        this.af.database.object(route).subscribe(foundFile => {
+          let fileObj: FileEntry = foundFile;
+          this.fileList.push(fileObj);
+        });
+      });
+    }
   }
+
 
   getPrimaryColor(ce: CalEvent) {
     return this.sanitizer.bypassSecurityTrustStyle(ce.color.primary);
