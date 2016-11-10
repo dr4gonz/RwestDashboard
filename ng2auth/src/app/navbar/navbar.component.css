@@ -1,7 +1,11 @@
 .navbar {
   font-size: 1.2em;
   padding: 25px 10px 25px 10px;
-  background-color: #af2b2b;
+  background-color: #7a0d0d;
+}
+
+.current-user:hover {
+  cursor: text;
 }
 
 .navbar li a {
