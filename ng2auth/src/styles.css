@@ -7,8 +7,24 @@
 .panel-default {
   padding: 20px;
   font-size: 1.2em;
+  background-color: #dedede;
+  border: none;
+  border-radius: 20px;
 }
 
 .panel-footer {
   background-color: inherit;
+}
+
+.panel-link:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  cursor: pointer;
 }
