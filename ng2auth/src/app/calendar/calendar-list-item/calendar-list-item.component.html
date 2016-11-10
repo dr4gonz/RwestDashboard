@@ -1,36 +1,36 @@
 <div class="row cal-event-day" *ngIf="!showFileDetail" [style.background-color]="getSecondaryColor(calendarEvent)">
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-xs-2">
       <h6>{{calendarEvent.title}}</h6>
     </div>
-    <div class="col-sm-2 col-sm-offset-1">
+    <div class="col-xs-2 col-xs-offset-1">
       <h6>Start: {{calendarEvent.start | toDate }}</h6>
     </div>
-    <div class="col-sm-2 col-sm-offset-1">
+    <div class="col-xs-2 col-xs-offset-1">
       <h6>End: {{calendarEvent.end | toDate }}</h6>
     </div>
-    <div class="col-sm-2 col-sm-offset-2">
-      <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-fw fa-1 fa-caret-down" aria-hidden="true"></i>
-      <i (click)="hideDetails()" *ngIf="showDetails" class="btn fa fa-fw fa-1 fa-caret-up" aria-hidden="true"></i>
-      <i (click)="editEventClick()" class="btn fa fa-fw fa-1 fa-pencil" aria-hidden="true"></i>
-      <i (click)="destroyEvent()" class="btn fa fa-fw fa-1 fa-times" aria-hidden="true"></i>
+    <div class="col-xs-2 col-xs-offset-2">
+      <i (click)="expandDetails()" *ngIf="!showDetails" class="btn fa fa-1 fa-caret-down" aria-hidden="true"></i>
+      <i (click)="hideDetails()" *ngIf="showDetails" class="btn fa fa-1 fa-caret-up" aria-hidden="true"></i>
+      <i (click)="editEventClick()" class="btn fa fa-1 fa-pencil" aria-hidden="true"></i>
+      <i (click)="destroyEvent()" class="btn fa fa-1 fa-times" aria-hidden="true"></i>
     </div>
   </div>
   <div *ngIf="showDetails">
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-xs-2">
         <h6>Created By: {{ calendarEvent.createdBy }}</h6>
       </div>
-      <div class="col-sm-2 col-sm-offset-1" *ngIf=calendarEvent.allDay>
+      <div class="col-xs-2 col-xs-offset-1" *ngIf=calendarEvent.allDay>
         <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>All Day</h6>
       </div>
-      <div class="col-sm-2 col-sm-offset-1" *ngIf=!calendarEvent.allDay>
+      <div class="col-xs-2 col-xs-offset-1" *ngIf=!calendarEvent.allDay>
         <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.start | toTime }}</h6>
       </div>
-      <div class="col-sm-2 col-sm-offset-1" *ngIf=!calendarEvent.allDay>
+      <div class="col-xs-2 col-xs-offset-1" *ngIf=!calendarEvent.allDay>
         <h6><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{calendarEvent.end | toTime }}</h6>
       </div>
-      <div class="col-sm-3 col-sm-offset-1">
+      <div class="col-xs-3 col-xs-offset-1">
       </div>
     </div>
     <div class="row" *ngIf="calendarEvent.files">

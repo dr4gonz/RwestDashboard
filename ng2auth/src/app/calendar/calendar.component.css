@@ -9,3 +9,7 @@ h3 {
 ul {
   list-style: none;
 }
+
+.calendar-container {
+  width: 100%;
+}

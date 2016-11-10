@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngIf="!showFileDetail">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-xs-4">
         <div class="btn-group">
           <div class="btn btn-default btn-xs" (click)="view = 'grid'">Month(Grid)</div>
           <div class="btn btn-default btn-xs" (click)="view = 'month'">Month(Agenda)</div>
@@ -9,7 +9,7 @@
           <div class="btn btn-default btn-xs" (click)="view = 'day'">Day</div>
         </div>
       </div>
-      <div class="col-sm-2 col-sm-offset-6">
+      <div class="col-xs-2 col-xs-offset-6">
         <div class="btn btn-default btn-xs" (click)="newEventModal.open()">New Event</div>
       </div>
     </div>

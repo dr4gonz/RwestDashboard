@@ -8,7 +8,7 @@
   </div>
 </div>
 <br>
-<div class="col-sm-12">
+<div class="col-sm-12" *ngIf="events">
   <ul>
     <li *ngFor="let event of events | dayPipe: currentDay | async">
       <app-calendar-list-item [calendarEvent]="event" (removeEvent)="removeEvent(event)" (editEvent)="editEvent(event)" (selectedFile)="fileSelected($event)"></app-calendar-list-item>

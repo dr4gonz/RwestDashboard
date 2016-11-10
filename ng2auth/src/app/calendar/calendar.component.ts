@@ -70,6 +70,9 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.getFiles();
+    if(window.innerWidth < 768) {
+      this.view = 'month';
+    }
   }
 
   addNewEvent() {
