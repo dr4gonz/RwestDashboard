@@ -7,9 +7,10 @@
 .panel-default {
   padding: 20px;
   font-size: 1.2em;
-  background-color: #dedede;
-  border: none;
-  border-radius: 20px;
+  background-color: #fff;
+  border: solid #888 2px;
+  margin: 0px 0px -2px 0px;
+  border-radius: 0px;
 }
 
 .panel-footer {
@@ -27,4 +28,14 @@ a {
 
 a:hover {
   cursor: pointer;
+  text-decoration: none;
+  color: #444;
+}
+
+body {
+  background-color: #eee;
+}
+
+.btn-danger {
+  background-color: #af2b2b;
 }

@@ -1,11 +1,9 @@
 <div *ngIf="!selectedDocument"  class="text-center">
   <app-add-document (newDocumentEvent)="saveDocumentItem($event)"></app-add-document>
-  <div *ngFor="let doc of documents | async" (click)="selectDocument(doc)">
-    <div class="panel panel-default">
-      <h4>
-        <a>{{doc.title}}</a>
-      </h4>
-    </div>
+  <div *ngFor="let doc of documents | async" (click)="selectDocument(doc)" class="panel panel-default panel-link">
+    <h4>
+      <a>{{doc.title}}</a>
+    </h4>
   </div>
 </div>
 <div *ngIf="selectedDocument" class="iframe-container">
