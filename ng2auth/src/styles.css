@@ -4,13 +4,13 @@
   margin-top: 150px;
 }
 
-.panel-default {
+.panel-link {
   padding: 20px;
   font-size: 1.2em;
   background-color: #fff;
   border: solid #888 2px;
   margin: 0px 0px -2px 0px;
-  border-radius: 0px;
+  border-radius: 5px;
 }
 
 .panel-footer {
@@ -33,9 +33,18 @@ a:hover {
 }
 
 body {
-  background-color: #eee;
+  background-color: #efefef;
 }
 
 .btn-danger {
-  background-color: #af2b2b;
+  background-color: #7a0d0d;
+}
+
+.btn-success {
+  background-color: #2f512e;
+  border: #1f331f;
+}
+
+select:hover {
+  cursor: pointer;
 }
