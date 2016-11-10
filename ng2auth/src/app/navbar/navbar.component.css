@@ -1,10 +1,20 @@
 .navbar {
   font-size: 1.2em;
   padding: 25px 10px 25px 10px;
+  background-color: #af2b2b;
+}
+
+.navbar li a {
+  color: #fff;
 }
 
 .navbar-brand {
   font-size: 1.2em;
+  color: #fff;
+}
+
+.navbar-brand:hover, .navbar li a:hover {
+  color: #ddd;
 }
 
 @media only screen and (max-width: 1200px) {
