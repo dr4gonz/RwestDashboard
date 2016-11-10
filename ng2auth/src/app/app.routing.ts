@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'file-storage',
+    path: 'files',
     component: FileStorageComponent,
     canActivate: [AuthGuard]
   }

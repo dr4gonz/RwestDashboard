@@ -5,16 +5,16 @@
 }
 
 .navbar li a {
-  color: #fff;
+  color: #eee;
 }
 
 .navbar-brand {
   font-size: 1.2em;
-  color: #fff;
+  color: #eee;
 }
 
 .navbar-brand:hover, .navbar li a:hover {
-  color: #ddd;
+  color: #fff;
 }
 
 @media only screen and (max-width: 1200px) {

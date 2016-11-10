@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse text-center" id="nav-burger">
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="(auth | async)"><a routerLink="/documents"><span class="hidden-sm">Documents </span><i class="fa fa-fw fa-file" aria-hidden="true"></i></a></li>
-        <li *ngIf="(auth | async)"><a routerLink="/file-storage"><span class="hidden-sm">File Storage </span><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i></a></li>
+        <li *ngIf="(auth | async)"><a routerLink="/files"><span class="hidden-sm">Files</span><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i></a></li>
         <li *ngIf="(auth | async)"><a routerLink="/calendar"><span class="hidden-sm">Calendar </span><i class="fa fa-fw fa-calendar"></i></a></li>
         <li *ngIf="(authService.isAdmin())"><a routerLink="/admin"><span class="hidden-sm">Users </span><i class="fa fa-users" aria-hidden="true"></i></a></li>
         <li *ngIf="(auth | async)"><a><span class="current-user">Logged in as {{ getUserEmail() }}</span></a></li>
