@@ -17,6 +17,7 @@ export class CalendarListItemComponent implements OnInit {
   fileList: FileEntry[] = [];
   backgroundStyle: SafeStyle = null;
   showDetails: boolean = false;
+  smallScreen: boolean = false;
   private selectedFile: EventEmitter<any>;
   private removeEvent: EventEmitter<any>;
   private editEvent: EventEmitter<any>;
@@ -36,6 +37,11 @@ export class CalendarListItemComponent implements OnInit {
           this.fileList.push(fileObj);
         });
       });
+    }
+    if(window.innerWidth < 768) {
+      this.smallScreen = true;
+    } else {
+      this.smallScreen = false;
     }
   }
 
