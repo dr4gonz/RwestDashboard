@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { Keys } from '../keys';
-import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire, FirebaseAuth, AuthProviders, AuthMethods, FirebaseApp } from 'angularfire2';
 import { User } from './models/user.model';
 
 
@@ -11,10 +11,12 @@ export class AuthService {
 
   role: string;
   usrLoggedIn: boolean = false;
-  admin: boolean = false;
   errorMessage: string;
+  firebase: any;
 
-  constructor(private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) { }
+  constructor(@Inject(FirebaseApp) firebase: any, private router: Router, private http: Http, private af: AngularFire, private auth: FirebaseAuth) {
+    this.firebase = firebase;
+  }
 
   login(username: string, password: string) {
     this.errorMessage = "";
@@ -31,23 +33,16 @@ export class AuthService {
       localStorage.setItem('uid', response.uid);
       //save role to localStorage
       let role: string;
-      let users = firebase.database().ref("users");
+      let users = _that.firebase.database().ref("users");
       let userRef = users.ref.orderByChild("uid").equalTo(response.uid).on("child_added", function(snapshot) {
         let userId = snapshot.key;
-        let user = firebase.database().ref('users/' + userId).on("value", function(foo) {
+        let user = _that.firebase.database().ref('users/' + userId).on("value", function(foo) {
           localStorage.setItem('role', role = foo.val().role);
-
-          if(foo.val().role == "Admin") {
-            _that.admin = true;
-          } else {
-            _that.admin = false;
-          }
-
+          window.location.reload();
         });
       });
       _that.usrLoggedIn = true;
-    })
-      .catch(error => this.handleLoginError(error));
+    }).catch(error => this.handleLoginError(error));
     this.router.navigateByUrl('');
   }
 
@@ -55,7 +50,6 @@ export class AuthService {
     // To log out, just remove the token and profile
     // from local storage
     this.usrLoggedIn = false;
-    this.admin = false;
     this.af.auth.logout();
     localStorage.removeItem('userEmail');
     localStorage.removeItem('uid');
@@ -70,10 +64,7 @@ export class AuthService {
   }
 
   isAdmin() {
-    if (localStorage.getItem('role') == "Admin") {
-      return true;
-    }
-    return false;
+    return (localStorage.getItem('role') == "Admin");
   }
 
   getUserEmail() {

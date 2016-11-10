@@ -1,6 +1,5 @@
  <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-burger" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -8,17 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="/"><span class="hidden-xs hidden-sm">R/West Client Dashboard</span></a>
+      <a class="navbar-brand" routerLink="/">R/West Client Dashboard</a>
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="nav-burger">
+    <div class="collapse navbar-collapse text-center" id="nav-burger">
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="(auth | async)"><a routerLink="/documents">Documents <i class="fa fa-fw fa-file" aria-hidden="true"></i></a></li>
-        <li *ngIf="(auth | async)"><a routerLink="/file-storage">File Storage <i class="fa fa-fw fa-folder-open" aria-hidden="true"></i></a></li>
-        <li *ngIf="(auth | async)"><a routerLink="/content">Content <i class="fa fa-fw fa-tasks" aria-hidden="true"></i></a></li>
-        <li *ngIf="(auth | async)"><a routerLink="/calendar">Calendar <i class="fa fa-fw fa-calendar"></i></a></li>
-        <li *ngIf="authService.isAdmin()"><a routerLink="/admin"><span class="hidden-xs hidden-sm">Users </span><i class="fa fa-users" aria-hidden="true"></i></a></li>
-        <li *ngIf="(auth | async)"><a><span class="hidden-xs hidden-sm">Logged in as {{ getUserEmail() }}</span></a></li>
+        <li *ngIf="(auth | async)"><a routerLink="/documents"><span class="hidden-sm">Documents </span><i class="fa fa-fw fa-file" aria-hidden="true"></i></a></li>
+        <li *ngIf="(auth | async)"><a routerLink="/file-storage"><span class="hidden-sm">File Storage </span><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i></a></li>
+        <li *ngIf="(auth | async)"><a routerLink="/calendar"><span class="hidden-sm">Calendar </span><i class="fa fa-fw fa-calendar"></i></a></li>
+        <li *ngIf="(authService.isAdmin())"><a routerLink="/admin"><span class="hidden-sm">Users </span><i class="fa fa-users" aria-hidden="true"></i></a></li>
+        <li *ngIf="(auth | async)"><a><span class="current-user">Logged in as {{ getUserEmail() }}</span></a></li>
         <li *ngIf="(auth | async)"><a (click)="authService.logout()" *ngIf="auth | async" class="logout">Logout <i class="fa fa-id-card-o"></i></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

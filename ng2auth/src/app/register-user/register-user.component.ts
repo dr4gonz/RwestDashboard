@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { AngularFire, FirebaseApp, FirebaseListObservable } from 'angularfire2';
 import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-register-user',
+  outputs: ['hideFormEvent'],
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
 })
@@ -11,48 +12,39 @@ export class RegisterUserComponent implements OnInit {
   users: FirebaseListObservable<User[]>;
   submitted = false;
   roles = ['User', 'Admin'];
-  firebaseRef: any;
-  email: string;
-  password: string;
-  role: string;
+  hideFormEvent: EventEmitter<any>;
+  private firebase: any;
 
   constructor(private af: AngularFire, @Inject(FirebaseApp) firebase: any) {
+    this.hideFormEvent = new EventEmitter();
+    this.firebase = firebase;
   }
 
   ngOnInit() {
   }
 
-  registerUser() {
-    this.firebaseRef = firebase.auth();
-    this.email = (<HTMLInputElement>document.getElementById('email')).value;
-    this.password = (<HTMLInputElement>document.getElementById('password')).value;
-    this.role = (<HTMLInputElement>document.getElementById('role')).value;
+  registerUser(em: HTMLInputElement, pw: HTMLInputElement, rl: HTMLInputElement) {
+    let firebaseRef = this.firebase.auth();
+    let email = em.value;
+    let password = pw.value;
+    let role = rl.value;
+    let evEm = this.hideFormEvent;
 
     let userRef = this.af.database.list('/users');
-    let _that = this;
-    this.firebaseRef.createUserWithEmailAndPassword(this.email,this.password)
-                    .then(function(response) {
-                      let newUser: User = new User();
+    firebaseRef.createUserWithEmailAndPassword(email, password)
+      .then(function(response) {
+        let newUser: User = new User();
+        newUser.uid = response.uid;
+        newUser.email = email;
+        newUser.role = role;
+        userRef.push(newUser);
 
-                      newUser.uid = response.uid;
-                      newUser.email = _that.email;
-                      newUser.role = _that.role;
-
-                      userRef.push(newUser);
-                      _that.formSubmitted();
-                    })
-                    .catch(error => console.log(error.message));
-  }
-  formSubmitted() {
-    this.submitted = true;
-  }
-  formReset() {
-    this.email = '';
-    (<HTMLInputElement>document.getElementById('email')).value = '';
-    this.password = '';
-    (<HTMLInputElement>document.getElementById('password')).value = '';
-    this.role = this.roles[0];
-    this.submitted = false;
+        // form reset & hide
+        em.value = '';
+        pw.value = '';
+        rl.value = 'User';
+        evEm.emit();
+      }).catch(error => console.log(error.message));
   }
 
 }
