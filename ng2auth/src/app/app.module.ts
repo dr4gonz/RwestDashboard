@@ -56,10 +56,6 @@ import { MailDeliveryService } from './mail-delivery.service';
 
 /********** End imports **********/
 
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
-};
 export const firebaseConfig = Keys.FireBaseConfig;
 
 @NgModule({
