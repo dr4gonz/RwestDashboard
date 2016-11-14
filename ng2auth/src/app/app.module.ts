@@ -56,6 +56,7 @@ import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
+import { MailDeliveryService } from './mail-delivery.service';
 
 /********** End imports **********/
 
@@ -120,6 +121,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
+    MailDeliveryService
   ],
   bootstrap: [AppComponent]
 })
