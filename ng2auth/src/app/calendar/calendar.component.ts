@@ -1,5 +1,4 @@
-import { Component, Inject, OnInit, HostBinding, EventEmitter } from '@angular/core';
-import {default as routerAnimations} from '../route_animations';
+import { Component, Inject, OnInit, EventEmitter } from '@angular/core';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
 import { CalendarEventService } from '../calendar-event.service';
@@ -39,14 +38,10 @@ const colors: any = {
   selector: 'app-calendar',
   outputs: ['currentDay'],
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css', '../slider.css'],
-  animations: [routerAnimations('routeAnimations')]
+  styleUrls: ['./calendar.component.css']
 })
 
 export class CalendarComponent implements OnInit {
-
-  @HostBinding('@routeAnimations')
-  public animatePage = true;
 
   allDay: boolean = true;
   currentDay: number = moment().dayOfYear();

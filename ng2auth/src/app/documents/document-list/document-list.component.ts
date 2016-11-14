@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  HostBinding
-} from '@angular/core';
-import {default as routerAnimations} from '../../route_animations';
+import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { DocumentItem } from '../../models/document-item.model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -12,13 +7,9 @@ import { AuthService } from '../../auth.service';
 @Component({
   selector: 'app-document-list',
   templateUrl: './document-list.component.html',
-  styleUrls: ['./document-list.component.css', '../../slider.css'],
-  animations: [routerAnimations('routeAnimations')]
+  styleUrls: ['./document-list.component.css'],
 })
 export class DocumentListComponent implements OnInit {
-
-  @HostBinding('@routeAnimations')
-  public animatePage = true;
 
   documents: FirebaseListObservable<DocumentItem[]>
   af: AngularFire;
