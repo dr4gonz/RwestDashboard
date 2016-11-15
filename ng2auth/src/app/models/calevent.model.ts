@@ -8,6 +8,7 @@ export class CalEvent {
   allDay?: boolean;
   cssClass?: string;
   createdBy: string;
+  projectId: string;
 
   constructor(title: string, startDate: string, endDate: string, color: any, files: any[], allDay: boolean, cssClass: string, createdBy: string) {
     this.start = startDate;

@@ -8,6 +8,9 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { FileStorageComponent } from './file-storage/file-storage.component';
 import { HomeComponent } from './home/home.component';
+import { NewProjectComponent } from './project/new-project/new-project.component';
+import { ProjectComponent } from './project/project.component';
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -38,8 +41,23 @@ const appRoutes: Routes = [
     path: 'files',
     component: FileStorageComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'projects',
+    component: ProjectComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'projects/new',
+    component: NewProjectComponent,
+    canActivate: [AuthGuardAdmin]
+  },
+  {
+    path: 'projects/:id',
+    component: ProjectDetailComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, DocumentListComponent, FileStorageComponent, HomeComponent];
+export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, DocumentListComponent, FileStorageComponent, HomeComponent, NewProjectComponent, ProjectComponent, ProjectDetailComponent];
