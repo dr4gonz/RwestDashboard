@@ -37,6 +37,8 @@ import { RemoveDocumentComponent } from './documents/remove-document/remove-docu
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { routing, routedComponents } from './app.routing';
+import { UpcomingEventsComponent } from './calendar/upcoming-events/upcoming-events.component';
+import { UpcomingEventsListItemComponent } from './calendar/upcoming-events/upcoming-events-list-item/upcoming-events-list-item.component';
 
 /** Pipes **/
 import { DayPipe } from './pipes/day.pipe';
@@ -98,7 +100,9 @@ export const firebaseConfig = Keys.FireBaseConfig;
     WeekPipe,
     CalendarMonthGridComponent,
     CalendarDayBlockComponent,
-    CalendarDayBlockDetailComponent
+    CalendarDayBlockDetailComponent,
+    UpcomingEventsComponent,
+    UpcomingEventsListItemComponent
   ],
   providers: [
     {
