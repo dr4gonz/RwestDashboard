@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  HostBinding
-} from '@angular/core';
-import {default as routerAnimations} from '../route_animations';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AngularFire, FirebaseApp, FirebaseListObservable } from 'angularfire2';
 import { RegisterUserComponent } from '../register-user/register-user.component';
@@ -13,14 +8,10 @@ import { User } from '../models/user.model';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css', '../slider.css'],
-  providers: [ RegisterUserComponent ],
-  animations: [routerAnimations('routeAnimations')]
+  styleUrls: ['./admin.component.css'],
+  providers: [ RegisterUserComponent ]
 })
 export class AdminComponent implements OnInit {
-
-  @HostBinding('@routeAnimations')
-  public animatePage = true;
 
   private af: AngularFire;
   errorMessage: string;

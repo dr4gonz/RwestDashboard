@@ -1,11 +1,14 @@
-import { Component, Inject, OnInit, HostBinding, EventEmitter } from '@angular/core';
-import {default as routerAnimations} from '../route_animations';
+import { Component, Inject, OnInit, EventEmitter } from '@angular/core';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
 import { CalendarEventService } from '../calendar-event.service';
+import { MailDeliveryService } from '../mail-delivery.service';
 import { CalEvent } from '../models/calevent.model';
 import { FileEntry } from '../models/file-entry.model';
+import { User } from '../models/user.model';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+
 import * as moment from 'moment';
 
 const colors: any = {
@@ -39,16 +42,13 @@ const colors: any = {
   selector: 'app-calendar',
   outputs: ['currentDay'],
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css', '../slider.css'],
-  animations: [routerAnimations('routeAnimations')]
+  styleUrls: ['./calendar.component.css']
 })
 
 export class CalendarComponent implements OnInit {
 
-  @HostBinding('@routeAnimations')
-  public animatePage = true;
-
   allDay: boolean = true;
+  showNotify: boolean = false;
   currentDay: number = moment().dayOfYear();
   editObject: CalEvent = null;
   events: FirebaseListObservable<CalEvent[]>;
@@ -58,14 +58,16 @@ export class CalendarComponent implements OnInit {
   view: string = 'grid';
   showFileDetail: boolean = false;
   selectedFile: FileEntry = null;
+  users: FirebaseListObservable<User[]>;
 
-  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any) {
+  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any, private mail: MailDeliveryService) {
     this.firebase = firebase.database();
     this.events = af.database.list('/events', {
       query: {
         orderByChild: 'start'
       }
     });
+    this.users = af.database.list('/users');
   }
 
   ngOnInit() {
@@ -80,9 +82,11 @@ export class CalendarComponent implements OnInit {
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newEndDate: string = (<HTMLInputElement>document.getElementById('newEndDate')).value;
     let newFiles: string[] = [];
-    let length: number = ((<HTMLSelectElement>document.getElementById('attachFile')).selectedOptions).length;
+    let fileOptions = (<HTMLSelectElement>document.getElementById('attachFile'));
+    let length: number = fileOptions.length;
     for(let i = 0; i < length; i++) {
-      newFiles.push((<HTMLSelectElement>document.getElementById('attachFile'))[i].value)
+      let opt = fileOptions[i];
+      if (opt.selected) newFiles.push(opt.value);
     }
     let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
     let newStartUnix: any;
@@ -98,26 +102,42 @@ export class CalendarComponent implements OnInit {
     let user = this.authService.getUserEmail();
     let pickedColor: any = this.getColor(inputColor);
     this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, newFiles, allDayBool, null, user);
+    if ((<HTMLInputElement>document.getElementById('notify')).value) {
+      let recipients: string[] = [];
+      let recipOptions = (<HTMLSelectElement>document.getElementById('recipients'));
+      let recipOptionsLength: number = recipOptions.length;
+      for(let i = 0; i < recipOptionsLength; i++) {
+        let opt = recipOptions[i];
+        if (opt.selected) recipients.push(opt.value);
+      }
+      this.mail.sendMail(recipients, user, "test", "testbody").subscribe();
+    }
   }
+
   formReset() {
     (<HTMLInputElement>document.getElementById('newTitle')).value = null;
     (<HTMLInputElement>document.getElementById('newStartDate')).value = null;
     (<HTMLInputElement>document.getElementById('newEndDate')).value = null;
     (<HTMLInputElement>document.getElementById('newColor')).value = null;
   }
+
   switchView($event) {
     this.currentDay = $event.day;
     this.view = 'day';
   }
+
   turnOffAllDay() {
     this.allDay = false;
   }
+
   turnOnAllDay() {
     this.allDay = true;
   }
+
   editEvent($event) {
     this.editObject = $event;
   }
+
   getColor(inputColor: string) {
     switch (inputColor) {
       case "Red":
@@ -136,6 +156,7 @@ export class CalendarComponent implements OnInit {
         return colors.blue;
     }
   }
+
   submitEditedEvent() {
     let event = this.firebase.ref('events/' + this.editObject.$key);
     let editedTitle = (<HTMLInputElement>document.getElementById('eventTitle')).value;
@@ -145,9 +166,11 @@ export class CalendarComponent implements OnInit {
     let editedColor: any = this.getColor(inputColor);
     event.update({"title": editedTitle, "start": editedStart, "end": editedEnd, "color": editedColor});
   }
+
   getFiles() {
     this.files = this.af.database.list('/fileEntries');
   }
+
   fileSelected($event: any) {
     let route = '/fileEntries/' + $event;
     let selected = this.af.database.object(route).subscribe(file => {
@@ -155,7 +178,16 @@ export class CalendarComponent implements OnInit {
       this.showFileDetail = true;
     });
   }
+
   fileUnselected() {
     this.showFileDetail = false;
+  }
+
+  showNotificationForm() {
+    this.showNotify = true;
+  }
+
+  hideNotificationForm() {
+    this.showNotify = false;
   }
 }

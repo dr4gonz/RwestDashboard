@@ -1,21 +1,12 @@
-import {
-  Component,
-  OnInit,
-  HostBinding
-} from '@angular/core';
-import {default as routerAnimations} from '../route_animations';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css', '../slider.css'],
-  animations: [routerAnimations('routeAnimations')]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  @HostBinding('@routeAnimations')
-  public animatePage = true;
 
   constructor(private authService: AuthService) { }
 

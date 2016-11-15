@@ -24,18 +24,14 @@ import { CalendarDayViewComponent } from './calendar/calendar-day-view/calendar-
 import { CalendarMonthGridComponent } from './calendar/calendar-month-grid/calendar-month-grid.component';
 import { CalendarMonthViewComponent } from './calendar/calendar-month-view/calendar-month-view.component';
 import { CalendarWeekViewComponent } from './calendar/calendar-week-view/calendar-week-view.component';
-import { ContentAdminComponent } from './content/content-admin/content-admin.component';
-import { ContentDetailComponent } from './content/content-detail/content-detail.component';
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
-import { ContentListItemComponent } from './content/content-list-item/content-list-item.component';
 import { FileDetailComponent } from './file-storage/file-detail/file-detail.component';
 import { FilePreviewComponent } from './file-storage/file-preview/file-preview.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
 import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewCommentComponent } from './comments/new-comment/new-comment.component';
-import { NewContentComponent } from './content/new-content/new-content.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
@@ -56,13 +52,10 @@ import { AuthGuard } from './auth-guard.service'
 import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
+import { MailDeliveryService } from './mail-delivery.service';
 
 /********** End imports **********/
 
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
-};
 export const firebaseConfig = Keys.FireBaseConfig;
 
 @NgModule({
@@ -86,9 +79,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     CalendarWeekViewComponent,
     CommentDetailComponent,
     CommentListComponent,
-    ContentListItemComponent,
-    ContentAdminComponent,
-    ContentDetailComponent,
     DayPipe,
     FileDetailComponent,
     FilePreviewComponent,
@@ -97,7 +87,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     MonthPipe,
     NavbarComponent,
     NewCommentComponent,
-    NewContentComponent,
     RegisterUserComponent,
     RemoveDocumentComponent,
     RemoveCommentComponent,
@@ -120,6 +109,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
+    MailDeliveryService
   ],
   bootstrap: [AppComponent]
 })

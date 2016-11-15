@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { ContentItem } from '../../models/content-item.model';
 import { Comment } from '../../models/comment.model';
 
 @Component({
@@ -12,7 +11,6 @@ import { Comment } from '../../models/comment.model';
 export class NewCommentComponent implements OnInit {
 
   private commentForm: boolean = false;
-  contentItem: ContentItem;
   newCommentEvent: EventEmitter<Comment>;
 
   constructor() {
