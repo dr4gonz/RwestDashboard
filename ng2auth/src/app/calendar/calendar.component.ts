@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit {
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
-    let newEndDate: string = (<HTMLInputElement>document.getElementById('newEndDate')).value;
+    let newEndDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newFiles: string[] = [];
     let fileOptions = (<HTMLSelectElement>document.getElementById('attachFile'));
     let length: number = fileOptions.length;
@@ -102,7 +102,7 @@ export class CalendarComponent implements OnInit {
     let user = this.authService.getUserEmail();
     let pickedColor: any = this.getColor(inputColor);
     this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, newFiles, allDayBool, null, user);
-    if ((<HTMLInputElement>document.getElementById('notify')).value) {
+    if ((<HTMLInputElement>document.getElementById('notify')).value != null) {
       let recipients: string[] = [];
       let recipOptions = (<HTMLSelectElement>document.getElementById('recipients'));
       let recipOptionsLength: number = recipOptions.length;
@@ -117,7 +117,7 @@ export class CalendarComponent implements OnInit {
   formReset() {
     (<HTMLInputElement>document.getElementById('newTitle')).value = null;
     (<HTMLInputElement>document.getElementById('newStartDate')).value = null;
-    (<HTMLInputElement>document.getElementById('newEndDate')).value = null;
+    // (<HTMLInputElement>document.getElementById('newEndDate')).value = null;
     (<HTMLInputElement>document.getElementById('newColor')).value = null;
   }
 
