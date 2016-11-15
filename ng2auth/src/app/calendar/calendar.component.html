@@ -46,11 +46,11 @@
         </div>
         <div class="form-group col-xs-12">
           <label for="newStartDate">Start Date</label>
-          <input class="form-control" type="date" name="newStartDate" id="newStartDate" required>
+          <input class="form-control" type="date" name="newStartDate" id="newStartDate" min="2015-12-31" max="2020-12-31" required>
         </div>
         <div class="form-group col-xs-12">
           <label for="newEndDate">End Date</label>
-          <input class="form-control" type="date" name="newEndDate" id="newEndDate" required>
+          <input class="form-control" type="date" name="newEndDate" id="newEndDate" min="2015-12-31" max="2020-12-31" required>
         </div>
         <div class="form-group col-xs-12">
           <label for="allDayEvent">
@@ -61,11 +61,11 @@
         </div>
         <div class="form-group col-xs-12">
           <label for="newStartTime" *ngIf="!allDay">Start Time</label>
-          <input class="form-control" *ngIf="!allDay" type="time" name="newStartTime" id="newStartTime">
+          <input class="form-control" *ngIf="!allDay" type="time" name="newStartTime" id="newStartTime" required>
         </div>
         <div class="form-group col-xs-12">
           <label for="newEndTime" *ngIf="!allDay">End Time</label>
-          <input class="form-control"  *ngIf="!allDay" type="time" name="newEndTime" id="newEndTime">
+          <input class="form-control"  *ngIf="!allDay" type="time" name="newEndTime" id="newEndTime" required>
         </div>
         <div class="form-group col-xs-12">
           <select class="form-control" id="newColor"  name="newColor">
