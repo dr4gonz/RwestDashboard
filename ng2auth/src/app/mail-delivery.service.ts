@@ -48,5 +48,3 @@ export class MailDeliveryService {
     return body.data || {};
   }
 }
-
-

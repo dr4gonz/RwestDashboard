@@ -34,6 +34,7 @@
     "@types/jasmine": "^2.2.30",
     "angular-cli": "1.0.0-beta.18",
     "codelyzer": "~0.0.26",
+    "font-awesome": "~4.6.3",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
@@ -44,7 +45,6 @@
     "protractor": "4.0.5",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
-    "typescript": "2.0.2",
-    "font-awesome": "~4.6.3"
+    "typescript": "2.0.2"
   }
 }

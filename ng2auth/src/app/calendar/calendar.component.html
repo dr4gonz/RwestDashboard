@@ -49,21 +49,23 @@
           <input class="form-control" type="date" name="newStartDate" id="newStartDate" required>
         </div>
         <div class="form-group col-xs-12">
-          <label for="newStartTime" *ngIf="!allDay">Start Time</label>
-          <input class="form-control" *ngIf="!allDay" type="time" name="newStartTime" id="newStartTime">
-        </div>
-        <div class="form-group col-xs-12">
           <label for="newEndDate">End Date</label>
           <input class="form-control" type="date" name="newEndDate" id="newEndDate" required>
         </div>
         <div class="form-group col-xs-12">
-          <label for="newEndTime" *ngIf="!allDay">End Time</label>
-          <input class="form-control"  *ngIf="!allDay" type="time" name="newEndTime" id="newEndTime">
+          <label for="allDayEvent">
+            <input *ngIf="allDay" type="checkbox" checked (click)="turnOffAllDay()">
+            <input *ngIf="!allDay" type="checkbox" (click)="turnOnAllDay()">
+            All Day Event
+          </label>
         </div>
         <div class="form-group col-xs-12">
-          <label for="allDayEvent">All Day?</label>
-          <input class="form-control" *ngIf="allDay"type="checkbox" checked (click)="turnOffAllDay()">
-          <input class="form-control" *ngIf="!allDay" type="checkbox" (click)="turnOnAllDay()">
+          <label for="newStartTime" *ngIf="!allDay">Start Time</label>
+          <input class="form-control" *ngIf="!allDay" type="time" name="newStartTime" id="newStartTime">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="newEndTime" *ngIf="!allDay">End Time</label>
+          <input class="form-control"  *ngIf="!allDay" type="time" name="newEndTime" id="newEndTime">
         </div>
         <div class="form-group col-xs-12">
           <select class="form-control" id="newColor"  name="newColor">

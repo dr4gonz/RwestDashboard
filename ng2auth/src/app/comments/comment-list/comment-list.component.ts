@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import { AuthService } from '../../auth.service';
-import { ContentItem } from '../../models/content-item.model';
 import { Comment } from '../../models/comment.model';
 import * as moment from 'moment';
 
