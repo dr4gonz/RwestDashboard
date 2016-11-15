@@ -102,7 +102,7 @@ export class CalendarComponent implements OnInit {
     let user = this.authService.getUserEmail();
     let pickedColor: any = this.getColor(inputColor);
     this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, newFiles, allDayBool, null, user);
-    if ((<HTMLInputElement>document.getElementById('notify')).value != null) {
+    if ((<HTMLInputElement>document.getElementById('notify')).value) {
       let recipients: string[] = [];
       let recipOptions = (<HTMLSelectElement>document.getElementById('recipients'));
       let recipOptionsLength: number = recipOptions.length;
