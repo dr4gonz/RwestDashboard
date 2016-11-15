@@ -2,9 +2,13 @@ import { Component, Inject, OnInit, EventEmitter } from '@angular/core';
 import { ModalModule } from 'ng2-modal';
 import { AuthService } from '../auth.service';
 import { CalendarEventService } from '../calendar-event.service';
+import { MailDeliveryService } from '../mail-delivery.service';
 import { CalEvent } from '../models/calevent.model';
 import { FileEntry } from '../models/file-entry.model';
+import { User } from '../models/user.model';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+
 import * as moment from 'moment';
 
 const colors: any = {
@@ -44,6 +48,7 @@ const colors: any = {
 export class CalendarComponent implements OnInit {
 
   allDay: boolean = true;
+  showNotify: boolean = false;
   currentDay: number = moment().dayOfYear();
   editObject: CalEvent = null;
   events: FirebaseListObservable<CalEvent[]>;
@@ -53,14 +58,16 @@ export class CalendarComponent implements OnInit {
   view: string = 'grid';
   showFileDetail: boolean = false;
   selectedFile: FileEntry = null;
+  users: FirebaseListObservable<User[]>;
 
-  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any) {
+  constructor(private af: AngularFire, private authService: AuthService, private calendarEventService: CalendarEventService, @Inject(FirebaseApp) firebase: any, private mail: MailDeliveryService) {
     this.firebase = firebase.database();
     this.events = af.database.list('/events', {
       query: {
         orderByChild: 'start'
       }
     });
+    this.users = af.database.list('/users');
   }
 
   ngOnInit() {
@@ -103,7 +110,7 @@ export class CalendarComponent implements OnInit {
         let opt = recipOptions[i];
         if (opt.selected) recipients.push(opt.value);
       }
-      this.mail.sendMail(recipients, user, "test", "testbody");
+      this.mail.sendMail(recipients, user, "test", "testbody").subscribe();
     }
   }
 
@@ -171,7 +178,16 @@ export class CalendarComponent implements OnInit {
       this.showFileDetail = true;
     });
   }
+
   fileUnselected() {
     this.showFileDetail = false;
+  }
+
+  showNotificationForm() {
+    this.showNotify = true;
+  }
+
+  hideNotificationForm() {
+    this.showNotify = false;
   }
 }

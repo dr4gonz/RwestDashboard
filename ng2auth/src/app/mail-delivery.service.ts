@@ -11,23 +11,21 @@ export class MailDeliveryService {
    * Instructions for using mail service:
    * In component:
    * > import { MailDeliveryService } from '../mail-delivery.service';
-   * > import { Observable } from 'rxjs/Observable'; <--- this makes the error logging not throw its own errors
+   * > import { Observable } from 'rxjs/Observable';
    * To call sendMail from component:
    * > this.<injected mail service reference>.sendMail(<args>).subscribe();
    */
 
   constructor(private http: Http) { }
 
-  sendMail(to: string[], from: string, subject: string, body: string) {
+  sendMail(to: string[], fromAddress: string, subject: string, body: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log('service.sendMail');
-    let postData = { 'recipients': to, 'from': from, 'subject': subject, 'message': body };
+    let postData = { 'recipients': to, 'from': fromAddress, 'subject': "test", 'message': "test" };
     return this.http.post('http://portaldev.rweststaging.com/mail.php', postData, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
-
 
   private handleError(error: Response | any) {
     let errMsg: string;

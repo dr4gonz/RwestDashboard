@@ -6,15 +6,15 @@ try {
     $recipients = $data['recipients'];
     $sender = $data['from'];
 
-    $to = join($recipients, ', ');
+    $to = implode(', ', $recipients);
     $headers =  'From: ' . 'no-reply@r-west.com' . "\r\n" .
                 'Bcc: ' . $sender . "\r\n" .
                 'Reply-To: ' . $sender . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
 
     mail($to, $subject, $message, $headers);
-    echo "success\n";
+    echo "{'status': 'success'}";
 } catch (Exception $e) {
-    echo "\n\nError";
+    echo "{'status': 'failure'}";
 }
 ?>
