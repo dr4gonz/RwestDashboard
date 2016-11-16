@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse text-center" id="nav-burger">
       <ul class="nav navbar-nav navbar-center">
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/"><span class="hidden-sm">Client</span></a></li>
-        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/"><span class="hidden-sm">Projects</span></a></li>
+        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/projects"><span class="hidden-sm">Projects</span></a></li>
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/"><span class="hidden-sm">Groups</span></a></li>
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/"><span class="hidden-sm">Tasks</span></a></li>
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/calendar"><span class="hidden-sm">Schedule </span></a></li>
