@@ -8,4 +8,5 @@ export class FileEntry {
   status: string;
   uploaderId: string;
   uploaderEmail: string;
+  projectId: string;
 }

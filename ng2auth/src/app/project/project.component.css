@@ -1,0 +1,23 @@
+.div-link {
+  position: relative;
+}
+
+.div-link:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.div-link:hover {
+  cursor: pointer;
+}
+
+.div-link-contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.col-sm-3 {
+  border: solid black 3px;
+}

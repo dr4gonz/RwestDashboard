@@ -32,6 +32,10 @@ import { FileUploadComponent } from './file-storage/file-upload/file-upload.comp
 import { FirebaseLoginComponent } from './firebase-login/firebase-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewCommentComponent } from './comments/new-comment/new-comment.component';
+import { NewProjectComponent } from './project/new-project/new-project.component';
+import { ProjectComponent } from './project/project.component';
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
+import { ProjectPreviewComponent } from './project/project-preview/project-preview.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
@@ -75,8 +79,11 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AdminUserListItemComponent,
     AppComponent,
     CalendarComponent,
-    CalendarListItemComponent,
+    CalendarDayBlockComponent,
+    CalendarDayBlockDetailComponent,
     CalendarDayViewComponent,
+    CalendarListItemComponent,
+    CalendarMonthGridComponent,
     CalendarMonthViewComponent,
     CalendarWeekViewComponent,
     CommentDetailComponent,
@@ -89,6 +96,10 @@ export const firebaseConfig = Keys.FireBaseConfig;
     MonthPipe,
     NavbarComponent,
     NewCommentComponent,
+    NewProjectComponent,
+    ProjectComponent,
+    ProjectDetailComponent,
+    ProjectPreviewComponent,
     RegisterUserComponent,
     RemoveDocumentComponent,
     RemoveCommentComponent,
@@ -97,12 +108,9 @@ export const firebaseConfig = Keys.FireBaseConfig;
     TimePipe,
     ToDatePipe,
     ToTimePipe,
-    WeekPipe,
-    CalendarMonthGridComponent,
-    CalendarDayBlockComponent,
-    CalendarDayBlockDetailComponent,
     UpcomingEventsComponent,
-    UpcomingEventsListItemComponent
+    UpcomingEventsListItemComponent,
+    WeekPipe
   ],
   providers: [
     {
