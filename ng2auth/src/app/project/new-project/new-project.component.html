@@ -1,5 +1,22 @@
-<form class="">
-  <input type="text" name="name" placeholder="Project Name" #name>
-  <input type="date" name="dueDate" #dueDate>
+<form class="form-inline text-center">
+  <div class="form-group">
+    <input class="form-control" type="text" name="name" placeholder="project name" #name>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">due date</div>
+    <input class="form-control" type="date" name="dueDate" #dueDate>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="link" placeholder="link to google status document" #statusDoc>
+  </div>
+
   <button class="btn btn-default btn-large" (click)="createProject(name, dueDate)">Submit</button>
 </form>
+
+<h4>Instructions for embedding google document</h4>
+<ul>
+  <li>Open your google document</li>
+  <li>From the 'File' menu, select 'Publish to the web...'</li>
+  <li>If the document hasn't already been published, click 'Publish'</li>
+  <li>Copy and paste the text into above 'link' form. It should look something like this: https://docs.google.com/document/d/1xFG...8ts/pub</li>
+</ul>
