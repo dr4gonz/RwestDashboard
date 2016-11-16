@@ -7,7 +7,6 @@ import { ModalModule } from 'ng2-modal';
 import { Component, NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-
 /** Keys **/
 import { Keys } from '../keys';
 

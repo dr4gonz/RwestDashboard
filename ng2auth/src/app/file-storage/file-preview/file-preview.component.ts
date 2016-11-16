@@ -6,6 +6,7 @@ import { FirebaseApp } from 'angularfire2';
 @Component({
   selector: 'app-file-preview',
   inputs: ['fileEntry'],
+  outputs: ['hidePreviewEvent'],
   templateUrl: './file-preview.component.html',
   styleUrls: ['./file-preview.component.css']
 })
@@ -20,11 +21,13 @@ export class FilePreviewComponent implements OnInit {
   private fileUrl: string;
   private changeRef: ChangeDetectorRef;
   private containerType: string = "";
+  private hidePreviewEvent: EventEmitter<any>;
 
   constructor(@Inject(FirebaseApp) firebase: any, sanitizer: DomSanitizer, changeRef: ChangeDetectorRef,) {
     this.storage = firebase.storage();
     this.sanitizer = sanitizer;
     this.changeRef = changeRef;
+    this.hidePreviewEvent = new EventEmitter();
   }
 
   ngOnInit() {
@@ -54,6 +57,10 @@ export class FilePreviewComponent implements OnInit {
     } else {
       this.containerType = category;
     }
+  }
+
+  hidePreview() {
+    this.hidePreviewEvent.emit();
   }
 
 }

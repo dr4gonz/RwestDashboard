@@ -1,6 +1,6 @@
 current projects
 <div class="row">
-  <div class="col-sm-3 div-link" routerLink="/projects/new">
+  <div *ngIf="(authService.isAdmin())" class="col-sm-3 div-link" routerLink="/projects/new">
     <div class="div-link-contents">
       <h1>NEW</h1>
     </div>

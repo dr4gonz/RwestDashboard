@@ -1,3 +1,15 @@
-<p>
-  {{ (project | async)?.name }}
-</p>
+<h3>{{ (project | async)?.name }}</h3>
+<div *ngIf="!(selectedFile || newFile )" class="row">
+  <div class="col-sm-3 div-link" (click)="showNewFileForm()">
+    <div class="div-link-contents">
+      <h1>ADD NEW FILE</h1>
+    </div>
+  </div>
+  <div *ngFor="let file of fileEntries | async" class="col-sm-3 div-link" (click)="selectFile(file)">
+    <div class="div-link-contents">
+      <h1>{{file.title}}</h1>
+    </div>
+  </div>
+</div>
+<app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (cancelEvent)="hideUploadForm()"></app-file-upload>
+<app-file-preview *ngIf="selectedFile" [fileEntry]="selectedFile" (hidePreviewEvent)="unselectFile()"></app-file-preview>

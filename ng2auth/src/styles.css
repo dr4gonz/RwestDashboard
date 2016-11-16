@@ -48,3 +48,24 @@ body {
 select:hover {
   cursor: pointer;
 }
+
+.div-link {
+  position: relative;
+  border: solid black 3px;
+}
+
+.div-link:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.div-link:hover {
+  cursor: pointer;
+}
+
+.div-link-contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
