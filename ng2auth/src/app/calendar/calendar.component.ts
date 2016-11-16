@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit {
   addNewEvent() {
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
-    let newEndDate: string = (<HTMLInputElement>document.getElementById('newEndDate')).value;
+    let newEndDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newFiles: string[] = [];
     let fileOptions = (<HTMLSelectElement>document.getElementById('attachFile'));
     let length: number = fileOptions.length;
@@ -117,7 +117,7 @@ export class CalendarComponent implements OnInit {
   formReset() {
     (<HTMLInputElement>document.getElementById('newTitle')).value = null;
     (<HTMLInputElement>document.getElementById('newStartDate')).value = null;
-    (<HTMLInputElement>document.getElementById('newEndDate')).value = null;
+    // (<HTMLInputElement>document.getElementById('newEndDate')).value = null;
     (<HTMLInputElement>document.getElementById('newColor')).value = null;
   }
 

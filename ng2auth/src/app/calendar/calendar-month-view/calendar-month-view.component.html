@@ -1,10 +1,14 @@
 <div class="row text-center">
-  <h2>{{displayMonth()}}</h2>
-</div>
-<div class="row text-center">
-  <div class="btn-group">
-    <div class="btn btn-primary" (click)="prevMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
-    <div class="btn btn-primary" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
+  <div class="col-xs-3">
+    <h4>{{displayMonth()}}</h4>
+  </div>
+  <div class="col-xs-7 text-right">
+    <div class="btn-group">
+      <div class="btn btn-primary navigation-btn" (click)="prevMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-left"></i></div>
+      <div class="btn btn-primary navigation-btn" (click)="nextMonth()"><i class="fa fa-fw fa-lg fa-caret-square-o-right"></i></div>
+    </div>
+  </div>
+  <div class="col-xs-2">
   </div>
 </div>
 <br>

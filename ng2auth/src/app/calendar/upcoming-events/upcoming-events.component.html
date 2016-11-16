@@ -1,0 +1,8 @@
+<div class="col-sm-12">
+  <br>
+  <ul>
+    <li *ngFor="let event of events | weekPipe: currentWeek | async">
+      <app-upcoming-events-list-item [calendarEvent]="event"></app-upcoming-events-list-item>
+    </li>
+  </ul>
+</div>

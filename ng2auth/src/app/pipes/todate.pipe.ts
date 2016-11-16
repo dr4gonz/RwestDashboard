@@ -8,7 +8,7 @@ export class ToDatePipe implements PipeTransform {
 
   transform(value: string, args?: any): any {
     if(value) {
-      return moment(value).format('MMM Do YYYY');
+      return moment(value).format('MM/DD/YYYY');
     }
   }
 
