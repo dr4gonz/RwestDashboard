@@ -1,6 +1,8 @@
+<div class="text-center">
+  <a (click)="unselectFile()">Back</a>
+</div>
 <div class="panel panel-default text-center">
   <h4 class="text-center"> {{fileEntry.title}} - uploaded by {{fileEntry.uploaderEmail}} on {{formattedTime}}</h4>
-  <a (click)="unselectFile()">Back to list</a>
   <app-file-preview [fileEntry]='fileEntry'></app-file-preview>
   <div *ngIf="fileEntry.notes" class="page-header">
     <h4>Notes</h4>

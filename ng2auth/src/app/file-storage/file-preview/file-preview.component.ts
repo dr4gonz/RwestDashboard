@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FileEntry } from '../../models/file-entry.model';
 import { FirebaseApp } from 'angularfire2';
@@ -6,6 +6,7 @@ import { FirebaseApp } from 'angularfire2';
 @Component({
   selector: 'app-file-preview',
   inputs: ['fileEntry'],
+  outputs: ['hidePreviewEvent'],
   templateUrl: './file-preview.component.html',
   styleUrls: ['./file-preview.component.css']
 })
@@ -20,6 +21,7 @@ export class FilePreviewComponent implements OnInit {
   private fileUrl: string;
   private changeRef: ChangeDetectorRef;
   private containerType: string = "";
+  private backLink: string;
 
   constructor(@Inject(FirebaseApp) firebase: any, sanitizer: DomSanitizer, changeRef: ChangeDetectorRef,) {
     this.storage = firebase.storage();
