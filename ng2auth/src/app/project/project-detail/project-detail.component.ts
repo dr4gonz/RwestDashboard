@@ -21,7 +21,6 @@ export class ProjectDetailComponent implements OnInit {
   private authService: AuthService;
   private newFile: boolean = false;
   private statusMessage: string = "";
-  private selectedFile: FileEntry = null;
 
   constructor(private aF: AngularFire, private route: ActivatedRoute, private router: Router, authService: AuthService) {
     this.authService = authService;
@@ -56,14 +55,6 @@ export class ProjectDetailComponent implements OnInit {
 
   hideUploadForm() {
     this.newFile = false;
-  }
-
-  selectFile(fE: FileEntry) {
-    this.selectedFile = fE;
-  }
-
-  unselectFile() {
-    this.selectedFile = null;
   }
 
 }

@@ -109,7 +109,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ToTimePipe,
     UpcomingEventsComponent,
     UpcomingEventsListItemComponent,
-    WeekPipe
+    WeekPipe,
   ],
   providers: [
     {

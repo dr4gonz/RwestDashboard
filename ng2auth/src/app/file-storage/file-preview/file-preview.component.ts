@@ -12,7 +12,7 @@ import { FirebaseApp } from 'angularfire2';
 })
 export class FilePreviewComponent implements OnInit {
 
-  fileEntry: FileEntry;
+  private fileEntry: FileEntry;
   private storage;
   private firebase;
   private errorMsg: string;
