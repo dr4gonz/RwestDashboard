@@ -1,26 +1,42 @@
 .navbar {
-  font-size: 1.2em;
-  padding: 25px 10px 25px 10px;
-  background-color: #7a0d0d;
+  font-size: 1.0em;
+  background-color: #fff;
 }
 
 .current-user:hover {
   cursor: text;
 }
 
+.navbar li {
+  margin-left: 5px;
+  margin-right: 20px;
+}
+.nav-link:hover {
+  background-color: #E0E0E0;
+}
+
 .navbar li a {
-  color: #eee;
+  color: #616161;
 }
 
 .navbar-brand {
   font-size: 1.2em;
-  color: #eee;
+  color: #616161;
+}
+.navbar li a:hover {
+}
+.navbar-brand:hover {
+  color: #C62828;
+}
+.user-icon {
+  color: #616161;
 }
 
-.navbar-brand:hover, .navbar li a:hover {
-  color: #fff;
+.nav-user {
+  height: 100%;
+  font-size: .9em;
+  margin-top: 10px;
 }
-
 @media only screen and (max-width: 1200px) {
   .navbar {
     font-size: 1em;
