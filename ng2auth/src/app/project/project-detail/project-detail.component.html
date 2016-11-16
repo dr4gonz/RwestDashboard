@@ -12,4 +12,4 @@
   </div>
 </div>
 <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (cancelEvent)="hideUploadForm()"></app-file-upload>
-<app-file-preview *ngIf="selectedFile" [fileEntry]="selectedFile" (hidePreviewEvent)="unselectFile()"></app-file-preview>
+<app-file-detail *ngIf="selectedFile" [fileEntry]="selectedFile" (unselectFileEvent)="unselectFile()"></app-file-detail>
