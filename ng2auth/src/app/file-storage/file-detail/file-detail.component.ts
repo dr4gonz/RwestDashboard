@@ -47,7 +47,7 @@ export class FileDetailComponent implements OnInit {
   }
 
   unapprove() {
-    this.fileEntry.update({ status: 'unapproved' });
+    this.fileEntry.update({ status: 'not approved' });
   }
 
 }

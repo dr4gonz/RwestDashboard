@@ -3,4 +3,5 @@ export class Project {
   name: string;
   dueDate: string;
   statusDoc: string;
+  archived: boolean;
 }

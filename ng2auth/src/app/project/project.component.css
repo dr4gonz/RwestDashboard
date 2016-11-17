@@ -1,3 +1,16 @@
+.fa-plus {
+  margin-top: 15px;
+  color: #efefef;
+  position: relative;
+  font-size: 10em;
+}
+
+.centered-font {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .projects-header {
   background-color: #EEEEEE;
   font-size: 1.3em;
@@ -5,6 +18,7 @@
   padding-left: 7%;
   margin-bottom: 15px;
 }
+
 .container-fluid {
   padding-left: 7%;
   padding-right: 7%;

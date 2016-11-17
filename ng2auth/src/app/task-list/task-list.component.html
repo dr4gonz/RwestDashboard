@@ -12,6 +12,14 @@
     <button (click)="newTask(description, date)" class="btn btn-default">Submit</button>
   </div>
 
+  <div class="row">
+    <div *ngIf="tasks" class="col-sm-4">
+      <h4>Upcoming</h4>
+      <app-upcoming-tasks [tasks]="tasks"></app-upcoming-tasks>
+    </div>
+    <div class="col-sm-8">
+
+    </div>
 
   <div *ngIf="tasks">
     <h4>Upcoming</h4>

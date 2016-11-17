@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../auth.service';
+import { ProjectService } from '../../project.service';
 import { Project } from '../../models/project.model';
 import { FileEntry } from '../../models/file-entry.model';
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-project-detail',
@@ -17,12 +18,11 @@ export class ProjectDetailComponent implements OnInit {
   private fileEntries: FirebaseListObservable<FileEntry[]>;
   private id: string;
   private name: string;
-  private prj: Project;
   private authService: AuthService;
   private newFile: boolean = false;
   private statusMessage: string = "";
 
-  constructor(private aF: AngularFire, private route: ActivatedRoute, private router: Router, authService: AuthService) {
+  constructor(private pService: ProjectService, private route: ActivatedRoute, private router: Router, authService: AuthService) {
     this.authService = authService;
     let id: string;
     this.route.params.forEach((params: Params) => {
@@ -30,8 +30,10 @@ export class ProjectDetailComponent implements OnInit {
     });
     this.id = id;
 
-    this.project = aF.database.object('/projects/' + this.id);
-    this.fileEntries = aF.database.list('/fileEntries');
+    this.project = pService.findProject(id);
+
+    this.fileEntries = pService.projectFiles(id);
+
   }
 
   ngOnInit() {
@@ -55,6 +57,15 @@ export class ProjectDetailComponent implements OnInit {
 
   hideUploadForm() {
     this.newFile = false;
+  }
+
+  archive() {
+    console.log(this.project);
+    this.pService.archiveProject(this.project);
+  }
+
+  unarchive() {
+    this.pService.unarchiveProject(this.project);
   }
 
 }
