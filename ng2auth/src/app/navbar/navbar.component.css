@@ -35,14 +35,39 @@
   font-size: .9em;
   margin-top: 10px;
 }
+.nav-user-collapsed {
+  display: none;
+}
 @media only screen and (max-width: 1100px) {
   .navbar {
-    font-size: .7em;
+    font-size: .8em;
+  }
+}
+@media only screen and (max-width: 995px) {
+  .navbar {
+    font-size: .6em;
+  }
+  .nav-user-collapsed {
+    display: none;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .nav-user {
+    display: none;
+  }
+  .nav-user-collapsed {
+    display: none;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .navbar {
     font-size: 1em;
+  }
+  .nav-user-collapsed {
+    display: block;
+  }
+  .user-icon {
+    display: none;
   }
 }
