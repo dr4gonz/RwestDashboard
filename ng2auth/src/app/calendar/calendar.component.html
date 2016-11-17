@@ -3,11 +3,11 @@
 </div>
 
 <div class="container-fluid">
-  <div class="col-xs-4">
+  <div class="col-sm-4">
     <h3>Upcoming</h3>
     <app-upcoming-events [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" (selectedFile)="fileSelected($event)"></app-upcoming-events>
   </div>
-  <div class="col-xs-8">
+  <div class="col-sm-8">
     <h3>Calendar</h3>
     <br>
     <div *ngIf="!showFileDetail">

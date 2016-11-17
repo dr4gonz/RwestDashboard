@@ -43,6 +43,7 @@ import { routing, routedComponents } from './app.routing';
 import { TaskListComponent } from './task-list/task-list.component';
 import { UpcomingEventsComponent } from './calendar/upcoming-events/upcoming-events.component';
 import { UpcomingEventsListItemComponent } from './calendar/upcoming-events/upcoming-events-list-item/upcoming-events-list-item.component';
+import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
 
 /** Pipes **/
 import { DayPipe } from './pipes/day.pipe';
@@ -51,6 +52,7 @@ import { TimePipe } from './pipes/time.pipe';
 import { ToDatePipe } from './pipes/todate.pipe';
 import { ToTimePipe } from './pipes/totime.pipe';
 import { WeekPipe } from './pipes/week.pipe';
+import { UpcomingPipe } from './pipes/upcoming.pipe';
 
 
 /** Services **/
@@ -115,6 +117,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     WeekPipe,
     DocumentPreviewComponent,
     TaskListComponent,
+    UpcomingPipe,
+    UpcomingTasksComponent,
   ],
   providers: [
     {

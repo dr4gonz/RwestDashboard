@@ -10,7 +10,7 @@ import * as moment from 'moment';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  Tasks: Task[];
+  tasks: FirebaseListObservable<Task[]>;
   newTaskToggle: boolean = false;
 
   constructor(private taskService: TaskService) { }
@@ -21,7 +21,7 @@ export class TaskListComponent implements OnInit {
   }
 
   getTasks() {
-    let response = this.taskService.getTasks().subscribe(tasks => this.Tasks = tasks);
+    this.tasks = this.taskService.getTasks();
   }
   newTask(description: HTMLInputElement, date: HTMLInputElement) {
     console.log(moment(date.value).format());
