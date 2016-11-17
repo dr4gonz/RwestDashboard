@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
 import { Project } from '../../models/project.model';
-import { ProjectService } from '../../project.service';
+import { ProjectService } from '../../services/project.service';
 import { FileEntry } from '../../models/file-entry.model';
 import { CalEvent } from '../../models/calevent.model';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import { Project } from './models/project.model';
-import { FileEntry } from './models/file-entry.model';
+import { Project } from '../models/project.model';
+import { FileEntry } from '../models/file-entry.model';
 
 @Injectable()
 export class ProjectService {

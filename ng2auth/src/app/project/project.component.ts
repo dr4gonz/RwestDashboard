@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
-import { ProjectService } from '../project.service';
-import { AuthService } from '../auth.service';
+import { ProjectService } from '../services/project.service';
+import { AuthService } from '../services/auth.service';
 import { Project } from '../models/project.model';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { FirebaseApp, AngularFire } from 'angularfire2';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { FileEntry } from '../../models/file-entry.model';
 import * as moment from 'moment';
 

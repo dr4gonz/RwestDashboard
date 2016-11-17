@@ -55,13 +55,13 @@ import { WeekPipe } from './pipes/week.pipe';
 
 
 /** Services **/
-import { AuthGuard } from './auth-guard.service'
-import { AuthGuardAdmin } from './auth-guard-admin.service';
-import { AuthService } from './auth.service';
-import { CalendarEventService } from './calendar-event.service';
-import { MailDeliveryService } from './mail-delivery.service';
-import { ProjectService } from './project.service';
-import { TaskService } from './task.service';
+import { AuthGuard } from './services/auth-guard.service'
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { AuthService } from './services/auth.service';
+import { CalendarEventService } from './services/calendar-event.service';
+import { MailDeliveryService } from './services/mail-delivery.service';
+import { ProjectService } from './services/project.service';
+import { TaskService } from './services/task.service';
 
 /********** End imports **********/
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../services/task.service';
 import { FirebaseListObservable } from 'angularfire2';
 import { Task } from '../models/task.model';
 import * as moment from 'moment';
