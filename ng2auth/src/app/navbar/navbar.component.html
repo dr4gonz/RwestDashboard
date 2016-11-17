@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse text-center" id="nav-burger">
       <ul class="nav navbar-nav">
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/">Client</a></li>
-        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/projects">Projects</a></li>
+        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/">Groups</a></li>
-        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/tasks">Tasks</a></li>
-        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/calendar">Schedule</a></li>
-        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/files">Files</a></li>
-        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/documents">Documents</a></li>
-        <li *ngIf="(authService.isAdmin())" class="nav-link"><a routerLink="/admin">Users</a></li>
+        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/tasks" routerLinkActive="active">Tasks</a></li>
+        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/calendar" routerLinkActive="active">Schedule</a></li>
+        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/files" routerLinkActive="active">Files</a></li>
+        <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/documents" routerLinkActive="active">Documents</a></li>
+        <li *ngIf="(authService.isAdmin())" class="nav-link"><a routerLink="/admin" routerLinkActive="active">Users</a></li>
 
         <li *ngIf="(auth | async)" class="nav-user">
           <div class="row">
