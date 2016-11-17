@@ -40,6 +40,7 @@ import { RemoveDocumentComponent } from './documents/remove-document/remove-docu
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { routing, routedComponents } from './app.routing';
+import { TaskListComponent } from './task-list/task-list.component';
 import { UpcomingEventsComponent } from './calendar/upcoming-events/upcoming-events.component';
 import { UpcomingEventsListItemComponent } from './calendar/upcoming-events/upcoming-events-list-item/upcoming-events-list-item.component';
 
@@ -59,6 +60,7 @@ import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
 import { MailDeliveryService } from './mail-delivery.service';
 import { DocumentPreviewComponent } from './documents/document-preview/document-preview.component';
+import { TaskService } from './task.service';
 
 /********** End imports **********/
 
@@ -112,6 +114,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     UpcomingEventsListItemComponent,
     WeekPipe,
     DocumentPreviewComponent,
+    TaskListComponent,
   ],
   providers: [
     {
@@ -122,7 +125,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
-    MailDeliveryService
+    MailDeliveryService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })
