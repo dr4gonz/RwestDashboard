@@ -1,15 +1,26 @@
-<h3>{{ (project | async)?.name }}</h3>
-<a (click)="docModal.open()">view status doc</a>
+<div class="row">
+  <div class="col-xs-4 text-center">
+    <h3>project name: {{ (project | async)?.name }}</h3>
+  </div>
+  <div class="col-xs-4 text-center">
+    <h3><a (click)="docModal.open()">view status doc</a></h3>
+  </div>
+  <div class="col-xs-4 text-center">
+    <h3>due date: {{ (project | async)?.dueDate }}</h3>
+  </div>
+</div>
 <div>
   <div class="row">
     <div class="col-sm-3 div-link" (click)="showNewFileForm()">
-      <div class="div-link-contents">
-        <h1>ADD NEW FILE</h1>
+      <div class="div-link-contents centered-font">
+        <i class="fa fa-plus" aria-hidden="true"></i>
       </div>
     </div>
     <div *ngFor="let file of fileEntries | async" class="col-sm-3 div-link" routerLink="/files/{{file.$key}}">
       <div class="div-link-contents">
-        <h1>{{file.title}}</h1>
+        <h3>{{file.title}}</h3>
+        <h4>status: {{file.status}}</h4>
+        <h4></h4>
       </div>
     </div>
   </div>
