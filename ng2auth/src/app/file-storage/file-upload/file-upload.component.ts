@@ -55,7 +55,7 @@ export class FileUploadComponent implements OnInit {
           fE.uploaderId = id;
           fE.uploaderEmail = email;
           fE.creationTime = moment().format();
-          fE.status = "Unapproved";
+          fE.status = "not approved";
           fE.notes = notes.value;
           fE.title = title.value;
           eventRef.emit(fE);

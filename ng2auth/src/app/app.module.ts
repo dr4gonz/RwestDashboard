@@ -58,6 +58,7 @@ import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
 import { MailDeliveryService } from './mail-delivery.service';
+import { DocumentPreviewComponent } from './documents/document-preview/document-preview.component';
 
 /********** End imports **********/
 
@@ -109,7 +110,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ToTimePipe,
     UpcomingEventsComponent,
     UpcomingEventsListItemComponent,
-    WeekPipe
+    WeekPipe,
+    DocumentPreviewComponent,
   ],
   providers: [
     {

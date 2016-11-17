@@ -1,15 +1,27 @@
 <h3>{{ (project | async)?.name }}</h3>
-<div *ngIf="!(selectedFile || newFile )" class="row">
-  <div class="col-sm-3 div-link" (click)="showNewFileForm()">
-    <div class="div-link-contents">
-      <h1>ADD NEW FILE</h1>
+<a (click)="docModal.open()">view status doc</a>
+<div>
+  <div class="row">
+    <div class="col-sm-3 div-link" (click)="showNewFileForm()">
+      <div class="div-link-contents">
+        <h1>ADD NEW FILE</h1>
+      </div>
     </div>
-  </div>
-  <div *ngFor="let file of fileEntries | async" class="col-sm-3 div-link" (click)="selectFile(file)">
-    <div class="div-link-contents">
-      <h1>{{file.title}}</h1>
+    <div *ngFor="let file of fileEntries | async" class="col-sm-3 div-link" routerLink="/files/{{file.$key}}">
+      <div class="div-link-contents">
+        <h1>{{file.title}}</h1>
+      </div>
     </div>
   </div>
 </div>
 <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (cancelEvent)="hideUploadForm()"></app-file-upload>
-<app-file-detail *ngIf="selectedFile" [fileEntry]="selectedFile" (unselectFileEvent)="unselectFile()"></app-file-detail>
+
+<modal  modalClass="modal-lg"
+        [hideCloseButton]="false"
+        [closeOnEscape]="true"
+        [closeOnOutsideClick]="true"
+        class="text-center" #docModal>
+  <modal-content>
+    <app-document-preview *ngIf="(project | async)" [docLink]="(project | async)?.statusDoc"></app-document-preview>
+  </modal-content>
+</modal>
