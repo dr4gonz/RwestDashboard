@@ -1,0 +1,12 @@
+.container-fluid {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.projects-header {
+  background-color: #EEEEEE;
+  font-size: 1.3em;
+  color: #616161;
+  padding-left: 7%;
+  margin-bottom: 15px;
+}

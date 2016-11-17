@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, EventEmitter } from '@angular/core';
 import { ModalModule } from 'ng2-modal';
-import { AuthService } from '../auth.service';
-import { CalendarEventService } from '../calendar-event.service';
-import { MailDeliveryService } from '../mail-delivery.service';
+import { AuthService } from '../services/auth.service';
+import { CalendarEventService } from '../services/calendar-event.service';
+import { MailDeliveryService } from '../services/mail-delivery.service';
 import { CalEvent } from '../models/calevent.model';
 import { FileEntry } from '../models/file-entry.model';
 import { User } from '../models/user.model';

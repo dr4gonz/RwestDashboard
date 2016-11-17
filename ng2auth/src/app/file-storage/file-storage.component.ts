@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FileEntry } from '../models/file-entry.model';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project.model';
 import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2';
-import { ProjectService } from '../../project.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-new-project',

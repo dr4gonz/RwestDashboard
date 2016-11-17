@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Task } from './models/task.model';
+import { Task } from '../models/task.model';
 import * as moment from 'moment';
 
 @Injectable()

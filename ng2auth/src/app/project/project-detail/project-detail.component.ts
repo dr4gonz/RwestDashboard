@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AuthService } from '../../auth.service';
-import { ProjectService } from '../../project.service';
+import { AuthService } from '../../services/auth.service';
+import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 import { FileEntry } from '../../models/file-entry.model';
 import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';

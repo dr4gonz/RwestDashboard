@@ -1,5 +1,5 @@
 import { Component, OnInit,EventEmitter } from '@angular/core';
-import { CalendarEventService } from '../../calendar-event.service';
+import { CalendarEventService } from '../../services/calendar-event.service';
 import { CalEvent } from '../../models/calevent.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import * as moment from 'moment';
