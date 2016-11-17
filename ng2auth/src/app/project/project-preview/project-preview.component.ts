@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2';
 import { Project } from '../../models/project.model';
+import { ProjectService } from '../../project.service';
 import { FileEntry } from '../../models/file-entry.model';
 import { CalEvent } from '../../models/calevent.model';
 
@@ -14,28 +15,15 @@ export class ProjectPreviewComponent implements OnInit {
 
   private project: Project;
   recentFiles: FirebaseListObservable<FileEntry[]>;
-  upcomingEvents: FirebaseListObservable<CalEvent[]>;
+  // upcomingEvents: FirebaseListObservable<CalEvent[]>;
 
-  constructor(private aF: AngularFire) {
-  }
+  constructor(private pService: ProjectService) { }
 
   ngOnInit() {
-    let pKey: string = this.project.$key;
-    this.recentFiles = this.aF.database.list('/fileEntries', {
-      query: {
-        orderByChild: 'projectId',
-        equalTo: pKey,
-        limitToLast: 4
-      }
-    });
+    // let pKey: string = this.project.$key;
+    this.recentFiles = this.pService.recentFiles(this.project.$key);
 
-    this.upcomingEvents = this.aF.database.list('/events', {
-      query: {
-        orderByChild: 'projectId',
-        equalTo: pKey,
-        limitToLast: 4
-      }
-    });
+    // this.upcomingEvents = this.pService.upcomingEve
 
   }
 

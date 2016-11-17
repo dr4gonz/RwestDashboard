@@ -1,8 +1,10 @@
-current projects
+<div class="row page-header">
+  <h3>current projects</h3>
+</div>
 <div class="row">
-  <div *ngIf="(authService.isAdmin())" class="col-sm-3 div-link" routerLink="/projects/new">
-    <div class="div-link-contents">
-      <h1>NEW</h1>
+  <div  *ngIf="(authService.isAdmin())" class="col-sm-3 div-link" routerLink="/projects/new">
+    <div class="div-link-contents centered-font">
+      <i class="fa fa-plus" aria-hidden="true"></i>
     </div>
   </div>
   <div *ngFor="let proj of projects | async" class="col-sm-3 div-link" routerLink="/projects/{{proj.$key}}">
@@ -11,6 +13,13 @@ current projects
     </div>
   </div>
 </div>
-<div>
-  archived projects
+<div class="row page-header">
+  <h3>archived projects</h3>
+</div>
+<div class="row">
+  <div *ngFor="let proj of archivedProjects | async" class="col-sm-3 div-link" routerLink="/projects/{{proj.$key}}">
+    <div class="div-link-contents">
+      <app-project-preview [project]="proj"></app-project-preview>
+    </div>
+  </div>
 </div>

@@ -52,7 +52,7 @@ select:hover {
 .div-link {
   position: relative;
   border: solid #efefef 6px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #fff;
 }
 
@@ -74,4 +74,10 @@ select:hover {
 
 .grey-text {
   color: #444;
+}
+
+.title-bar {
+  color: #444;
+  border-bottom: solid #fff 3px;
+  margin-bottom: 25px;
 }

@@ -25,6 +25,7 @@ import { CalendarMonthViewComponent } from './calendar/calendar-month-view/calen
 import { CalendarWeekViewComponent } from './calendar/calendar-week-view/calendar-week-view.component';
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
+import { DocumentPreviewComponent } from './documents/document-preview/document-preview.component';
 import { FileDetailComponent } from './file-storage/file-detail/file-detail.component';
 import { FilePreviewComponent } from './file-storage/file-preview/file-preview.component';
 import { FileUploadComponent } from './file-storage/file-upload/file-upload.component';
@@ -58,7 +59,7 @@ import { AuthGuardAdmin } from './auth-guard-admin.service';
 import { AuthService } from './auth.service';
 import { CalendarEventService } from './calendar-event.service';
 import { MailDeliveryService } from './mail-delivery.service';
-import { DocumentPreviewComponent } from './documents/document-preview/document-preview.component';
+import { ProjectService } from './project.service';
 
 /********** End imports **********/
 
@@ -89,6 +90,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     CommentDetailComponent,
     CommentListComponent,
     DayPipe,
+    DocumentPreviewComponent,
     FileDetailComponent,
     FilePreviewComponent,
     FileUploadComponent,
@@ -111,7 +113,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     UpcomingEventsComponent,
     UpcomingEventsListItemComponent,
     WeekPipe,
-    DocumentPreviewComponent,
   ],
   providers: [
     {
@@ -122,7 +123,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
-    MailDeliveryService
+    MailDeliveryService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })

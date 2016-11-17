@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project.model';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2';
+import { ProjectService } from '../../project.service';
 
 @Component({
   selector: 'app-new-project',
@@ -11,8 +13,8 @@ export class NewProjectComponent implements OnInit {
 
   projects: FirebaseListObservable<Project[]>;
 
-  constructor(private aF: AngularFire) {
-    this.projects = this.aF.database.list('/projects');
+  constructor(private pService: ProjectService, private router: Router) {
+    this.projects = pService.currentProjects();
   }
 
   ngOnInit() {
@@ -22,10 +24,11 @@ export class NewProjectComponent implements OnInit {
     let newProject = new Project();
     newProject.name = name.value;
     newProject.dueDate = dueDate.value;
-    this.projects.push(newProject);
+    newProject.archived = false;
+    this.pService.newProject(newProject);
     name.value = "";
     dueDate.value = "";
-    // next: redirect to project detail page
+    this.router.navigate(['/projects']);
   }
 
 }

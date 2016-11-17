@@ -1,0 +1,12 @@
+.fa-plus {
+  margin-top: 15px;
+  color: #efefef;
+  position: relative;
+  font-size: 10em;
+}
+
+.centered-font {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

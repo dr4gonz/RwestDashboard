@@ -1,10 +1,8 @@
-<p>
-  project-preview works!
-</p>
-<div *ngFor="let f of recentFiles | async">
-  <!-- <p>{{f.title}}</p> -->
+<div class="page-header">
+  <h4>{{project.name}}</h4>
+  <h5>due: {{project.dueDate}}</h5>
 </div>
-<div>
-<p *ngFor="let e of upcomingEvents | async">
-  <!-- <p>{{e.title}}</p> -->
+<h5>recent files:</h5>
+<div *ngFor="let f of recentFiles | async">
+  <p>{{f.title}}</p>
 </div>

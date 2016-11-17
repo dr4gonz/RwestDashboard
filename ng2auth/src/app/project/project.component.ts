@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2';
+import { ProjectService } from '../project.service';
 import { AuthService } from '../auth.service';
 import { Project } from '../models/project.model';
 
@@ -14,9 +15,9 @@ export class ProjectComponent implements OnInit {
   private archivedProjects: FirebaseListObservable<Project[]>;
   private authService: AuthService;
 
-  constructor(private aF: AngularFire, authService: AuthService) {
-    this.projects = aF.database.list('projects');
-    this.archivedProjects = aF.database.list('archivedProjects');
+  constructor(authService: AuthService, private pService: ProjectService) {
+    this.projects = pService.currentProjects();
+    this.archivedProjects = pService.archivedProjects();
     this.authService = authService;
   }
 
