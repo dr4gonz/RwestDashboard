@@ -1,4 +1,8 @@
-<div class="container">
+<div class="col-xs-12 schedule-header">
+  Schedule
+</div>
+
+<div class="container-fluid">
   <div class="col-xs-4">
     <h3>Upcoming</h3>
     <app-upcoming-events [events]="events" (eventToEdit)="editEvent($event); editEventModal.open()" (selectedFile)="fileSelected($event)"></app-upcoming-events>
