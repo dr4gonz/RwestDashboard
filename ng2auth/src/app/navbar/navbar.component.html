@@ -10,7 +10,7 @@
       <a class="navbar-left" routerLink="/"><img class="brand-image" src="../../assets/img/rwest-logo.png"></a>
     </div>
     <div class="collapse navbar-collapse text-center" id="nav-burger">
-      <ul class="nav navbar-nav navbar-center">
+      <ul class="nav navbar-nav">
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/">Client</a></li>
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/projects">Projects</a></li>
         <li *ngIf="(auth | async)" class="nav-link"><a routerLink="/">Groups</a></li>

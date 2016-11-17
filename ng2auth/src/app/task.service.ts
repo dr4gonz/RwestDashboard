@@ -9,7 +9,11 @@ export class TaskService {
   constructor(private af: AngularFire) { }
 
   getTasks() {
-    let taskList = this.af.database.list('/tasks');
+    let taskList = this.af.database.list('/tasks', {
+      query: {
+        orderByChild: 'date'
+      }
+    });
     return taskList;
   }
   addTask(description: string, date: string) {
