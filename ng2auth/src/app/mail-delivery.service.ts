@@ -21,7 +21,7 @@ export class MailDeliveryService {
   sendMail(to: string[], fromAddress: string, subject: string, body: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let postData = { 'recipients': to, 'from': fromAddress, 'subject': "test", 'message': "test" };
+    let postData = { 'recipients': to, 'from': fromAddress, 'subject': subject, 'message': body };
     return this.http.post('http://portaldev.rweststaging.com/mail.php', postData, options)
       .map(this.extractData)
       .catch(this.handleError);

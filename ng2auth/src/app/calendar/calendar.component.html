@@ -43,8 +43,8 @@
 
   <modal #newEventModal modalClass="modal-md">
     <modal-header class="text-center">
-        <h4 *ngIf="!authService.errorMessage" class="text-center">Event</h4>
-        <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
+      <h4 *ngIf="!authService.errorMessage" class="text-center">Event</h4>
+      <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
     </modal-header>
     <modal-content>
       <form id="newEventForm">
@@ -76,37 +76,32 @@
           <input class="form-control"  *ngIf="!allDay" type="time" name="newEndTime" id="newEndTime" required>
         </div> -->
         <div class="form-group col-xs-12">
-          <select class="form-control" id="newColor"  name="newColor">
+          <select class="form-control" id="newColor" name="newColor">
             <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
           </select>
         </div>
         <div class="form-group col-xs-12">
           <label for="recipients">Ctrl+Click to select multiple files</label>
-          <select class="form-control" data-size="5" id="attachFile"  name="attachFile" multiple>
+          <select class="form-control" data-size="5" id="attachFile" name="attachFile" multiple>
             <option *ngFor="let file of files | async" [value]=file.$key>{{file.title}}</option>
           </select>
         </div>
         <div class="form-group col-xs-12">
-          <div *ngIf="!showNotify">
-            <label for="allDayEvent" (click)="showNotificationForm()">
-              <input type="checkbox" (click)="showNotificationForm()" name="notify" #notify>
-              Send notifications
-            </label>
-          </div>
+          <label for="allDayEvent">
+            <input type="checkbox" [(ngModel)]="showNotify" name="notify" id="notify" #notify>
+            Send notifications
+          </label>
           <div *ngIf="showNotify">
-            <label for="allDayEvent" (click)="hideNotificationForm()">
-              <input type="checkbox" checked (click)="hideNotificationForm()" name="notify" id="notify">
-              Send notifications
-            </label>
             <div class="form-group">
               <label for="recipients">Ctrl+Click to select multiple recipients</label>
-              <select class="form-control" data-size="5" id="recipients"  name="recipients" multiple id="recipients">
+              <select class="form-control" data-size="5" id="recipients" name="recipients" multiple id="recipients">
                 <option *ngFor="let user of users | async" [value]=user.email>{{user.email}}</option>
               </select>
             </div>
           </div>
         </div>
-        <button class="btn btn-success center-block" (click)="addNewEvent(); newEventModal.close(); formReset()">
+        <!-- <button class="btn btn-success center-block" (click)="addNewEvent(); newEventModal.close(); formReset();"> -->
+        <button class="btn btn-success center-block" (click)="addNewEvent()">
           Submit
         </button>
       </form>
@@ -115,14 +110,14 @@
 
   <modal #editEventModal modalClass="modal-md">
     <modal-header class="text-center">
-        <h4 *ngIf="!authService.errorMessage" class="text-center">Edit Event</h4>
-        <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
+      <h4 *ngIf="!authService.errorMessage" class="text-center">Edit Event</h4>
+      <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
     </modal-header>
     <modal-content>
       <form>
         <div *ngIf="editObject" class="form-group col-xs-12">
           <label for="newTitle">Title</label>
-          <input class="form-control" type="text" name="eventTitle" id="eventTitle"  value={{editObject.title}} required>
+          <input class="form-control" type="text" name="eventTitle" id="eventTitle" value={{editObject.title}} required>
         </div>
         <div *ngIf="editObject" class="form-group col-xs-12">
           <label for="newStartDate">Start Date</label>
@@ -133,13 +128,13 @@
           <input class="form-control" type="date" name="eventEnd" id="eventEnd" value={{editObject.end}} required>
         </div> -->
         <div *ngIf="editObject" class="form-group col-xs-12">
-          <select class="form-control" id="eventColor"  name="eventColor">
+          <select class="form-control" id="eventColor" name="eventColor">
             <option *ngFor="let color of selectColors" [value]="color">{{color}}</option>
           </select>
         </div>
-          <button class="btn btn-success center-block" (click)="submitEditedEvent(); editEventModal.close()">
-            Submit
-          </button>
+        <button class="btn btn-success center-block" (click)="submitEditedEvent(); editEventModal.close()">
+          Submit
+        </button>
       </form>
     </modal-content>
   </modal>
