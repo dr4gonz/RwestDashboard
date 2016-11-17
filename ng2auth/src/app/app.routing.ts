@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 const appRoutes: Routes = [
   {
@@ -62,8 +63,13 @@ const appRoutes: Routes = [
     path: 'files/:id',
     component: FileDetailComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'tasks',
+    component: TaskListComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, DocumentListComponent, FileStorageComponent, HomeComponent, FileDetailComponent, NewProjectComponent, ProjectComponent, ProjectDetailComponent];
+export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, DocumentListComponent, FileStorageComponent, HomeComponent, FileDetailComponent, NewProjectComponent, ProjectComponent, ProjectDetailComponent, TaskListComponent];

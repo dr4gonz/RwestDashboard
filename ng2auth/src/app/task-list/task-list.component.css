@@ -1,19 +1,7 @@
-h3 {
-      margin: 0;
-}
-
-.container {
-  padding-bottom: 50px;
-}
-
 ul {
   list-style: none;
 }
-
-.calendar-container {
-  width: 100%;
-}
-.schedule-header {
+.task-header {
   background-color: #EEEEEE;
   font-size: 1.3em;
   color: #616161;
