@@ -78,39 +78,44 @@ export class CalendarComponent implements OnInit {
   }
 
   addNewEvent() {
+    console.log((<HTMLInputElement>document.getElementById('notify')).value);
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newEndDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
-    let newFiles: string[] = [];
-    let fileOptions = (<HTMLSelectElement>document.getElementById('attachFile'));
-    let length: number = fileOptions.length;
-    for(let i = 0; i < length; i++) {
-      let opt = fileOptions[i];
-      if (opt.selected) newFiles.push(opt.value);
-    }
-    let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
-    let newStartUnix: any;
-    let newEndUnix: any;
-    let allDayBool: boolean = true;
-    if(!this.allDay){
-      let newStartTime: string = (<HTMLInputElement>document.getElementById('newStartTime')).value;
-      let newEndTime: string = (<HTMLInputElement>document.getElementById('newEndTime')).value;
-      allDayBool = false;
-      newStartDate = newStartDate + 'T' + newStartTime;
-      newEndDate = newEndDate + 'T' + newEndTime;
-    }
-    let user = this.authService.getUserEmail();
-    let pickedColor: any = this.getColor(inputColor);
-    this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, newFiles, allDayBool, null, user);
-    if ((<HTMLInputElement>document.getElementById('notify')).value) {
-      let recipients: string[] = [];
-      let recipOptions = (<HTMLSelectElement>document.getElementById('recipients'));
-      let recipOptionsLength: number = recipOptions.length;
-      for(let i = 0; i < recipOptionsLength; i++) {
-        let opt = recipOptions[i];
-        if (opt.selected) recipients.push(opt.value);
+    if (newEventTitle && newStartDate) {
+      let newFiles: string[] = [];
+      let fileOptions = (<HTMLSelectElement>document.getElementById('attachFile'));
+      let length: number = fileOptions.length;
+      for(let i = 0; i < length; i++) {
+        let opt = fileOptions[i];
+        if (opt.selected) newFiles.push(opt.value);
       }
-      this.mail.sendMail(recipients, user, "test", "testbody").subscribe();
+      let inputColor = (<HTMLInputElement>document.getElementById('newColor')).value;
+      let newStartUnix: any;
+      let newEndUnix: any;
+      let allDayBool: boolean = true;
+      if(!this.allDay){
+        let newStartTime: string = (<HTMLInputElement>document.getElementById('newStartTime')).value;
+        let newEndTime: string = (<HTMLInputElement>document.getElementById('newEndTime')).value;
+        allDayBool = false;
+        newStartDate = newStartDate + 'T' + newStartTime;
+        newEndDate = newEndDate + 'T' + newEndTime;
+      }
+      let user = this.authService.getUserEmail();
+      let pickedColor: any = this.getColor(inputColor);
+      this.calendarEventService.addEvent(newEventTitle, newStartDate, newEndDate, pickedColor, newFiles, allDayBool, null, user);
+
+      if (this.showNotify) {
+        let recipients: string[] = [];
+        let recipOptions = (<HTMLSelectElement>document.getElementById('recipients'));
+        let recipOptionsLength: number = recipOptions.length;
+        for(let i = 0; i < recipOptionsLength; i++) {
+          let opt = recipOptions[i];
+          if (opt.selected) recipients.push(opt.value);
+        }
+        this.mail.sendMail(recipients, user, "test", "testbody").subscribe();
+      }
+      window.location.reload();
     }
   }
 
