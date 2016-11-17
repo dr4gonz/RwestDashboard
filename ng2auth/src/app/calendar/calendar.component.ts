@@ -78,7 +78,6 @@ export class CalendarComponent implements OnInit {
   }
 
   addNewEvent() {
-    console.log((<HTMLInputElement>document.getElementById('notify')).value);
     let newEventTitle: string = (<HTMLInputElement>document.getElementById('newTitle')).value;
     let newStartDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
     let newEndDate: string = (<HTMLInputElement>document.getElementById('newStartDate')).value;
@@ -113,7 +112,11 @@ export class CalendarComponent implements OnInit {
           let opt = recipOptions[i];
           if (opt.selected) recipients.push(opt.value);
         }
-        this.mail.sendMail(recipients, user, "test", "testbody").subscribe();
+
+        let subj = "Notification from R/West";
+        let msg = "New event '" + newEventTitle + "' has been added to your R/West calendar by " + user + ".";
+
+        this.mail.sendMail(recipients, user, "Notification from R/West", msg).subscribe();
       }
       window.location.reload();
     }
