@@ -1,0 +1,6 @@
+<div class="col-sm-5 project-box">
+  <h4>{{project.name}}</h4>
+  <ul *ngIf="tasks">
+    <li *ngFor="let task of tasks | upcoming | async">{{task.description}} - {{task.date | toDate}}</li>
+  </ul>
+</div>

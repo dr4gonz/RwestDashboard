@@ -16,8 +16,8 @@ export class TaskService {
     });
     return taskList;
   }
-  addTask(description: string, date: string) {
-    let newTask = new Task(description, date);
+  addTask(description: string, date: string, id: string) {
+    let newTask = new Task(description, date, id);
     let ref = this.af.database.list('/tasks');
     ref.push(newTask);
   }
