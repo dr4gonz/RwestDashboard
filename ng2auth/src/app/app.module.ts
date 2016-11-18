@@ -62,6 +62,7 @@ import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AuthService } from './services/auth.service';
 import { CalendarEventService } from './services/calendar-event.service';
 import { CommentService } from './services/comment.service';
+import { FileService } from './services/file.service';
 import { MailDeliveryService } from './services/mail-delivery.service';
 import { ProjectService } from './services/project.service';
 import { TaskService } from './services/task.service';
@@ -133,6 +134,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuardAdmin,
     CalendarEventService,
     CommentService,
+    FileService,
     MailDeliveryService,
     ProjectService,
     TaskService

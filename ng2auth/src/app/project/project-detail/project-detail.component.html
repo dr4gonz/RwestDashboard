@@ -41,7 +41,7 @@
       </div>
     </div>
   </div>
-  <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (cancelEvent)="hideUploadForm()"></app-file-upload>
+  <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (hideFormEvent)="hideUploadForm()" [projectId]="id"></app-file-upload>
 
   <modal modalClass="modal-lg" [hideCloseButton]="false" [closeOnEscape]="true" [closeOnOutsideClick]="true" class="text-center" #docModal>
     <modal-content>
