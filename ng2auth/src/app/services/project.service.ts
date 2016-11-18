@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Project } from '../models/project.model';
 import { FileEntry } from '../models/file-entry.model';
+import { Task } from '../models/task.model';
 
 @Injectable()
 export class ProjectService {
@@ -32,6 +33,15 @@ export class ProjectService {
 
   projectFiles(id: string): FirebaseListObservable<FileEntry[]> {
     return this.aF.database.list('/fileEntries', {
+      query: {
+        orderByChild: 'projectId',
+        equalTo: id
+      }
+    });
+  }
+
+  projectTasks(id: string): FirebaseListObservable<Task[]> {
+    return this.aF.database.list('/tasks', {
       query: {
         orderByChild: 'projectId',
         equalTo: id

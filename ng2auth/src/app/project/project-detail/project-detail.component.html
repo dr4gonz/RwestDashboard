@@ -41,6 +41,25 @@
       </div>
     </div>
   </div>
+  <!--task rows-->
+  <div class="row">
+    <h3>tasks</h3>
+  </div>
+  <div class="row">
+    <button *ngIf="!newTaskToggle" class="btn btn-default" (click)="toggleNewTask()">New Task</button>
+    <div *ngIf="newTaskToggle">
+      <label for="description">Description</label>
+      <input type="text" name="description" #description>
+      <label for="date">Date</label>
+      <input type="date" name="description" #date>
+      <button (click)="newTask(description, date, id)" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+  <div class="row">
+    <ul>
+      <li *ngFor="let task of tasks | async">{{task.description}}</li>
+    </ul>
+  </div>
   <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (cancelEvent)="hideUploadForm()"></app-file-upload>
 
   <modal modalClass="modal-lg" [hideCloseButton]="false" [closeOnEscape]="true" [closeOnOutsideClick]="true" class="text-center" #docModal>

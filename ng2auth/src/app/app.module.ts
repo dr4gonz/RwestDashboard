@@ -36,16 +36,17 @@ import { NewProjectComponent } from './project/new-project/new-project.component
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { ProjectPreviewComponent } from './project/project-preview/project-preview.component';
-import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
+import { ProjectTasksComponent } from './tasks/project-tasks/project-tasks.component';
+import { ProjectTasksListItemComponent } from './tasks/project-tasks-list-item/project-tasks-list-item.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { routing, routedComponents } from './app.routing';
-import { TaskListComponent } from './task-list/task-list.component';
+import { TaskListComponent } from './tasks/task-list.component';
 import { UpcomingEventsComponent } from './calendar/upcoming-events/upcoming-events.component';
 import { UpcomingEventsListItemComponent } from './calendar/upcoming-events/upcoming-events-list-item/upcoming-events-list-item.component';
-import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
+import { UpcomingTasksComponent } from './tasks/upcoming-tasks/upcoming-tasks.component';
 
 /** Pipes **/
 import { DayPipe } from './pipes/day.pipe';
@@ -107,6 +108,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ProjectComponent,
     ProjectDetailComponent,
     ProjectPreviewComponent,
+    ProjectTasksComponent,
+    ProjectTasksListItemComponent,
     RegisterUserComponent,
     RemoveDocumentComponent,
     RemoveCommentComponent,
@@ -123,7 +126,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     TaskListComponent,
     UpcomingPipe,
     UpcomingTasksComponent,
-    ProjectTasksComponent
   ],
   providers: [
     {

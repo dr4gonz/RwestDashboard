@@ -32,7 +32,7 @@ export class TaskListComponent implements OnInit {
   }
   newTask(description: HTMLInputElement, date: HTMLInputElement) {
     console.log(moment(date.value).format());
-    this.taskService.addTask(description.value, moment(date.value).format());
+    this.taskService.addTask(description.value, moment(date.value).format(), 'none');
     this.newTaskToggle = false;
   }
   toggleNewTask() {
