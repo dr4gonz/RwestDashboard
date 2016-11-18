@@ -30,11 +30,6 @@ export class TaskListComponent implements OnInit {
   getProjects() {
     this.projects = this.projectService.currentProjects();
   }
-  newTask(description: HTMLInputElement, date: HTMLInputElement) {
-    console.log(moment(date.value).format());
-    this.taskService.addTask(description.value, moment(date.value).format(), 'none');
-    this.newTaskToggle = false;
-  }
   toggleNewTask() {
     this.newTaskToggle = true;
   }

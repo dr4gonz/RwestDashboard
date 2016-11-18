@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
-import { TaskListComponent } from './task-list/task-list.component';
+import { TaskListComponent } from './tasks/task-list.component';
 
 const appRoutes: Routes = [
   {
