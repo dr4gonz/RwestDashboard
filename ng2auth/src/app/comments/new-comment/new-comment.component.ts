@@ -1,24 +1,23 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Comment } from '../../models/comment.model';
+import { CommentService } from '../../services/comment.service';
+import { AuthService } from '../../services/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-new-comment',
-  inputs: ['contentItem'],
-  outputs: ['newCommentEvent'],
+  inputs: ['parentKey'],
   templateUrl: './new-comment.component.html',
   styleUrls: ['./new-comment.component.css']
 })
 export class NewCommentComponent implements OnInit {
 
   private commentForm: boolean = false;
-  newCommentEvent: EventEmitter<Comment>;
+  private parentKey: string;
 
-  constructor() {
-    this.newCommentEvent = new EventEmitter();
-  }
+  constructor(private cService: CommentService, private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   toggleCommentForm() {
     this.commentForm = (!this.commentForm);
@@ -28,9 +27,13 @@ export class NewCommentComponent implements OnInit {
     if (body.value !== "") {
       let newComment: Comment = new Comment();
       newComment.body = body.value;
+      newComment.parentId = this.parentKey;
+      newComment.authorId = this.authService.getUserId();
+      newComment.author = this.authService.getUserEmail();
+      newComment.creationTime = moment().format();
+      this.cService.saveComment(newComment);
       body.value = "";
       this.commentForm = false;
-      this.newCommentEvent.emit(newComment);
     } else {
       this.commentForm = true;
     }

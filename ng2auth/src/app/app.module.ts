@@ -55,12 +55,12 @@ import { ToTimePipe } from './pipes/totime.pipe';
 import { WeekPipe } from './pipes/week.pipe';
 import { UpcomingPipe } from './pipes/upcoming.pipe';
 
-
 /** Services **/
 import { AuthGuard } from './services/auth-guard.service'
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AuthService } from './services/auth.service';
 import { CalendarEventService } from './services/calendar-event.service';
+import { CommentService } from './services/comment.service';
 import { MailDeliveryService } from './services/mail-delivery.service';
 import { ProjectService } from './services/project.service';
 import { TaskService } from './services/task.service';
@@ -132,6 +132,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
+    CommentService,
     MailDeliveryService,
     ProjectService,
     TaskService

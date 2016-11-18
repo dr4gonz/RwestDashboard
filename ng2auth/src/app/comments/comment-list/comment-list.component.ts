@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import 'rxjs/add/operator/map';
+import { FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../services/auth.service';
 import { Comment } from '../../models/comment.model';
+import { CommentService } from '../../services/comment.service';
+import 'rxjs/add/operator/map';
 import * as moment from 'moment';
 
 @Component({
@@ -15,30 +16,13 @@ export class CommentListComponent implements OnInit {
 
   parentKey: string;
   comments: FirebaseListObservable<Comment[]>;
-  af: AngularFire;
-  authService: AuthService;
   ascOrDesc: number = 1;
 
-  constructor(af: AngularFire, authService: AuthService) {
-    this.af = af;
-    this.authService = authService;
-  }
+  constructor(private authService: AuthService, private cService: CommentService) { }
 
   ngOnInit() {
-    this.comments = this.af.database.list('/comments', {
-      query: {
-        orderByChild: 'parentId',
-        equalTo: this.parentKey,
-      }
-    }).map(c => c.sort((a, b) => this.compareDates(a.timePosted, b.timePosted))) as FirebaseListObservable<Comment[]>;
-  }
-
-  saveComment(newComment: Comment) {
-    newComment.authorId = this.authService.getUserId();
-    newComment.author = this.authService.getUserEmail();
-    newComment.parentId = this.parentKey;
-    newComment.creationTime = moment().format();
-    this.comments.push(newComment);
+    console.log(this.parentKey);
+    this.comments = this.cService.getComments(this.parentKey).map(c => c.sort((a, b) => this.compareDates(a.creationTime, b.creationTime))) as FirebaseListObservable<Comment[]>;
   }
 
   sortChange(sortBy: number) {
