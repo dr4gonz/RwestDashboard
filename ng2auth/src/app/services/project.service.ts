@@ -30,7 +30,7 @@ export class ProjectService {
   recentProjects(): FirebaseListObservable<Project[]> {
     return this.aF.database.list('/projects', {
       query: {
-        limitToLast: 4
+        limitToLast: 3
       }
     });
   }

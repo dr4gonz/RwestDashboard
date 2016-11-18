@@ -7,7 +7,7 @@
       <h3>project name:
         {{ (project | async)?.name }}</h3>
     </div>
-    <div class="col-xs-3 text-center">
+    <div *ngIf="(project | async)?.statusDoc" class="col-xs-3 text-center">
       <h3>
         <a (click)="docModal.open()">view status doc</a>
       </h3>

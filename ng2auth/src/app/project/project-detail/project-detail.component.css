@@ -16,19 +16,22 @@
   padding-right: 7%;
 }
 
-.files-header {
+.projects-header {
   background-color: #EEEEEE;
-  font-size: 1.3em;
+  font-size: 2.5em;
   color: #616161;
   padding-left: 7%;
   margin-bottom: 15px;
 }
+
 ul {
   list-style: none;
 }
+
 .task-test {
   font-size: 1.5em;
 }
+
 .new-task-form {
   margin-bottom: 10px;
 }
