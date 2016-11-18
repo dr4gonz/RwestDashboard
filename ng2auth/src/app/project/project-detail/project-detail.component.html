@@ -46,18 +46,20 @@
     <h3>tasks</h3>
   </div>
   <div class="row">
-    <button *ngIf="!newTaskToggle" class="btn btn-default" (click)="toggleNewTask()">New Task</button>
+    <button *ngIf="!newTaskToggle" class="btn btn-default" (click)="showNewTask()">New Task</button>
     <div *ngIf="newTaskToggle">
       <label for="description">Description</label>
       <input type="text" name="description" #description>
       <label for="date">Date</label>
       <input type="date" name="description" #date>
       <button (click)="newTask(description, date, id)" class="btn btn-default">Submit</button>
+      <button (click)="hideNewTask()" class="btn btn-default">Cancel</button>
     </div>
   </div>
   <div class="row">
-    <ul>
-      <li *ngFor="let task of tasks | async">{{task.description}}</li>
+    <h3 *ngIf="!tasks">No Tasks.</h3>
+    <ul *ngIf="tasks | async">
+      <li *ngFor="let task of tasks | async"><i class="fa fa-square-o" aria-hidden="true"></i> {{task.description}} - {{task.date | toDate}}</li>
     </ul>
   </div>
   <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (hideFormEvent)="hideUploadForm()" [projectId]="id"></app-file-upload>
