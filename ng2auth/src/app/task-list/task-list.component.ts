@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
-import { ProjectService } from '../project.service';
+import { ProjectService } from '../services/project.service';
+import { TaskService } from '../services/task.service';
 import { FirebaseListObservable } from 'angularfire2';
 import { Task } from '../models/task.model';
 import { Project } from '../models/project.model';

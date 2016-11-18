@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { CalEvent } from './models/calevent.model';
+import { CalEvent } from '../models/calevent.model';
 import * as moment from 'moment';
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FirebaseAuth } from 'angularfire2';
 import { ModalModule } from 'ng2-modal';
 

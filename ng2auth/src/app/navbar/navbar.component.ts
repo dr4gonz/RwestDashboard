@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FirebaseLoginComponent } from '../firebase-login/firebase-login.component';
 import { FirebaseAuth, FirebaseApp } from 'angularfire2';
 

@@ -1,6 +1,6 @@
 import { Routes, RouterModule, CanActivate } from '@angular/router';
-import { AuthGuard } from './auth-guard.service';
-import { AuthGuardAdmin } from './auth-guard-admin.service'
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service'
 
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
