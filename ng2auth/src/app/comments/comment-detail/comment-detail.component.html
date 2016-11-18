@@ -2,6 +2,6 @@
   <p>{{comment.body}}</p>
   <div class="panel-footer">
     <p>{{comment.author}} - {{timeSincePosted}}</p>
-    <app-remove-comment *ngIf="authService.getUserId() === comment.authorId" (removeCommentEvent)="removeComment()"></app-remove-comment>
+    <app-remove-comment *ngIf="authService.getUserId() === comment.authorId" [comment]="comment"></app-remove-comment>
   </div>
 </div>

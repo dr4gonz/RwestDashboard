@@ -13,8 +13,8 @@ import { Keys } from '../keys';
 /** Components **/
 import { AppComponent } from './app.component';
 import { AddDocumentComponent } from './documents/add-document/add-document.component';
-import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
-import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
+import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
+import { AdminUserListItemComponent } from './admin/admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarListItemComponent } from './calendar/calendar-list-item/calendar-list-item.component';
 import { CalendarDayBlockComponent } from './calendar/calendar-day-block/calendar-day-block.component';
@@ -37,7 +37,7 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { ProjectPreviewComponent } from './project/project-preview/project-preview.component';
 import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from './admin/register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
@@ -56,12 +56,12 @@ import { ToTimePipe } from './pipes/totime.pipe';
 import { WeekPipe } from './pipes/week.pipe';
 import { UpcomingPipe } from './pipes/upcoming.pipe';
 
-
 /** Services **/
 import { AuthGuard } from './services/auth-guard.service'
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AuthService } from './services/auth.service';
 import { CalendarEventService } from './services/calendar-event.service';
+import { CommentService } from './services/comment.service';
 import { MailDeliveryService } from './services/mail-delivery.service';
 import { ProjectService } from './services/project.service';
 import { TaskService } from './services/task.service';
@@ -107,9 +107,10 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ProjectComponent,
     ProjectDetailComponent,
     ProjectPreviewComponent,
+    ProjectTasksComponent,
     RegisterUserComponent,
-    RemoveDocumentComponent,
     RemoveCommentComponent,
+    RemoveDocumentComponent,
     routedComponents,
     StorageListItemComponent,
     TaskListComponent,
@@ -118,12 +119,9 @@ export const firebaseConfig = Keys.FireBaseConfig;
     ToTimePipe,
     UpcomingEventsComponent,
     UpcomingEventsListItemComponent,
-    WeekPipe,
-    DocumentPreviewComponent,
-    TaskListComponent,
-    UpcomingPipe,
     UpcomingTasksComponent,
-    ProjectTasksComponent
+    UpcomingPipe,
+    WeekPipe,
   ],
   providers: [
     {
@@ -134,6 +132,7 @@ export const firebaseConfig = Keys.FireBaseConfig;
     AuthGuard,
     AuthGuardAdmin,
     CalendarEventService,
+    CommentService,
     MailDeliveryService,
     ProjectService,
     TaskService

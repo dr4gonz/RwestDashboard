@@ -1,5 +1,5 @@
 <form class="form-inline text-center comment-list-form">
-  <app-new-comment [contentItem]="contentItem" (newCommentEvent)="saveComment($event)"></app-new-comment>
+  <app-new-comment [parentKey]="parentKey"></app-new-comment>
   <div class="form-group">
     <select (change)="sortChange($event.target.value)" class="form-control">
       <option selected value="1">Oldest First</option>
@@ -7,4 +7,4 @@
     </select>
   </div>
 </form>
-<app-comment-detail *ngFor="let comment of comments | timePipe:ascOrDesc | async" [comment]="comment" (removeCommentEvent)="removeComment(comment)"></app-comment-detail>
+<app-comment-detail *ngFor="let comment of comments | timePipe:ascOrDesc | async" [comment]="comment"></app-comment-detail>
