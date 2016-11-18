@@ -29,21 +29,17 @@ export class ProjectDetailComponent implements OnInit {
 
   constructor(private pService: ProjectService, private route: ActivatedRoute, private router: Router, authService: AuthService, private taskService: TaskService) {
     this.authService = authService;
+  }
+
+  ngOnInit() {
     let id: string;
     this.route.params.forEach((params: Params) => {
       id = params['id'];
     });
     this.id = id;
-
-    this.project = pService.findProject(id);
-
-    this.fileEntries = pService.projectFiles(id);
-
-    this.tasks = pService.projectTasks(id);
-
-  }
-
-  ngOnInit() {
+    this.project = this.pService.findProject(id);
+    this.fileEntries = this.pService.projectFiles(id);
+    this.tasks = this.pService.projectTasks(id);
     this.newTaskToggle = false;
   }
 
@@ -75,9 +71,13 @@ export class ProjectDetailComponent implements OnInit {
   unarchive() {
     this.pService.unarchiveProject(this.project);
   }
-  toggleNewTask() {
+  showNewTask() {
     this.newTaskToggle = true;
   }
+  hideNewTask() {
+    this.newTaskToggle = false;
+  }
+
   newTask(description: HTMLInputElement, date: HTMLInputElement, id: string) {
     this.taskService.addTask(description.value, moment(date.value).format(), id);
     this.newTaskToggle = false;
