@@ -45,7 +45,7 @@
   <div class="row">
     <h3>tasks</h3>
   </div>
-  <div class="row">
+  <div class="row new-task-form">
     <button *ngIf="!newTaskToggle" class="btn btn-default" (click)="showNewTask()">New Task</button>
     <div *ngIf="newTaskToggle">
       <label for="description">Description</label>
@@ -59,7 +59,7 @@
   <div class="row">
     <h3 *ngIf="!tasks">No Tasks.</h3>
     <ul *ngIf="tasks | async">
-      <li *ngFor="let task of tasks | async"><i class="fa fa-square-o" aria-hidden="true"></i> {{task.description}} - {{task.date | toDate}}</li>
+      <li *ngFor="let task of tasks | async" class="task-test"><i class="fa fa-square-o" aria-hidden="true"></i> {{task.description}} - {{task.date | toDate}}</li>
     </ul>
   </div>
   <app-file-upload *ngIf="newFile" (newFileEntryEvent)="uploadFile($event)" (hideFormEvent)="hideUploadForm()" [projectId]="id"></app-file-upload>

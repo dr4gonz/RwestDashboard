@@ -62,7 +62,7 @@ export class ProjectService {
       query: {
         orderByChild: 'projectId',
         equalTo: id,
-        limitToLast: 4
+        limitToLast: 2
       }
     });
   }
