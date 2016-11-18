@@ -17,8 +17,8 @@
       <h4>Upcoming</h4>
       <app-upcoming-tasks [tasks]="tasks"></app-upcoming-tasks>
     </div>
-    <div class="col-sm-8">
-
+    <div *ngIf="projects" class="col-sm-8">
+      <app-project-tasks [projects]="projects"></app-project-tasks>
     </div>
 
 </div>

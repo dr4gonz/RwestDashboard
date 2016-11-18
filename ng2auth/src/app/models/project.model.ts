@@ -4,4 +4,5 @@ export class Project {
   dueDate: string;
   statusDoc: string;
   archived: boolean;
+  tasks?: any[];
 }

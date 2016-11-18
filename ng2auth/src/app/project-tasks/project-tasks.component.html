@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let project of projects | async">
+    <div class="col-sm-6 project-box">
+      <h5>{{project.name}}</h5>
+      <ul *ngIf="project.tasks">
+        <li *ngFor="let task of project.tasks | upcoming | async">{{task.description}}</li>
+      </ul>
+    </div>
+  </li>
+</ul>

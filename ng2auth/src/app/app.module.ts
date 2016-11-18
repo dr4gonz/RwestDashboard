@@ -36,6 +36,7 @@ import { NewProjectComponent } from './project/new-project/new-project.component
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { ProjectPreviewComponent } from './project/project-preview/project-preview.component';
+import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
@@ -121,7 +122,8 @@ export const firebaseConfig = Keys.FireBaseConfig;
     DocumentPreviewComponent,
     TaskListComponent,
     UpcomingPipe,
-    UpcomingTasksComponent
+    UpcomingTasksComponent,
+    ProjectTasksComponent
   ],
   providers: [
     {
