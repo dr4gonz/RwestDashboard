@@ -52,9 +52,11 @@ select:hover {
 
 .div-link {
   position: relative;
-  border: solid #9E9E9E 1px;
-  border-radius: 15px;
+  border: 1px solid #9E9E9E;
   background-color: #ddd;
+  box-shadow: 3px 3px 1px #9E9E9E;
+  margin-bottom: 25px;
+  margin-right: 60px;
 }
 
 .div-link:after {
