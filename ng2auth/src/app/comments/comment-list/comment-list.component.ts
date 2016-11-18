@@ -17,16 +17,13 @@ export class CommentListComponent implements OnInit {
   parentKey: string;
   comments: FirebaseListObservable<Comment[]>;
   ascOrDesc: number = 1;
+  sortBy: string = "oldest first";
 
   constructor(private authService: AuthService, private cService: CommentService) { }
 
   ngOnInit() {
     console.log(this.parentKey);
     this.comments = this.cService.getComments(this.parentKey).map(c => c.sort((a, b) => this.compareDates(a.creationTime, b.creationTime))) as FirebaseListObservable<Comment[]>;
-  }
-
-  sortChange(sortBy: number) {
-    this.ascOrDesc = sortBy;
   }
 
   compareDates(a: string, b: string): number {
@@ -44,6 +41,16 @@ export class CommentListComponent implements OnInit {
 
   removeComment(comment: Comment) {
     this.comments.remove(comment.$key);
+  }
+
+  toggleSort() {
+    if (this.ascOrDesc === 1) {
+      this.ascOrDesc = 0;
+      this.sortBy = "newest first";
+    } else {
+      this.ascOrDesc = 1;
+      this.sortBy = "oldest first";
+    }
   }
 
 }

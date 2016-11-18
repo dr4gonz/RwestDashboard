@@ -1,6 +1,6 @@
-<a *ngIf="!commentForm" (click)="toggleCommentForm()">Add Comment </a>
+<a *ngIf="!commentForm" (click)="toggleCommentForm()">add comment </a>
 <div class="comment-form" *ngIf="commentForm">
   <a (click)="toggleCommentForm()">cancel</a>
   <textarea name="body" rows="4" cols="100" class="center-block comment-box" #body></textarea>
-  <button class="btn btn-success center-block" (click)="newComment(body)">Submit</button>
+  <button class="btn btn-success center-block" (click)="newComment(body)">submit</button>
 </div>
