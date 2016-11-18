@@ -41,7 +41,6 @@ import { ProjectTasksListItemComponent } from './tasks/project-tasks-list-item/p
 import { RegisterUserComponent } from './admin/register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
-import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
 import { routing, routedComponents } from './app.routing';
 import { TaskListComponent } from './tasks/task-list.component';
 import { UpcomingEventsComponent } from './calendar/upcoming-events/upcoming-events.component';
@@ -115,7 +114,6 @@ export const firebaseConfig = Keys.FireBaseConfig;
     RemoveCommentComponent,
     RemoveDocumentComponent,
     routedComponents,
-    StorageListItemComponent,
     TaskListComponent,
     TimePipe,
     ToDatePipe,

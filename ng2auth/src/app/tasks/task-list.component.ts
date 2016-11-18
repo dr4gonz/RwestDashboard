@@ -27,9 +27,11 @@ export class TaskListComponent implements OnInit {
   getTasks() {
     this.tasks = this.taskService.getTasks();
   }
+
   getProjects() {
     this.projects = this.projectService.currentProjects();
   }
+
   toggleNewTask() {
     this.newTaskToggle = true;
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { FirebaseAuth, FirebaseListObservable } from 'angularfire2';
+import { Project } from '../models/project.model';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  private recentProjects: FirebaseListObservable<Project[]>;
+
+  constructor(private auth: FirebaseAuth, private pService: ProjectService) {
+    this.recentProjects = pService.recentProjects();
+  }
 
   ngOnInit() {
   }

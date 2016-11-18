@@ -1,20 +1,15 @@
-<div *ngIf="!(auth | async)">
+<div *ngIf="!(auth | async)" class="row">
   <h4 *ngIf="!authService.errorMessage" class="text-center">Enter your credentials:</h4>
   <h4 *ngIf="authService.errorMessage">{{authService.errorMessage}}</h4>
   <form>
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-4 col-xs-offset-4">
       <input  class="form-control" type="text" name="username" id="username" placeholder="Email">
     </div>
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-4 col-xs-offset-4">
       <input  class="form-control" type="password" name="password" id="password" placeholder="Password">
     </div>
-    <button class="btn btn-success center-block" (click)="passCredentials()">
-      Submit
-    </button>
+    <div class="form-group col-xs-4 col-xs-offset-4">
+      <button class="btn btn-success center-block" (click)="passCredentials()">Submit</button>
+    </div>
   </form>
-</div>
-<div *ngIf="(auth | async)">
-  <p>
-    You're logged in. (We'll put something cool here later)
-  </p>
 </div>

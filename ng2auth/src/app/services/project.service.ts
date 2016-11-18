@@ -27,6 +27,14 @@ export class ProjectService {
     });
   }
 
+  recentProjects(): FirebaseListObservable<Project[]> {
+    return this.aF.database.list('/projects', {
+      query: {
+        limitToLast: 4
+      }
+    });
+  }
+
   findProject(id: string): FirebaseObjectObservable<Project> {
     return this.aF.database.object('/projects/' + id);
   }
