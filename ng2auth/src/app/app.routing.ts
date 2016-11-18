@@ -5,9 +5,7 @@ import { AuthGuardAdmin } from './services/auth-guard-admin.service'
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { FileDetailComponent } from './file-storage/file-detail/file-detail.component';
-import { FileStorageComponent } from './file-storage/file-storage.component';
 import { HomeComponent } from './home/home.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
@@ -31,18 +29,13 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'documents',
-    component: DocumentListComponent,
+    path: 'files/:id',
+    component: FileDetailComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'home',
     component: HomeComponent
-  },
-  {
-    path: 'files',
-    component: FileStorageComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'projects',
@@ -60,11 +53,6 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'files/:id',
-    component: FileDetailComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'tasks',
     component: TaskListComponent,
     canActivate: [AuthGuard]
@@ -72,4 +60,4 @@ const appRoutes: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
-export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, DocumentListComponent, FileStorageComponent, HomeComponent, FileDetailComponent, NewProjectComponent, ProjectComponent, ProjectDetailComponent, TaskListComponent];
+export const routedComponents = [AppComponent, AdminComponent, CalendarComponent, HomeComponent, FileDetailComponent, NewProjectComponent, ProjectComponent, ProjectDetailComponent, TaskListComponent];

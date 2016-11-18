@@ -1,2 +1,15 @@
-<!-- for some reason, the stuff in this component doesn't work if it's part of a routed component... -->
 <app-firebase-login></app-firebase-login>
+<div *ngIf="(auth | async)">
+  <div class="col-xs-12 title-bar">
+    recent projects
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div *ngFor="let proj of recentProjects | async" class="col-sm-3 div-link" routerLink="/projects/{{proj.$key}}">
+        <div class="div-link-contents">
+          <app-project-preview [project]="proj"></app-project-preview>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
