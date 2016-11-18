@@ -35,6 +35,7 @@ a:hover {
 body {
   background-color: #FAFAFA;
   font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
 }
 
 .btn-danger {
