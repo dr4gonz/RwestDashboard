@@ -13,8 +13,8 @@ import { Keys } from '../keys';
 /** Components **/
 import { AppComponent } from './app.component';
 import { AddDocumentComponent } from './documents/add-document/add-document.component';
-import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
-import { AdminUserListItemComponent } from './admin-user-list-item/admin-user-list-item.component';
+import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
+import { AdminUserListItemComponent } from './admin/admin-user-list-item/admin-user-list-item.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarListItemComponent } from './calendar/calendar-list-item/calendar-list-item.component';
 import { CalendarDayBlockComponent } from './calendar/calendar-day-block/calendar-day-block.component';
@@ -36,7 +36,7 @@ import { NewProjectComponent } from './project/new-project/new-project.component
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { ProjectPreviewComponent } from './project/project-preview/project-preview.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from './admin/register-user/register-user.component';
 import { RemoveDocumentComponent } from './documents/remove-document/remove-document.component';
 import { RemoveCommentComponent } from './comments/remove-comment/remove-comment.component';
 import { StorageListItemComponent } from './file-storage/storage-list-item/storage-list-item.component';
