@@ -2,7 +2,8 @@ import { Component, OnInit, EventEmitter, ChangeDetectorRef } from '@angular/cor
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FileEntry } from '../../models/file-entry.model';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { FileService } from '../../services/file.service';
+import { FirebaseObjectObservable } from 'angularfire2';
 import * as moment from 'moment';
 
 @Component({
@@ -23,15 +24,14 @@ export class FileDetailComponent implements OnInit {
   private containerType: string = "";
   private errorMsg: string = "";
 
-  constructor(private aF: AngularFire, private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private fService: FileService) {
     let id: string;
     let thisRef = this;
     this.route.params.forEach((params: Params) => {
       id = params['id'];
     })
     this.id = id;
-
-    this.fileEntry = aF.database.object('/fileEntries/' + this.id);
+    this.fileEntry = this.fService.getFileEntry(id);
   }
 
   ngOnInit() {

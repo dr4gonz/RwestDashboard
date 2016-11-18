@@ -1,30 +1,26 @@
-import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
-import { FirebaseApp, AngularFire } from 'angularfire2';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FileEntry } from '../../models/file-entry.model';
+import { FileService } from '../../services/file.service';
 import * as moment from 'moment';
 
 @Component({
   selector: 'app-file-upload',
-  outputs: ['newFileEntryEvent', 'cancelEvent'],
+  inputs: ['projectId'],
+  outputs: ['hideFormEvent'],
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
 
-  private storageRef;
-  private af;
   private fileTarget: any;
   private authService: AuthService;
-  newFileEntryEvent: EventEmitter<FileEntry>;
-  cancelEvent: EventEmitter<any>
+  hideFormEvent: EventEmitter<any>
+  private projectId: string;
 
-  constructor(@Inject(FirebaseApp) firebase: any, af: AngularFire, authService: AuthService) {
-    this.storageRef = firebase.storage().ref();
-    this.af = af;
+  constructor(authService: AuthService, private fService: FileService) {
     this.authService = authService;
-    this.newFileEntryEvent = new EventEmitter();
-    this.cancelEvent = new EventEmitter();
+    this.hideFormEvent = new EventEmitter();
   }
 
   ngOnInit() {
@@ -46,26 +42,24 @@ export class FileUploadComponent implements OnInit {
       if (!file) {
         alert("Please select a file to upload.")
       } else {
-        let newFileRef = this.storageRef.child(file.name);
-        let eventRef = this.newFileEntryEvent;
-        newFileRef.put(file).then(function() {
-          let fE = new FileEntry();
-          fE.fileType = file.type;
-          fE.filePath = file.name;
-          fE.uploaderId = id;
-          fE.uploaderEmail = email;
-          fE.creationTime = moment().format();
-          fE.status = "not approved";
-          fE.notes = notes.value;
-          fE.title = title.value;
-          eventRef.emit(fE);
-        });
+        let fE = new FileEntry();
+        fE.fileType = file.type;
+        fE.filePath = file.name;
+        fE.uploaderId = id;
+        fE.uploaderEmail = email;
+        fE.creationTime = moment().format();
+        fE.status = "not approved";
+        fE.notes = notes.value;
+        fE.title = title.value;
+        fE.projectId = this.projectId;
+        this.fService.saveFileEntry(file, fE);
+        this.hideFormEvent.emit();
       }
     }
   }
 
   cancelUpload() {
-    this.cancelEvent.emit();
+    this.hideFormEvent.emit();
   }
 
 }
