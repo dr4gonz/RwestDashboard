@@ -1,17 +1,19 @@
-<div class="text-center">
-  <a routerLink="/projects/{{ (fileEntry | async)?.projectId }}">Back</a>
+<div class="col-xs-12 files-header">
+  files
 </div>
-<div class="panel panel-default text-center">
-  <h4 class="text-center"> {{ (fileEntry | async)?.title }} - uploaded by {{ (fileEntry | async)?.uploaderEmail }} on {{formattedTime}} - status: {{ (fileEntry | async)?.status }}</h4>
-  <a (click)="approve()" *ngIf="(fileEntry | async)?.status !== 'approved'">approve</a>
-  <a (click)="reject()" *ngIf="(fileEntry | async)?.status !== 'rejected'">reject</a>
-  <a (click)="unapprove()" *ngIf="(fileEntry | async)?.status == 'approved'">unapprove</a>
-
+<div class="col-xs-12 text-center">
+  <h4 class="text-center">
+    {{ (fileEntry | async)?.title }} - uploaded by {{ (fileEntry | async)?.uploaderEmail }} on {{formattedTime}} - status: {{ (fileEntry | async)?.status }}
+    <br><br><br>
+    <span *ngIf="(fileEntry | async)?.status !== 'approved'"><a (click)="approve()">approve</a> | </span>
+    <span *ngIf="(fileEntry | async)?.status !== 'rejected'"><a (click)="reject()">reject</a> | </span>
+    <span *ngIf="(fileEntry | async)?.status == 'approved'"> <a (click)="unapprove()">unapprove</a> | </span>
+    <a routerLink="/projects/{{ (fileEntry | async)?.projectId }}">back</a>
+  </h4>
   <app-file-preview *ngIf="(fileEntry | async)" [fileEntry]="(fileEntry | async)"></app-file-preview>
-
   <div *ngIf="fileEntry.notes" class="page-header">
     <h4>Notes</h4>
   </div>
   <p>{{fileEntry.notes}}</p>
+  <app-comment-list [parentKey]="id"></app-comment-list>
 </div>
-<app-comment-list [parentKey]="id"></app-comment-list>

@@ -1,5 +1,7 @@
-<h3 *ngIf="errorMsg" class="text-danger text-center" class="file-preview">{{errorMsg}}</h3>
-<img *ngIf="containerType=='image'" [src]="safeUrl" class="file-preview"/>
-<object *ngIf="containerType=='application'" [data]="safeUrl" [type]="fileEntry.fileType" class='file-preview' id="doc-preview"></object>
-<video  *ngIf="containerType==='video'" controls="" name="media" class="file-preview" id="vid-preview"><source [src]="safeUrl" [type]="fileEntry.fileType"></video>
-<h3 *ngIf="safeUrl" class="text-center"><a [href]="safeUrl" download>Download</a></h3>
+<div class="col-xs-8 col-xs-offset-2">
+  <h3 *ngIf="errorMsg" class="text-danger text-center" class="file-preview">{{errorMsg}}</h3>
+  <img *ngIf="containerType=='image'" [src]="safeUrl" class="file-preview"/>
+  <object *ngIf="containerType=='application'" [data]="safeUrl" [type]="fileEntry.fileType" class='file-preview' id="doc-preview"></object>
+  <video  *ngIf="containerType==='video'" controls="" name="media" class="file-preview" id="vid-preview"><source [src]="safeUrl" [type]="fileEntry.fileType"></video>
+    <h3 *ngIf="safeUrl" class="text-center"><a [href]="safeUrl" download>download</a></h3>
+</div>
